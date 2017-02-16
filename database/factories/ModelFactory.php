@@ -22,3 +22,18 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\News::class, function (Faker\Generator $faker) {
+    return [
+        'image' => $faker->image(),
+       // 'options' => $faker->options(),
+    ];
+});
+
+$factory->define(App\NewsDetails::class, function (Faker\Generator $faker) {
+    return [
+        'lang' => $faker->name,
+        'title' => $faker->str_random(20),
+		'summary' => $faker->words,
+    ];
+});
