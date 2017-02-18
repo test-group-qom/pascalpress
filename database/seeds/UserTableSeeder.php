@@ -11,11 +11,8 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        echo 'users seeding\n';
          factory(App\User::class, 2)->create()->each(function($u) {
-    		$u->news()->save(factory(App\News::class)->make());
+    		//$u->news()->save(factory(App\News::class)->make());
  		 });
-
-
     }
 }

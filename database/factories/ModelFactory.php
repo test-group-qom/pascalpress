@@ -32,8 +32,11 @@ $factory->define(App\News::class, function (Faker\Generator $faker) {
 
 $factory->define(App\NewsDetails::class, function (Faker\Generator $faker) {
     return [
+		'news_id' => App\News::all()->random()->id ,
         'lang' => $faker->name,
-        'title' => $faker->str_random(20),
-		'summary' => $faker->words,
+        'title' => str_random(20),
+		'summary' => str_random(40),
+		'text' => str_random(100),
+		'tags' => str_random(5),
     ];
 });

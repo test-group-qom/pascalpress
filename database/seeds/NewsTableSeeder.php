@@ -11,9 +11,8 @@ class NewsTableSeeder extends Seeder
      */
     public function run()
     {
-		echo 'News seeding\n';
-         factory(App\News::class, 20)->create()->each(function($u) {
-    		$u->newsdetails()->save(factory(App\NewsDetails::class)->make());
+         factory(App\News::class, 20)->create()->each(function($n) {
+    		$n->newsdetails()->save(factory(App\NewsDetails::class)->make());
  		 });   
      }
 }

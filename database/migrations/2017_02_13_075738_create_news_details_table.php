@@ -18,15 +18,14 @@ class CreateNewsDetailsTable extends Migration
 			$table->integer('news_id',false,true);
             $table->string('lang')-> nullable(false);
             $table->string('title')->unique()-> nullable(false);
-            $table->string('summery');
+            $table->string('summary');
             $table->text('text');
             $table->string('tags');
             $table->timestamps();
+			$table->softDeletes();
         });
 
-        Schema::table('news_details', function ($table) {
-             $table->softDeletes();
-        });
+       
     }
 
     /**
