@@ -5,11 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class NewsDetails extends Model
+class NewsDetail extends Model
 {
     use SoftDeletes;
 	
-	public function News(){
+	public function News(){ 
 		return $this->belongsto(News::class);
 	}
 }

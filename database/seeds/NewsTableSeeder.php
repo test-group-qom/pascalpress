@@ -12,7 +12,7 @@ class NewsTableSeeder extends Seeder
     public function run()
     {
          factory(App\News::class, 20)->create()->each(function($n) {
-    		$n->newsdetails()->save(factory(App\NewsDetails::class)->make());
+    		$n->newsdetail()->save(factory(App\NewsDetail::class)->make());
  		 });   
      }
 }

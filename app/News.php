@@ -9,8 +9,8 @@ class News extends Model
 {
     use SoftDeletes;
 
-    public function newsdetails()
+    public function newsdetail()
     {
-        return $this->hasMany('App\NewsDetails');
+        return $this->hasMany('App\NewsDetail');
     }
 }

@@ -30,7 +30,7 @@ $factory->define(App\News::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\NewsDetails::class, function (Faker\Generator $faker) {
+$factory->define(App\NewsDetail::class, function (Faker\Generator $faker) {
     return [
 		'news_id' => App\News::all()->random()->id ,
         'lang' => $faker->name,
