@@ -10,8 +10,8 @@ class newsController extends Controller
 {
     protected $rule = [
         'image' => ['required'],
-        'lang' => ['required'],
-        'title' => ['required','unique']
+       // 'lang' => ['required'],
+       // 'title' => ['required','unique:news_details']
     ];
     // public function index()
     // {
@@ -30,10 +30,13 @@ class newsController extends Controller
         * Display a listing of the resource.
         * @return Response
         */
-        public function index(/*News $news*/)
+        public function index()
         {
-           // return $news;
-            return \App\News::all();
+            $news = \App\News::with('newsdetails')->get();
+            return $news;
+            //$news = \App\News::first();
+            // return $news->newsdetails;
+            //return \App\News::all();
             //return \App\News::paginate();
         }
         
@@ -52,30 +55,27 @@ class newsController extends Controller
         */
         public function store(Request $request)
         {
-            $this->validate($request,$this->rule);
+            $validator = \Validator::make($request->all(), $this->rule);
+            if ($validator->fails()) 
+                return response()->json($validator->errors(), 422);
 
-            $input = \Input::json();
             $news = new News;
-            $news->image = $input->get('image');
-            $news->options = $input->get('options');
+            $news->image = $request->input('image');
+            $news->options = $request->input('options');
             $news->save();
-            // return Response::json(array(
-            //     'error' => false,
-            //     'news' => $news->toArray()),
-            //     200
-            // );
-            return response($news, 201); //201 is the HTTP status code (HTTP/1.1 201 created) for created
+
+            return response($news, 201); //201 is the HTTP status code (HTTP/1.1 201 created) for created   
         }
+
     
         /**
         * Display the specified resource.
         * @param  int  $id
         * @return Response
         */
-        public function show($id/*News $news*/)
+        public function show($id)
         {
             return \App\News::findOrFail($id);
-           // return $news;
         }
     
         /**
