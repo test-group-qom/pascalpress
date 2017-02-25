@@ -52,12 +52,12 @@ class newsController extends Controller
         */
         public function store(Request $request)
         {
-            $this->validate($request,$this->rule);
+            //$this->validate($request,$this->rule);
 
-            $input = \Input::json();
+            //$input = \Input::json();
             $news = new News;
-            $news->image = $input->get('image');
-            $news->options = $input->get('options');
+            $news->image = $request->input('image');
+            $news->options = $request->input('options');
             $news->save();
             // return Response::json(array(
             //     'error' => false,

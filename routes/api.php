@@ -17,4 +17,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-//Route::post('news',  [ 'as' => 'news.create', 'uses' => 'newsController@store']);
+Route::post('/news',  'newsController@store');
+
+Route::get('/',function(){ return 'hi';});
