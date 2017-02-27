@@ -22,7 +22,12 @@ class CreateNewsDetailsTable extends Migration
             $table->text('text');
             $table->string('tags');
             $table->timestamps();
+
 			$table->softDeletes();
+
+            $table->foreign('news_id')
+                ->references('id')->on('news')
+                ->onDelete('cascade')->onUpdate('cascade');
         });
 
        

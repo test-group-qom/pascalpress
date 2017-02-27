@@ -17,7 +17,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
-<<<<<<< HEAD
+
 Route::get('news',  [ 'as' => 'news.index', 'uses' => 'newsController@index']);
 Route::get('news/{id}',  [ 'as' => 'news.show', 'uses' => 'newsController@show']);
 Route::get('news/create',  [ 'as' => 'news.create', 'uses' => 'newsController@create']);
@@ -27,14 +27,14 @@ Route::put('news/{id}',  [ 'as' => 'news.create', 'uses' => 'newsController@upda
 //Route::patch('news/{id}',  [ 'as' => 'news.create', 'uses' => 'newsController@update']);
 Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@destroy']);
 Route::put('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@delete']);
-Route::put('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@restore']);
+Route::put('news/{id}/restore',  [ 'as' => 'news.index', 'uses' => 'newsController@restore']);
 Route::get('search', [ 'as' => 'news.search', 'uses' => 'newsController@search']);
 
 //Route::get('/',function(){ return 'hi';});
 //Route::post('/news',  'newsController@store');
 
-=======
-Route::post('/news',  'newsController@store');
 
-Route::get('/',function(){ return 'hi';});
->>>>>>> 033c4e47f104dea2391dacccde90e87206820bf8
+//Route::post('/news',  'newsController@store');
+
+//Route::get('/',function(){ return 'hi';});
+

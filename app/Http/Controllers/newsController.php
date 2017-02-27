@@ -10,8 +10,8 @@ class newsController extends Controller
 {
     protected $rule = [
         'image' => ['required'],
-       // 'lang' => ['required'],
-       // 'title' => ['required','unique:news_details']
+        'lang' => ['required'],
+        'title' => ['required','unique:news_details']
     ];
     // public function index()
     // {
@@ -39,6 +39,19 @@ class newsController extends Controller
             //return \App\News::all();
             //return \App\News::paginate();
         }
+
+         /**
+        * Display the specified resource.
+        * @param  int  $id
+        * @return Response
+        */
+        public function show($id)
+        {
+            $news = \App\News::find($id);
+            $newsdetail = $news->newsdetails;
+            return $news;//array('news' => $news, 'news_detail' => $newsdetail);
+           // return \App\News::findOrFail($id);
+        }
         
         /**
         * Show the form for creating a new resource.
@@ -55,33 +68,31 @@ class newsController extends Controller
         */
         public function store(Request $request)
         {
-<<<<<<< HEAD
+
             $validator = \Validator::make($request->all(), $this->rule);
             if ($validator->fails()) 
                 return response()->json($validator->errors(), 422);
 
-=======
+
             //$this->validate($request,$this->rule);
 
             //$input = \Input::json();
->>>>>>> 033c4e47f104dea2391dacccde90e87206820bf8
+
             $news = new News;
             $news->image = $request->input('image');
             $news->options = $request->input('options');
             $news->save();
+           
+            $newsdetails = new NewsDetail;
+            $newsdetails->lang = $request->input('lang');
+            $newsdetails->title = $request->input('title');
+            $newsdetails->summary = $request->input('summary');
+            $newsdetails->text = $request->input('text');
+            $newsdetails->tags = $request->input('tags');
+            $news->newsdetails()->save($newsdetails);
 
-            return response($news, 201); //201 is the HTTP status code (HTTP/1.1 201 created) for created   
-        }
-
-    
-        /**
-        * Display the specified resource.
-        * @param  int  $id
-        * @return Response
-        */
-        public function show($id)
-        {
-            return \App\News::findOrFail($id);
+            return response(array('news' => $news, 'news_details' => $newsdetails), 201); 
+            //201 is the HTTP status code (HTTP/1.1 201 created) for created   
         }
     
         /**
@@ -102,13 +113,25 @@ class newsController extends Controller
         */
         public function update(Request $request,$id)
         {
-            $input = \Input::json();
+            $validator = \Validator::make($request->all(), $this->rule);
+            if ($validator->fails()) 
+                return response()->json($validator->errors(), 422);
+
             $news = \App\News::findOrFail($id);
-            $news->image = $input->get('image');
-            $news->options = $input->get('options');
+            $news->image = $request->input('image');
+            $news->options = $request->input('options');
             $news->save();
-            return response($news, 200)
-                ->header('Content-Type', 'application/json');
+
+            $newsdetail = $news->newsdetails;
+            $newsdetails->lang = $request->input('lang');
+            $newsdetails->title = $request->input('title');
+            $newsdetails->summary = $request->input('summary');
+            $newsdetails->text = $request->input('text');
+            $newsdetails->tags = $request->input('tags');
+            $news->newsdetails()->save($newsdetails);
+
+            return response(array('news' => $news, 'news_details' => $newsdetails), 200)
+                        ->header('Content-Type', 'application/json');                
         }
 
         /**
@@ -146,12 +169,12 @@ class newsController extends Controller
         * @param  Request  $request, News $news
         * @return Response
         */
-        // public function search(Request $request, News $news)
-        // {
-        //     return $news
-        //         ->where('name',
-        //           'like',
-        //           '%'.$request->get('name').'%')
-        //         ->get();
-        // }
+        public function search(Request $request, NewsDetail $newsdetails)
+        {
+            return $newsdetails
+                ->where('title',
+                  'like',
+                  '%'.$request->get('title').'%')
+                ->get();
+        }
 }
