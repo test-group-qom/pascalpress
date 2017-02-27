@@ -68,6 +68,7 @@ class newsController extends Controller
         */
         public function store(Request $request)
         {
+<<<<<<< HEAD
 
             $validator = \Validator::make($request->all(), $this->rule);
             if ($validator->fails()) 
@@ -78,6 +79,11 @@ class newsController extends Controller
 
             //$input = \Input::json();
 
+=======
+            $validator = \Validator::make($request->all(), $this->rule);
+            if ($validator->fails()) 
+                return response()->json($validator->errors(), 422);
+>>>>>>> e24923dea752ad46375d328d2bcda54fc6adc417
             $news = new News;
             $news->image = $request->input('image');
             $news->options = $request->input('options');

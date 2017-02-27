@@ -17,7 +17,10 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e24923dea752ad46375d328d2bcda54fc6adc417
 Route::get('news',  [ 'as' => 'news.index', 'uses' => 'newsController@index']);
 Route::get('news/{id}',  [ 'as' => 'news.show', 'uses' => 'newsController@show']);
 Route::get('news/create',  [ 'as' => 'news.create', 'uses' => 'newsController@create']);
@@ -30,6 +33,7 @@ Route::put('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@delet
 Route::put('news/{id}/restore',  [ 'as' => 'news.index', 'uses' => 'newsController@restore']);
 Route::get('search', [ 'as' => 'news.search', 'uses' => 'newsController@search']);
 
+<<<<<<< HEAD
 //Route::get('/',function(){ return 'hi';});
 //Route::post('/news',  'newsController@store');
 
@@ -38,3 +42,5 @@ Route::get('search', [ 'as' => 'news.search', 'uses' => 'newsController@search']
 
 //Route::get('/',function(){ return 'hi';});
 
+=======
+>>>>>>> e24923dea752ad46375d328d2bcda54fc6adc417
