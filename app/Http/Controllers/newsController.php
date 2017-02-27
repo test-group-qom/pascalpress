@@ -55,16 +55,9 @@ class newsController extends Controller
         */
         public function store(Request $request)
         {
-<<<<<<< HEAD
             $validator = \Validator::make($request->all(), $this->rule);
             if ($validator->fails()) 
                 return response()->json($validator->errors(), 422);
-
-=======
-            //$this->validate($request,$this->rule);
-
-            //$input = \Input::json();
->>>>>>> 033c4e47f104dea2391dacccde90e87206820bf8
             $news = new News;
             $news->image = $request->input('image');
             $news->options = $request->input('options');
