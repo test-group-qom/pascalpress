@@ -13,6 +13,8 @@ class NewsTableSeeder extends Seeder
     {
          factory(App\News::class, 20)->create()->each(function($n) {
     		$n->newsdetails()->save(factory(App\NewsDetail::class)->make());
+            $n->newsdetails()->save(factory(App\NewsDetail::class)->make());
+            $n->newsdetails()->save(factory(App\NewsDetail::class)->make());
  		 });   
      }
 }

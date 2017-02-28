@@ -37,9 +37,9 @@ $factory->define(App\NewsDetail::class, function (Faker\Generator $faker) {
     return [
 		'news_id' => $news[rand(0,count($news)-1)] ,
         'lang' => $langs[rand(0,2)],
-        'title' => str_random(20),
-		'summary' => str_random(40),
-		'text' => str_random(100),
-		'tags' => str_random(5),
+        'title' => $faker->words(rand(3,6)),
+		'summary' => $faker->words(rand(6,9)),
+		'text' => $faker->words(rand(15,20)),
+		'tags' => $faker->words(rand(1,3)),
     ];
 });

@@ -68,22 +68,14 @@ class newsController extends Controller
         */
         public function store(Request $request)
         {
-<<<<<<< HEAD
+            $validator = \Validator::make($request->all(), $this->rule);
+            if ($validator->fails()) 
+                return response()->json($validator->errors(), 422);
 
             $validator = \Validator::make($request->all(), $this->rule);
             if ($validator->fails()) 
                 return response()->json($validator->errors(), 422);
 
-
-            //$this->validate($request,$this->rule);
-
-            //$input = \Input::json();
-
-=======
-            $validator = \Validator::make($request->all(), $this->rule);
-            if ($validator->fails()) 
-                return response()->json($validator->errors(), 422);
->>>>>>> e24923dea752ad46375d328d2bcda54fc6adc417
             $news = new News;
             $news->image = $request->input('image');
             $news->options = $request->input('options');
@@ -97,7 +89,23 @@ class newsController extends Controller
             $newsdetails->tags = $request->input('tags');
             $news->newsdetails()->save($newsdetails);
 
-            return response(array('news' => $news, 'news_details' => $newsdetails), 201); 
+            $newsdetails2 = new NewsDetail;
+            $newsdetails2->lang = $request->input('lang2');
+            $newsdetails2->title = $request->input('title2');
+            $newsdetails2->summary = $request->input('summary2');
+            $newsdetails2->text = $request->input('text2');
+            $newsdetails2->tags = $request->input('tags2');
+            $news->newsdetails()->save($newsdetails2);
+
+            $newsdetails3 = new NewsDetail;
+            $newsdetails3->lang = $request->input('lang3');
+            $newsdetails3->title = $request->input('title3');
+            $newsdetails3->summary = $request->input('summary3');
+            $newsdetails3->text = $request->input('text3');
+            $newsdetails3->tags = $request->input('tags3');
+            $news->newsdetails()->save($newsdetails3);
+
+            return response(array('news' => $news, 'news_details1' => $newsdetails, 'news_details2' => $newsdetails2, 'news_details3' => $newsdetails3), 201); 
             //201 is the HTTP status code (HTTP/1.1 201 created) for created   
         }
     
@@ -108,7 +116,10 @@ class newsController extends Controller
         */
         public function edit($id)
         {
-            return \App\News::findOrFail($id);
+            $news = \App\News::find($id);
+            $newsdetail = $news->newsdetails;
+            return $news;
+            //return \App\News::findOrFail($id);
         }
     
         /**
