@@ -16,10 +16,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'name'           => $faker->name,
+        'email'          => $faker->unique()->safeEmail,
+        'password'       => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+        'api_token'      => str_random(10)
     ];
 });
 
@@ -36,10 +37,10 @@ $factory->define(App\NewsDetail::class, function (Faker\Generator $faker) {
         $langs=['ar','fa','en'];
     return [
 		'news_id' => $news[rand(0,count($news)-1)] ,
-        'lang' => $langs[rand(0,2)],
-        'title' => $faker->words(rand(3,6)),
-		'summary' => $faker->words(rand(6,9)),
-		'text' => $faker->words(rand(15,20)),
-		'tags' => $faker->words(rand(1,3)),
+        'lang'    => $langs[rand(0,2)],
+        'title'   => $faker->words(rand(3,6),true),
+		'summary' => $faker->sentences(rand(0,2),true),
+		'text'    => $faker->sentences(rand(3,6),true),
+		'tags'    => $faker->words(rand(3,6),true),
     ];
 });
