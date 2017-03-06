@@ -35,12 +35,13 @@ $factory->define(App\NewsDetail::class, function (Faker\Generator $faker) {
 	static $news;
 	$news = $news ?: App\News::pluck('id');
         $langs=['ar','fa','en'];
+    $tags = str_replace(' ', ',', $faker->words(rand(3,6),true));
     return [
 		'news_id' => $news[rand(0,count($news)-1)] ,
         'lang'    => $langs[rand(0,2)],
         'title'   => $faker->words(rand(3,6),true),
 		'summary' => $faker->sentences(rand(0,2),true),
 		'text'    => $faker->sentences(rand(3,6),true),
-		'tags'    => $faker->words(rand(3,6),true),
+		'tags'    => $tags,
     ];
 });
