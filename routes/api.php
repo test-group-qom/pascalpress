@@ -18,8 +18,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:api');
 
 
-Route::get('news',  [ 'as' => 'news.index', 'uses' => 'newsController@index']);
-Route::get('news/{id}',  [ 'as' => 'news.show', 'uses' => 'newsController@show']);
+Route::get('news',  [ 'as' => 'news.index', 'uses' => 'newsController@index'/*, 'middleware' => 'auth:api']*/]);
+Route::get('news/{id}',  [ 'as' => 'news.show', 'uses' => 'newsController@show' /*, 'middleware' => 'auth:api']*/]);
 Route::get('news/create',  [ 'as' => 'news.create', 'uses' => 'newsController@create']);
 Route::get('news/{id}/edit',  [ 'as' => 'news.create', 'uses' => 'newsController@edit']);
 Route::post('news',  [ 'as' => 'news.create', 'uses' => 'newsController@store']);
@@ -30,8 +30,11 @@ Route::put('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@delet
 Route::put('news/{id}/restore',  [ 'as' => 'news.index', 'uses' => 'newsController@restore']);
 Route::get('search', [ 'as' => 'news.search', 'uses' => 'newsController@search']);
 
-//Route::get('/',function(){ return 'hi';});
-//Route::post('/news',  'newsController@store');
 
+Route::post('login',  [ 'as' => '', 'uses' => 'Auth\LoginController@index']);
+Route::post('register',  [ 'as' => '', 'uses' => 'Auth\RegisterController@create'])/*->with( 'request', $request )*/;
 
+// Route::group(['prefix'=>'api','middleware'=>'auth:api'], function(){
+//    Route::get('news',  [ 'as' => 'news.index', 'uses' => 'newsController@index']);
+// });
 
