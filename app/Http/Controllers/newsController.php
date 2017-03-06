@@ -5,13 +5,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\News;
 use App\NewsDetail;
+use Illuminate\Support\Facades\Auth;
 
 class newsController extends Controller
 {
     protected $rule = [
-        'image' => ['required'],
-        'lang' => ['required'],
-        'title' => ['required','unique:news_details']
+        'image' => ['required','unique:news'],
+        'lang' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
+        'title' => ['required','unique:news_details,title'],
+        'text' => ['required'],
+        'tags' => ['required'],
+        'summary' => ['required'],
+        'lang2' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
+        'title2' => ['required','unique:news_details,title'],
+        'text2' => ['required'],
+        'tags2' => ['required'],
+        'summary2' => ['required'],
+        'lang3' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
+        'title3' => ['required','unique:news_details,title'],
+        'text3' => ['required'],
+        'tags3' => ['required'],
+        'summary3' => ['required'],
     ];
     // public function index()
     // {
@@ -32,8 +46,14 @@ class newsController extends Controller
         */
         public function index()
         {
+            // if (Auth::check()) {
+            //     // The user is logged in...
+            //     $news = \App\News::with('newsdetails')->get();
+            //     return $news;
+            // }
             $news = \App\News::with('newsdetails')->get();
             return $news;
+            // return ' The user is not logged in...';
             //$news = \App\News::first();
             // return $news->newsdetails;
             //return \App\News::all();
@@ -68,10 +88,6 @@ class newsController extends Controller
         */
         public function store(Request $request)
         {
-            $validator = \Validator::make($request->all(), $this->rule);
-            if ($validator->fails()) 
-                return response()->json($validator->errors(), 422);
-
             $validator = \Validator::make($request->all(), $this->rule);
             if ($validator->fails()) 
                 return response()->json($validator->errors(), 422);
