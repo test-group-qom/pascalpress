@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\News;
 use App\NewsDetail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class newsController extends Controller
 {
     protected $rule = [
-        'image' => ['required','unique:news'],
+        'image' => ['required'],
         'lang' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
         'title' => ['required','unique:news_details,title'],
         'text' => ['required'],
@@ -92,6 +93,7 @@ class newsController extends Controller
             if ($validator->fails()) 
                 return response()->json($validator->errors(), 422);
 
+            
             $news = new News;
             $news->image = $request->input('image');
             $news->options = $request->input('options');

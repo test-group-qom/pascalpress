@@ -47,7 +47,7 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {
+    {print_r($data);
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
@@ -61,15 +61,22 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
-    public function create(/*array $data*/)
+    protected function create(array $data)
     {
-        print_r($request);
-        $this->validator($request->all());
-        return User::create([
-            'name' => /*$data*/$request['name'],
-            'email' => /*$data*/$request['email'],
-            'password' => bcrypt(/*$data*/$request['password']),
+         return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
             'api_token' => str_random(60), //slight change here
         ]);
     }
+
+    public function create_api(Request $request){
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) 
+            return response()->json($validator->errors(), 422);
+
+        return $this->create($request->all());
+    }
+
 }

@@ -31,8 +31,8 @@ Route::put('news/{id}/restore',  [ 'as' => 'news.index', 'uses' => 'newsControll
 Route::get('search', [ 'as' => 'news.search', 'uses' => 'newsController@search']);
 
 
-Route::post('login',  [ 'as' => '', 'uses' => 'Auth\LoginController@index']);
-Route::post('register',  [ 'as' => '', 'uses' => 'Auth\RegisterController@create'])/*->with( 'request', $request )*/;
+Route::post('login',  [ 'as' => '', 'uses' => 'Auth\LoginController@login']);
+Route::post('register',  [ 'as' => '', 'uses' => 'Auth\RegisterController@create_api']);
 
 // Route::group(['prefix'=>'api','middleware'=>'auth:api'], function(){
 //    Route::get('news',  [ 'as' => 'news.index', 'uses' => 'newsController@index']);
