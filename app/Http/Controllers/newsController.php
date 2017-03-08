@@ -27,6 +27,25 @@ class newsController extends Controller
         'tags3' => ['required'],
         'summary3' => ['required'],
     ];
+
+    protected $rule2 = [
+        'image' => ['required'],
+        'lang' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
+        'title' => ['required'],
+        'text' => ['required'],
+        'tags' => ['required'],
+        'summary' => ['required'],
+        'lang2' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
+        'title2' => ['required'],
+        'text2' => ['required'],
+        'tags2' => ['required'],
+        'summary2' => ['required'],
+        'lang3' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
+        'title3' => ['required'],
+        'text3' => ['required'],
+        'tags3' => ['required'],
+        'summary3' => ['required'],
+    ];
     // public function index()
     // {
 
@@ -146,16 +165,20 @@ class newsController extends Controller
         */
         public function update(Request $request,$id)
         {
-            $validator = \Validator::make($request->all(), $this->rule);
+            $validator = \Validator::make($request->all(), $this->rule2);
             if ($validator->fails()) 
                 return response()->json($validator->errors(), 422);
+            
 
             $news = \App\News::findOrFail($id);
             $news->image = $request->input('image');
             $news->options = $request->input('options');
             $news->save();
 
-            $newsdetail = $news->newsdetails;
+            $all_newsdetails = $news->newsdetails;
+
+
+            $newsdetails = $all_newsdetails[0];
             $newsdetails->lang = $request->input('lang');
             $newsdetails->title = $request->input('title');
             $newsdetails->summary = $request->input('summary');
@@ -163,8 +186,23 @@ class newsController extends Controller
             $newsdetails->tags = $request->input('tags');
             $news->newsdetails()->save($newsdetails);
 
-            return response(array('news' => $news, 'news_details' => $newsdetails), 200)
-                        ->header('Content-Type', 'application/json');                
+            $newsdetails2 = $all_newsdetails[1];
+            $newsdetails2->lang = $request->input('lang2');
+            $newsdetails2->title = $request->input('title2');
+            $newsdetails2->summary = $request->input('summary2');
+            $newsdetails2->text = $request->input('text2');
+            $newsdetails2->tags = $request->input('tags2');
+            $news->newsdetails()->save($newsdetails2);
+
+            $newsdetails3 = $all_newsdetails[2];
+            $newsdetails3->lang = $request->input('lang3');
+            $newsdetails3->title = $request->input('title3');
+            $newsdetails3->summary = $request->input('summary3');
+            $newsdetails3->text = $request->input('text3');
+            $newsdetails3->tags = $request->input('tags3');
+            $news->newsdetails()->save($newsdetails3);
+
+            return response(array('news' => $news), 201);                
         }
 
         /**
