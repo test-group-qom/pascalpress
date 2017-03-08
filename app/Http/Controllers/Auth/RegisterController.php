@@ -61,15 +61,21 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
-    public function create(/*array $data*/)
+    protected function create(array $data)
     {
-        print_r($request);
-        $this->validator($request->all());
         return User::create([
-            'name' => /*$data*/$request['name'],
-            'email' => /*$data*/$request['email'],
-            'password' => bcrypt(/*$data*/$request['password']),
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
             'api_token' => str_random(60), //slight change here
         ]);
+    }
+
+    public function create_api(Request $request)
+    {
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) 
+            return response()->json($validator->errors(), 422);
+        return $this->create($request->all());
     }
 }

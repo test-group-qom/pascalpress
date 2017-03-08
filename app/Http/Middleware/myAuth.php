@@ -24,6 +24,6 @@ class myAuth
                return $next($request);
            }
        }
-       return response('access denied',401);
+       return response('Access denied! You are not logged in',401);
     }
 }

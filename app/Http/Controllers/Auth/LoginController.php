@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -40,11 +42,15 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    public function index(Request $request){
-        if (Auth::check(['email' => $request->email, 'password' => $request->password])) {
+    // ...these are for api authentication............................
+    public function login(Request $request){
+        $u = User::where('email',$request->input('email'))->get();
+        $user=$u->first();
+        if(Hash::check($request->input('password'),$user->password)){
             return response([
                 'status' => Response::HTTP_OK,
                 'response_time' => microtime(true) - LARAVEL_START,
+                'api_token' => $user->api_token
             ],Response::HTTP_OK);
         }
 
@@ -55,5 +61,12 @@ class LoginController extends Controller
             'request' => $request->all()
         ],Response::HTTP_BAD_REQUEST);
 
+    }
+
+     public function logout(Request $request) {
+        $user = &$request->client;        
+        $user->api_token=NULL;
+        //$user->update();
+        return 'Logged out';
     }
 }
