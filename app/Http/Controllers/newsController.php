@@ -28,24 +28,6 @@ class newsController extends Controller
         'summary3' => ['required'],
     ];
 
-    protected $rule2 = [
-        'image' => ['required'],
-        'lang' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
-        'title' => ['required'],
-        'text' => ['required'],
-        'tags' => ['required'],
-        'summary' => ['required'],
-        'lang2' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
-        'title2' => ['required'],
-        'text2' => ['required'],
-        'tags2' => ['required'],
-        'summary2' => ['required'],
-        'lang3' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
-        'title3' => ['required'],
-        'text3' => ['required'],
-        'tags3' => ['required'],
-        'summary3' => ['required'],
-    ];
     // public function index()
     // {
 
@@ -65,14 +47,8 @@ class newsController extends Controller
         */
         public function index(Request $request)
         {
-            // if (Auth::check()) {
-            //     // The user is logged in...
-            //     $news = \App\News::with('newsdetails')->get();
-            //     return $news;
-            // }
             $news = \App\News::with('newsdetails')->where('type','n')->get();
             return $news;
-            // return ' The user is not logged in...';
             //$news = \App\News::first();
             // return $news->newsdetails;
             //return \App\News::all();
@@ -114,6 +90,7 @@ class newsController extends Controller
             $news = new News;
             $news->image = $request->input('image');
             $news->options = $request->input('options');
+            $news->type = 'n';
             $news->save();
            
             $newsdetails = new NewsDetail;
@@ -165,12 +142,32 @@ class newsController extends Controller
         */
         public function update(Request $request,$id)
         {
-            $validator = \Validator::make($request->all(), $this->rule2);
+            $news = \App\News::findOrFail($id);
+            $all_newsdetails = $news->newsdetails;
+
+            $validator = \Validator::make($request->all(), [
+                'image' => ['required'],
+                'lang' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
+                'title' => ['required','unique:news_details,title,'.$all_newsdetails[0]['id']],
+                'text' => ['required'],
+                'tags' => ['required'],
+                'summary' => ['required'],
+                'lang2' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
+                'title2' => ['required','unique:news_details,title,'.$all_newsdetails[1]['id']],
+                'text2' => ['required'],
+                'tags2' => ['required'],
+                'summary2' => ['required'],
+                'lang3' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
+                'title3' => ['required','unique:news_details,title,'.$all_newsdetails[2]['id']],
+                'text3' => ['required'],
+                'tags3' => ['required'],
+                'summary3' => ['required'],
+            ]);
             if ($validator->fails()) 
                 return response()->json($validator->errors(), 422);
             
 
-            $news = \App\News::findOrFail($id);
+            
             $news->image = $request->input('image');
             $news->options = $request->input('options');
             $news->save();
