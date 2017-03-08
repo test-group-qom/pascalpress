@@ -25,8 +25,10 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\News::class, function (Faker\Generator $faker) {
+    $types=['n','a'];
     return [
         'image' => $faker->image(),
+        'type'    => $types[rand(0,1)],
        // 'options' => $faker->options(),
     ];
 });

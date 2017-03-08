@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\News;
-use App\NewsDetail;
-use Illuminate\Support\Facades\Auth;
 
-class newsController extends Controller
+class articleController extends Controller
 {
     protected $rule = [
         'image' => ['required'],
@@ -70,7 +67,7 @@ class newsController extends Controller
             //     $news = \App\News::with('newsdetails')->get();
             //     return $news;
             // }
-            $news = \App\News::with('newsdetails')->where('type','n')->get();
+            $news = \App\News::with('newsdetails')->get();
             return $news;
             // return ' The user is not logged in...';
             //$news = \App\News::first();

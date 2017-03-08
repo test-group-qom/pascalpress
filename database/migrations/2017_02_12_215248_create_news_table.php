@@ -16,9 +16,9 @@ class CreateNewsTable extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->increments('id');
             $table->string('image')-> nullable(false);
+            $table->char('type',1)-> nullable(false);
             $table->json('options')->nullable();
             $table->timestamps();
-           // $table->timestamps('deleted_at');
         });
 
         Schema::table('news', function ($table) {
