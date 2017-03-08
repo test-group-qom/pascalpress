@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class newsController extends Controller
 {
     protected $rule = [
-        'image' => ['required','unique:news'],
+        'image' => ['required'],
         'lang' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
         'title' => ['required','unique:news_details,title'],
         'text' => ['required'],
@@ -44,7 +44,7 @@ class newsController extends Controller
         * Display a listing of the resource.
         * @return Response
         */
-        public function index()
+        public function index(Request $request)
         {
             // if (Auth::check()) {
             //     // The user is logged in...
