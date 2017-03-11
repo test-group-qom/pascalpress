@@ -19,5 +19,14 @@ class DatabaseSeeder extends Seeder
          factory(App\News::class,10)->create();
          factory(App\NewsDetail::class,30)->create();
          Model::reguard();
+
+          factory(App\Category::class, 3)
+           ->create()
+           ->each(function ($u) {
+                $u->products()->save(factory(App\Product::class)->make());
+            });
+
+       factory(App\ProductDetail::class,30)->create();
+       factory(App\ProductFile::class,30)->create();
     }
 }
