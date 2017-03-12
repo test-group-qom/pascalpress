@@ -46,12 +46,14 @@ class LoginController extends Controller
     public function login(Request $request){
         $u = User::where('email',$request->input('email'))->get();
         $user=$u->first();
-        if(Hash::check($request->input('password'),$user->password)){
-            return response([
-                'status' => Response::HTTP_OK,
-                'response_time' => microtime(true) - LARAVEL_START,
-                'api_token' => $user->api_token
-            ],Response::HTTP_OK);
+        if($user !== null){
+            if(Hash::check($request->input('password'),$user->password)){
+                return response([
+                    'status' => Response::HTTP_OK,
+                    'response_time' => microtime(true) - LARAVEL_START,
+                    'api_token' => $user->api_token
+                ],Response::HTTP_OK);
+            }
         }
 
         return response([
