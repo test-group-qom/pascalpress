@@ -58,3 +58,32 @@ Route::put('user/{id}',  [ 'as' => 'user.create', 'uses' => 'userController@upda
 Route::delete('user/{id}',  [ 'as' => 'user.index', 'uses' => 'userController@destroy']);
 Route::put('user/{id}',  [ 'as' => 'user.index', 'uses' => 'userController@delete']);
 Route::put('user/{id}/restore',  [ 'as' => 'user.index', 'uses' => 'userController@restore']);
+
+//route product and depended on it
+Route::group(['namespace' => 'api'], function () {
+
+    Route::resource('/category', 'CategoryController',
+        ['only' => ['index', 'show']]);
+    Route::resource('/product', 'ProductController',
+        ['only' =>[ 'index', 'show']]);
+    Route::resource('/productFile', 'ProductFileController',
+        ['only' => ['index', 'show']]);
+    Route::resource('/productDetail', 'ProductDetailController',
+        ['only' => ['index', 'show']]);
+
+    Route::group(['middleware' => \App\Http\Middleware\myAuth::class], function () {
+        Route::resource('/category', 'CategoryController',
+            ['only' => ['store', 'update', 'destroy']]);
+        Route::resource('/product', 'ProductController',
+            ['only' => ['store', 'update', 'destroy']]);
+        Route::resource('/productFile', 'ProductFileController',
+            ['only' =>[ 'store', 'update', 'destroy']]);
+        Route::resource('/productDetail', 'ProductDetailController',
+            ['only' => ['store', 'update', 'destroy']]);
+
+        Route::get('/product/restore/{id}', 'ProductController@restore');
+        Route::get('/productDetail/restore/{id}', 'ProductDetailController@restore');
+        Route::get('/productFile/restore/{id}', 'ProductFileController@restore');
+        Route::get('/category/restore/{id}', 'CategoryController@restore');
+    });
+});

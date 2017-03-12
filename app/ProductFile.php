@@ -4,10 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Product;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ProductFile extends Model
 {
-     protected  $fillable = ['type','path'];
+    use SoftDeletes;
+    protected $fillable = ['type', 'path','product_id'];
 
 
     public function product()
