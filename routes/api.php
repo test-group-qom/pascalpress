@@ -48,9 +48,10 @@ Route::group(['middleware'=>myAuth::class], function(){
 Route::post('login',  [ 'as' => '', 'uses' => 'Auth\LoginController@login']);
 Route::get('logout',  [ 'as' => '', 'uses' => 'Auth\LoginController@logout', 'middleware' =>myAuth::class]);
 Route::post('register',  [ 'as' => '', 'uses' => 'Auth\RegisterController@create_api']);
+//..File upload..........................................................................................
+Route::post('uploadfile',  [ 'as' => '', 'uses' => 'UploadFileController@showUploadFile']);
+Route::get('uploadfile',  [ 'as' => '', 'uses' => 'UploadFileController@index']);
 //.......................................................................................................
-
-
 Route::get('user',  [ 'as' => 'user.index', 'uses' => 'userController@index']);
 Route::get('user/{id}',  [ 'as' => 'user.show', 'uses' => 'userController@show']);
 Route::get('user/{id}/edit',  [ 'as' => 'user.create', 'uses' => 'userController@edit']);
