@@ -26,23 +26,32 @@ Route::get('search', [ 'as' => 'news.search', 'uses' => 'newsController@search']
 Route::group(['middleware'=>myAuth::class], function(){
     Route::post('news',  [ 'as' => 'news.create', 'uses' => 'newsController@store']);
 	Route::put('news/{id}',  [ 'as' => 'news.create', 'uses' => 'newsController@update']);
-	//Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@destroy', 'middleware' =>myAuth::class]);
-	Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@destroy']);
-    Route::put('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@delete']);
+	//Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@destroy']);
+    Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@delete']);
     Route::put('news/{id}/restore',  [ 'as' => 'news.index', 'uses' => 'newsController@restore']);
 });
 
 // article routes.......................................................................................
 Route::get('article',  [ 'as' => 'article.index', 'uses' => 'articleController@index']);
 Route::get('article/{id}',  [ 'as' => 'article.show', 'uses' => 'articleController@show']);
-Route::get('search', [ 'as' => 'article.search', 'uses' => 'articleController@search']);
 
 Route::group(['middleware'=>myAuth::class], function(){
 	Route::put('article/{id}',  [ 'as' => 'article.update', 'uses' => 'articleController@update']);
 	Route::post('article',  [ 'as' => 'article.create', 'uses' => 'articleController@store']);
-	//Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@destroy', 'middleware' =>myAuth::class]);
+	//Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@destroy']);
 	Route::delete('article/{id}',  [ 'as' => 'article.index', 'uses' => 'articleController@delete']);
 	Route::put('article/{id}/restore',  [ 'as' => 'article.index', 'uses' => 'articleController@restore']);
+});
+// pages routes........................................................................................
+Route::get('page',  [ 'as' => 'page.index', 'uses' => 'pageController@index']);
+Route::get('page/{id}',  [ 'as' => 'page.show', 'uses' => 'pageController@show']);
+
+Route::group(['middleware'=>myAuth::class], function(){
+    Route::post('page',  [ 'as' => 'page.create', 'uses' => 'pageController@store']);
+	Route::put('page/{id}',  [ 'as' => 'page.create', 'uses' => 'pageController@update']);
+	//Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@destroy']);
+    Route::delete('page/{id}',  [ 'as' => 'page.index', 'uses' => 'pageController@delete']);
+    Route::put('page/{id}/restore',  [ 'as' => 'page.index', 'uses' => 'pageController@restore']);
 });
 // login routes..........................................................................................
 Route::post('login',  [ 'as' => '', 'uses' => 'Auth\LoginController@login']);
@@ -51,7 +60,17 @@ Route::post('register',  [ 'as' => '', 'uses' => 'Auth\RegisterController@create
 //..File upload..........................................................................................
 Route::post('uploadfile',  [ 'as' => '', 'uses' => 'UploadFileController@showUploadFile']);
 Route::get('uploadfile',  [ 'as' => '', 'uses' => 'UploadFileController@index']);
-//.......................................................................................................
+//...config....................................................................................................
+Route::group(['middleware'=>myAuth::class], function(){
+	Route::get('config',  ['uses' => 'configController@index']);
+	Route::get('config/{id}',  [ 'uses' => 'configController@show']);
+    Route::post('config',  ['uses' => 'configController@store']);
+	Route::put('config/{id}',  ['uses' => 'configController@update']);
+	//Route::delete('config/{id}',  ['uses' => 'configController@destroy']);
+    Route::delete('config/{id}',  ['uses' => 'configController@delete']);
+    Route::put('config/{id}/restore',  ['uses' => 'configController@restore']);
+});
+//.......................................................................................
 Route::get('user',  [ 'as' => 'user.index', 'uses' => 'userController@index']);
 Route::get('user/{id}',  [ 'as' => 'user.show', 'uses' => 'userController@show']);
 Route::get('user/{id}/edit',  [ 'as' => 'user.create', 'uses' => 'userController@edit']);
