@@ -56,8 +56,15 @@ class ProductController extends Controller
      * @param  \App\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'required|integer|exists:products',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->getMessageBag(), 422);
+        }
+        $product = Product::find($id);
         return response()->json($product, 200);
     }
 
@@ -79,18 +86,19 @@ class ProductController extends Controller
      * @param  \App\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->only('title', 'id'), [
+        $validator = Validator::make(array_merge($request->only('title'), ['id' => $id]), [
             'title' => 'required|unique:categories',
-            'id' => 'required|exists:categories'
+            'id' => 'required|exists:products'
         ]);
         if ($validator->fails()) {
             return response()->json($validator->getMessageBag(), 422);
         }
         $newProduct = collect($request->only('title'))->put('category_id', $request->id);
 
-        $product->update($newProduct->toArray());
+        Product::find($id)->update($newProduct->toArray());
+        $product = Product::find($id);
         return response()->json($product, 200);
     }
 
@@ -100,16 +108,26 @@ class ProductController extends Controller
      * @param  \App\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        $product->delete();
 
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'required|integer|exists:products',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->getMessageBag(), 422);
+        }
+        $result = Product::onlyTrashed()->find($id);
+        if ($result) {
+            return response()->json('already deleted', 200);
+        }
+        Product::find($id)->delete();
         return response()->json('successful', 200);
     }
 
     public function restore($id)
     {
-        $validator = Validator::make(['id'=>$id], [
+        $validator = Validator::make(['id' => $id], [
 
             'id' => 'required|integer|exists:products'
         ]);
@@ -117,7 +135,7 @@ class ProductController extends Controller
             return response()->json($validator->getMessageBag(), 422);
         }
         $result = Product::withTrashed()->find($id)->restore();
-        if($result){
+        if ($result) {
             $product = Product::find($id);
             return response()->json($product, 200);
         }

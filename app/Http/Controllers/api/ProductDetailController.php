@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Product;
 use App\ProductDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,17 +28,17 @@ class ProductDetailController extends Controller
      */
     public function create()
     {
-            }
+    }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->only('config', 'language','descriptions','spesefication', 'id'), [
+        $validator = Validator::make($request->only('config', 'language', 'descriptions', 'spesefication', 'id'), [
             'config' => 'required|',
             'descriptions' => 'required|',
             'id' => 'required|exists:products',
@@ -48,7 +49,7 @@ class ProductDetailController extends Controller
             return response()->json($validator->getMessageBag(), 422);
         }
 
-        $newProductDetail = collect($request->only('config', 'language','descriptions','spesefication'))->put('product_id', $request->id);
+        $newProductDetail = collect($request->only('config', 'language', 'descriptions', 'spesefication'))->put('product_id', $request->id);
         $productDetail = ProductDetail::create($newProductDetail->toArray());
         return response()->json($productDetail, 200);
 
@@ -57,18 +58,25 @@ class ProductDetailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ProductDetail  $productDetail
+     * @param  \App\ProductDetail $productDetail
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductDetail $productDetail)
+    public function show($id)
     {
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'required|integer|exists:product_details',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->getMessageBag(), 422);
+        }
+        $productDetail = ProductDetail::find($id);
         return response()->json($productDetail, 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ProductDetail  $productDetail
+     * @param  \App\ProductDetail $productDetail
      * @return \Illuminate\Http\Response
      */
     public function edit(ProductDetail $productDetail)
@@ -79,38 +87,55 @@ class ProductDetailController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProductDetail  $productDetail
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\ProductDetail $productDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductDetail $productDetail)
+    public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->only('config', 'language','descriptions','spesefication', 'id'), [
+        $result = ProductDetail::find($id);
+        if (!$result) {
+            return response()->json('not found', 422);
+        }
+
+        $validator = Validator::make($request->only('config', 'language', 'descriptions', 'spesefication', 'id'), [
+            'id' => 'required|exists:product_details',
             'config' => 'required|',
             'descriptions' => 'required|',
             'id' => 'required|exists:products',
             'spesefication' => 'required',
-            'language' => 'required'
+            'language' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->getMessageBag(), 422);
         }
 
-        $newProductDetail = collect($request->only('config', 'language','descriptions','spesefication'))->put('product_id', $request->id);
-        $productDetail->update($newProductDetail->toArray());
+        $newProductDetail = collect($request->only('config', 'language', 'descriptions', 'spesefication'))->put('product_id', $request->id);
+        $result->update($newProductDetail->toArray());
+        $productDetail = ProductDetail::find($id);
         return response()->json($productDetail, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ProductDetail  $productDetail
+     * @param  \App\ProductDetail $productDetail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductDetail $productDetail)
+    public function destroy($id)
     {
-        $productDetail->delete();
 
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'required|integer|exists:product_details',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->getMessageBag(), 422);
+        }
+        $result = ProductDetail::onlyTrashed()->find($id);
+        if ($result) {
+            return response()->json('already deleted', 200);
+        }
+        ProductDetail::find($id)->delete();
         return response()->json('successful', 204);
     }
 

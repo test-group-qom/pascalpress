@@ -58,8 +58,15 @@ class ProductFileController extends Controller
      * @param  \App\ProductFile $productFile
      * @return \Illuminate\Http\Response
      */
-    public function show(ProductFile $productFile)
+    public function show($id)
     {
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'required|integer|exists:product_files',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->getMessageBag(), 422);
+        }
+        $productFile = ProductFile::find($id);
         return response()->json($productFile, 200);
     }
 
@@ -103,9 +110,20 @@ class ProductFileController extends Controller
      * @param  \App\ProductFile $productFile
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProductFile $productFile)
+    public function destroy( $id)
     {
-        $productFile->delete();
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'required|integer|exists:product_details',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->getMessageBag(), 422);
+        }
+        $result = ProductFile::onlyTrashed()->find($id);
+        if ($result) {
+            return response()->json('already deleted', 200);
+        }
+        ProductFile::find($id)->delete();
+
 
         return response()->json('successful', 200);
     }
