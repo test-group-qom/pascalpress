@@ -13,44 +13,50 @@ class CreateTableProducts extends Migration
      */
     public function up()
     {
-        
+
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->text('title');
             $table->timestamps();
+            $table->softDeletes();
 
-            
+
         });
-         Schema::create('products', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->text('title');
             $table->timestamps();
+            $table->softDeletes();
 
-           $table->integer('category_id')->unsigned();
+            $table->integer('category_id')->unsigned();
             $table->foreign('category_id')
                 ->references('id')->on('categories')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
-          Schema::create('product_details', function (Blueprint $table) {
+        Schema::create('product_details', function (Blueprint $table) {
             $table->increments('id');
             $table->text('config');
             $table->text('descriptions');
             $table->text('spesefication');
             $table->string('language');
             $table->timestamps();
+            $table->softDeletes();
+
 
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')
                 ->references('id')->on('products')
                 ->onDelete('cascade')->onUpdate('cascade');
         });
-           Schema::create('product_files', function (Blueprint $table) {
+        Schema::create('product_files', function (Blueprint $table) {
             $table->increments('id');
-             $table->char('type',1)-> nullable(false);
+            $table->char('type', 1)->nullable(false);
             $table->string('path');
             $table->timestamps();
+            $table->softDeletes();
 
-           $table->integer('product_id')->unsigned();
+
+            $table->integer('product_id')->unsigned();
             $table->foreign('product_id')
                 ->references('id')->on('products')
                 ->onDelete('cascade')->onUpdate('cascade');
