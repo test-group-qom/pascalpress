@@ -44,7 +44,14 @@ class articleController extends Controller
         */
         public function index(Request $request)
         {
-       
+            $lang = $request->header('language');
+            if($lang){
+                $news = \App\News::with(['newsdetails' => function ($query) use ($lang) {
+                    $query->where('lang', '=', $lang);
+                }])->where('type','a')->get();
+                return $news;
+            }
+
             $news = \App\News::with('newsdetails')->where('type','a')->get();
             return $news;
             // return ' The user is not logged in...';
@@ -59,8 +66,19 @@ class articleController extends Controller
         * @param  int  $id
         * @return Response
         */
-        public function show($id)
+        public function show($id,Request $request)
         {
+            $lang = $request->header('language');
+            if($lang){
+                $news = \App\News::with(['newsdetails' => function ($query) use ($lang,$id) {
+                    $query->where('lang', '=', $lang);
+                }])->where('id', '=', $id)->where('type','a')->get();
+                if(empty($news)){
+                    return response('',404);
+                }
+                return $news;
+            }
+
             $news = \App\News::find($id);
             if(empty($news)){
                 return response('',404);

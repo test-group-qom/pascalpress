@@ -46,6 +46,14 @@ class pageController extends Controller
         */
         public function index(Request $request)
         {
+            $lang = $request->header('language');
+            if($lang){
+                $news = \App\News::with(['newsdetails' => function ($query) use ($lang) {
+                    $query->where('lang', '=', $lang);
+                }])->where('type','p')->get();
+                return $news;
+            }
+
             $news = \App\News::with('newsdetails')->where('type','p')->get();
             return $news;
             //$news = \App\News::first();
@@ -59,8 +67,19 @@ class pageController extends Controller
         * @param  int  $id
         * @return Response
         */
-        public function show($id)
+        public function show(Request $request,$id)
         {
+            $lang = $request->header('language');
+            if($lang){
+                $news = \App\News::with(['newsdetails' => function ($query) use ($lang,$id) {
+                    $query->where('lang', '=', $lang);
+                }])->where('id', '=', $id)->where('type','p')->get();
+                if(empty($news)){
+                    return response('',404);
+                }
+                return $news;
+            }
+
             $news = \App\News::find($id);
             if(empty($news)){
                 return response('',404);
