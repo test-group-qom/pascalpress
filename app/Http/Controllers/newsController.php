@@ -142,9 +142,12 @@ class newsController extends Controller
         */
         public function update(Request $request,$id)
         {
-            $news = \App\News::findOrFail($id);
+            $news = \App\News::find($id);
+            if(empty($news)){
+                            return response('',404);
+            }
             $all_newsdetails = $news->newsdetails;
-
+            
             $validator = \Validator::make($request->all(), [
                 'image' => ['required'],
                 'lang' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
@@ -171,9 +174,6 @@ class newsController extends Controller
             $news->image = $request->input('image');
             $news->options = $request->input('options');
             $news->save();
-
-            $all_newsdetails = $news->newsdetails;
-
 
             $newsdetails = $all_newsdetails[0];
             $newsdetails->lang = $request->input('lang');

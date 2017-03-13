@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class articleController extends Controller
+class pageController extends Controller
 {
-    protected $rule = [
+     protected $rule = [
         'image' => ['required'],
         'lang' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
         'title' => ['required','unique:news_details,title'],
@@ -44,10 +44,8 @@ class articleController extends Controller
         */
         public function index(Request $request)
         {
-       
-            $news = \App\News::with('newsdetails')->where('type','a')->get();
+            $news = \App\News::with('newsdetails')->where('type','p')->get();
             return $news;
-            // return ' The user is not logged in...';
             //$news = \App\News::first();
             // return $news->newsdetails;
             //return \App\News::all();
@@ -89,7 +87,7 @@ class articleController extends Controller
             $news = new News;
             $news->image = $request->input('image');
             $news->options = $request->input('options');
-            $news->type = 'a';
+            $news->type = 'p';
             $news->save();
            
             $newsdetails = new NewsDetail;
@@ -141,30 +139,30 @@ class articleController extends Controller
         */
         public function update(Request $request,$id)
         {
-        	$news = \App\News::find($id);
+            $news = \App\News::find($id);
             if(empty($news)){
                 return response('',404);
             }
-        	$all_newsdetails = $news->newsdetails;
+            $all_newsdetails = $news->newsdetails;
 
             $validator = \Validator::make($request->all(), [
-		        'image' => ['required'],
-		        'lang' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
-		        'title' => ['required','unique:news_details,title,'.$all_newsdetails[0]['id']],
-		        'text' => ['required'],
-		        'tags' => ['required'],
-		        'summary' => ['required'],
-		        'lang2' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
-		        'title2' => ['required','unique:news_details,title,'.$all_newsdetails[1]['id']],
-		        'text2' => ['required'],
-		        'tags2' => ['required'],
-		        'summary2' => ['required'],
-		        'lang3' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
-		        'title3' => ['required','unique:news_details,title,'.$all_newsdetails[2]['id']],
-		        'text3' => ['required'],
-		        'tags3' => ['required'],
-		        'summary3' => ['required'],
-		    ]);
+                'image' => ['required'],
+                'lang' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
+                'title' => ['required','unique:news_details,title,'.$all_newsdetails[0]['id']],
+                'text' => ['required'],
+                'tags' => ['required'],
+                'summary' => ['required'],
+                'lang2' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
+                'title2' => ['required','unique:news_details,title,'.$all_newsdetails[1]['id']],
+                'text2' => ['required'],
+                'tags2' => ['required'],
+                'summary2' => ['required'],
+                'lang3' => ['required'/*,'unique:news_details,news_id,'.$news->id*/],
+                'title3' => ['required','unique:news_details,title,'.$all_newsdetails[2]['id']],
+                'text3' => ['required'],
+                'tags3' => ['required'],
+                'summary3' => ['required'],
+            ]);
             if ($validator->fails()) 
                 return response()->json($validator->errors(), 422);
             
@@ -173,8 +171,6 @@ class articleController extends Controller
             $news->image = $request->input('image');
             $news->options = $request->input('options');
             $news->save();
-
-            
 
 
             $newsdetails = $all_newsdetails[0];
