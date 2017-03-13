@@ -58,7 +58,7 @@ Route::post('login',  [ 'as' => '', 'uses' => 'Auth\LoginController@login']);
 Route::get('logout',  [ 'as' => '', 'uses' => 'Auth\LoginController@logout', 'middleware' =>myAuth::class]);
 Route::post('register',  [ 'as' => '', 'uses' => 'Auth\RegisterController@create_api']);
 //..File upload..........................................................................................
-Route::post('uploadfile',  [ 'as' => '', 'uses' => 'UploadFileController@showUploadFile']);
+Route::post('uploadfile',  [ 'as' => '', 'uses' => 'UploadFileController@showUploadFile', 'middleware' =>myAuth::class]);
 Route::get('uploadfile',  [ 'as' => '', 'uses' => 'UploadFileController@index']);
 //...config....................................................................................................
 Route::group(['middleware'=>myAuth::class], function(){

@@ -62,9 +62,11 @@ class articleController extends Controller
         public function show($id)
         {
             $news = \App\News::find($id);
+            if(empty($news)){
+                return response('',404);
+            }
             $newsdetail = $news->newsdetails;
-            return $news;//array('news' => $news, 'news_detail' => $newsdetail);
-           // return \App\News::findOrFail($id);
+            return $news;
         }
         
         /**

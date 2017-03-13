@@ -28,7 +28,11 @@ class configController extends Controller
         */
         public function show($id)
         {
-            return \App\Config::find($id);
+           $conf = \App\Config::find($id);
+           if(empty($news)){
+                return response('',404);
+            }
+            return $conf;
         }
         
         /**

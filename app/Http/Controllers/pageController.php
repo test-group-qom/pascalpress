@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\News;
+use App\NewsDetail;
 
 class pageController extends Controller
 {
@@ -60,9 +62,11 @@ class pageController extends Controller
         public function show($id)
         {
             $news = \App\News::find($id);
+            if(empty($news)){
+                return response('',404);
+            }
             $newsdetail = $news->newsdetails;
-            return $news;//array('news' => $news, 'news_detail' => $newsdetail);
-           // return \App\News::findOrFail($id);
+            return $news;
         }
         
         /**
@@ -84,37 +88,37 @@ class pageController extends Controller
             if ($validator->fails()) 
                 return response()->json($validator->errors(), 422);
 
-            $news = new News;
-            $news->image = $request->input('image');
-            $news->options = $request->input('options');
-            $news->type = 'p';
-            $news->save();
+            $page = new News;
+            $page->image = $request->input('image');
+            $page->options = $request->input('options');
+            $page->type = 'p';
+            $page->save();
            
-            $newsdetails = new NewsDetail;
-            $newsdetails->lang = $request->input('lang');
-            $newsdetails->title = $request->input('title');
-            $newsdetails->summary = $request->input('summary');
-            $newsdetails->text = $request->input('text');
-            $newsdetails->tags = $request->input('tags');
-            $news->newsdetails()->save($newsdetails);
+            $pagedetails = new NewsDetail;
+            $pagedetails->lang = $request->input('lang');
+            $pagedetails->title = $request->input('title');
+            $pagedetails->summary = $request->input('summary');
+            $pagedetails->text = $request->input('text');
+            $pagedetails->tags = $request->input('tags');
+            $page->newsdetails()->save($pagedetails);
 
-            $newsdetails2 = new NewsDetail;
-            $newsdetails2->lang = $request->input('lang2');
-            $newsdetails2->title = $request->input('title2');
-            $newsdetails2->summary = $request->input('summary2');
-            $newsdetails2->text = $request->input('text2');
-            $newsdetails2->tags = $request->input('tags2');
-            $news->newsdetails()->save($newsdetails2);
+            $pagedetails2 = new NewsDetail;
+            $pagedetails2->lang = $request->input('lang2');
+            $pagedetails2->title = $request->input('title2');
+            $pagedetails2->summary = $request->input('summary2');
+            $pagedetails2->text = $request->input('text2');
+            $pagedetails2->tags = $request->input('tags2');
+            $page->newsdetails()->save($pagedetails2);
 
-            $newsdetails3 = new NewsDetail;
-            $newsdetails3->lang = $request->input('lang3');
-            $newsdetails3->title = $request->input('title3');
-            $newsdetails3->summary = $request->input('summary3');
-            $newsdetails3->text = $request->input('text3');
-            $newsdetails3->tags = $request->input('tags3');
-            $news->newsdetails()->save($newsdetails3);
+            $pagedetails3 = new NewsDetail;
+            $pagedetails3->lang = $request->input('lang3');
+            $pagedetails3->title = $request->input('title3');
+            $pagedetails3->summary = $request->input('summary3');
+            $pagedetails3->text = $request->input('text3');
+            $pagedetails3->tags = $request->input('tags3');
+            $page->newsdetails()->save($pagedetails3);
 
-            return response(array('news' => $news, 'news_details1' => $newsdetails, 'news_details2' => $newsdetails2, 'news_details3' => $newsdetails3), 201); 
+            return response(array('page' => $page, 'page_details1' => $pagedetails, 'page_details2' => $pagedetails2, 'page_details3' => $pagedetails3), 201); 
             //201 is the HTTP status code (HTTP/1.1 201 created) for created   
         }
     
