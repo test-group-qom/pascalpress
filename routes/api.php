@@ -18,10 +18,12 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
 
+
+
+Route::get('search/{string}', ['uses' => 'newsController@search']);
 // news routes........................................................................................
 Route::get('news',  [ 'as' => 'news.index', 'uses' => 'newsController@index']);
 Route::get('news/{id}',  [ 'as' => 'news.show', 'uses' => 'newsController@show']);
-Route::get('search', [ 'as' => 'news.search', 'uses' => 'newsController@search']);
 
 Route::group(['middleware'=>myAuth::class], function(){
     Route::post('news',  [ 'as' => 'news.create', 'uses' => 'newsController@store']);

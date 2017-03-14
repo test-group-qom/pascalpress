@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\News;
 use App\NewsDetail;
+use App\Product;
+use App\ProductDetail;
 use Illuminate\Support\Facades\Auth;
 
 class newsController extends Controller
@@ -259,12 +261,21 @@ class newsController extends Controller
         * @param  Request  $request, News $news
         * @return Response
         */
-        public function search(Request $request, NewsDetail $newsdetails)
+        public function search($string)
         {
-            return $newsdetails
-                ->where('title',
-                  'like',
-                  '%'.$request->get('title').'%')
-                ->get();
+            $search = \App\NewsDetail::where('text','like','%'.$string.'%')
+                        ->orwhere('title','like','%'.$string.'%')
+                        ->orwhere('tags','like','%'.$string.'%')->get();
+
+            // $search2 = \App\Product::with(['productDetails' => function ($query) use ($string) {
+            //         $query->where('config', 'like', '%'.$string.'%');
+            //     }])->orwhere('title','like','%'.$string.'%')->get();
+
+             $search2 = \App\Product::join('product_details','products.id','=','product_details.product_id')
+                     ->where('product_details.config', 'like', '%'.$string.'%')
+                     ->orwhere('products.title','like','%'.$string.'%')
+                     ->get();
+
+            return array('search in contents' => $search, 'search in product' => $search2);
         }
 }

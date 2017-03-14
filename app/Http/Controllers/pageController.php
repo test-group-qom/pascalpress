@@ -253,17 +253,4 @@ class pageController extends Controller
             return response('restore.', 200);
         }
 
-         /**
-        * Display the specified resource.
-        * @param  Request  $request, News $news
-        * @return Response
-        */
-        public function search(Request $request, NewsDetail $newsdetails)
-        {
-            return $newsdetails
-                ->where('title',
-                  'like',
-                  '%'.$request->get('title').'%')
-                ->get();
-        }
 }
