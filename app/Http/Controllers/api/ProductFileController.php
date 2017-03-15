@@ -6,6 +6,7 @@ use App\ProductFile;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+use App\Config;
 
 class ProductFileController extends Controller
 {
@@ -16,7 +17,8 @@ class ProductFileController extends Controller
      */
     public function index()
     {
-        $productFiles = ProductFile::OrderBy('created_at', 'desc')->get();
+        $page = \App\Config::where('key','page')->first(['value']);
+        $productFiles = ProductFile::OrderBy('created_at', 'desc')->paginate($page['value']);
         return response()->json($productFiles, 200);
     }
 

@@ -48,6 +48,13 @@ $factory->define(App\NewsDetail::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Config::class, function (Faker\Generator $faker) {
+    return [
+        'key' => 'page',
+        'value'    => 10,
+    ];
+});
+
 
 $factory->define(App\Category::class, function (Faker\Generator $faker) {
 

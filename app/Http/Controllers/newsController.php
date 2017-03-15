@@ -8,6 +8,11 @@ use App\NewsDetail;
 use App\Product;
 use App\ProductDetail;
 use Illuminate\Support\Facades\Auth;
+use App\Config;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class newsController extends Controller
 {
@@ -30,6 +35,7 @@ class newsController extends Controller
         'summary3' => ['required'],
     ];
 
+
     // public function index()
     // {
 
@@ -49,15 +55,16 @@ class newsController extends Controller
         */
         public function index(Request $request)
         {
+            $page = \App\Config::where('key','page')->first(['value']);
             $lang = $request->header('language');
             if($lang){
                 $news = \App\News::with(['newsdetails' => function ($query) use ($lang) {
                     $query->where('lang', '=', $lang);
-                }])->where('type','n')->get();
+                }])->where('type','n')->paginate($page['value']);
                 return $news;
             }
 
-            $news = \App\News::with('newsdetails')->where('type','n')->get();
+            $news = \App\News::with('newsdetails')->where('type','n')->paginate($page['value']);
             return $news;
             //$news = \App\News::first();
             // return $news->newsdetails;
@@ -261,21 +268,33 @@ class newsController extends Controller
         * @param  Request  $request, News $news
         * @return Response
         */
-        public function search($string)
+        public function search($string,Request $request)
         {
-            $search = \App\NewsDetail::where('text','like','%'.$string.'%')
-                        ->orwhere('title','like','%'.$string.'%')
-                        ->orwhere('tags','like','%'.$string.'%')->get();
+            $page = \App\Config::where('key','page')->first(['value']);
+           
+            $search = DB::table('news_details') 
+            ->join('news','news.id','=','news_details.news_id')
+            ->where('news_details.title','like','%'.$string.'%')
+            ->orwhere('news_details.text','like','%'.$string.'%')
+            ->orwhere('news_details.tags','like','%'.$string.'%')
+            ->select('news_details.id','news_details.title', 'news_details.text', 'news_details.tags','news.type');
 
-            // $search2 = \App\Product::with(['productDetails' => function ($query) use ($string) {
-            //         $query->where('config', 'like', '%'.$string.'%');
-            //     }])->orwhere('title','like','%'.$string.'%')->get();
+            $search2 = DB::table('product_details') 
+            ->join('products','products.id','=','product_details.product_id')
+            ->where('products.title','like','%'.$string.'%')
+            ->orwhere('product_details.config','like','%'.$string.'%')
+            ->select('product_details.id','products.title', 'product_details.config as text', 'product_details.language as tags',DB::raw('"pr" as tempfield'))
+            ->union($search)
+            ->get();
+       
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $perPage = $page['value'];
+        $offset = ($currentPage * $perPage) - $perPage;
 
-             $search2 = \App\Product::join('product_details','products.id','=','product_details.product_id')
-                     ->where('product_details.config', 'like', '%'.$string.'%')
-                     ->orwhere('products.title','like','%'.$string.'%')
-                     ->get();
+        $currentPageSearchResults = $search2->slice($offset, $perPage)->all();
 
-            return array('search in contents' => $search, 'search in product' => $search2);
+        $result= new LengthAwarePaginator($currentPageSearchResults, count($search2), $perPage);
+$result->setPath($request->url());
+            return $result;
         }
 }

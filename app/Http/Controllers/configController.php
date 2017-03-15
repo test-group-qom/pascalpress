@@ -18,7 +18,8 @@ class configController extends Controller
         */
         public function index(Request $request)
         {
-            return \App\Config::all();
+            $page = \App\Config::where('key','page')->first(['value']);
+            return \App\Config::paginate($page['value']);
         }
 
          /**

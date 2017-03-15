@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Config;
 
 class articleController extends Controller
 {
@@ -44,21 +45,17 @@ class articleController extends Controller
         */
         public function index(Request $request)
         {
+            $page = \App\Config::where('key','page')->first(['value']);
             $lang = $request->header('language');
             if($lang){
                 $news = \App\News::with(['newsdetails' => function ($query) use ($lang) {
                     $query->where('lang', '=', $lang);
-                }])->where('type','a')->get();
+                }])->where('type','a')->paginate($page['value']);
                 return $news;
             }
 
-            $news = \App\News::with('newsdetails')->where('type','a')->get();
+            $news = \App\News::with('newsdetails')->where('type','a')->paginate($page['value']);
             return $news;
-            // return ' The user is not logged in...';
-            //$news = \App\News::first();
-            // return $news->newsdetails;
-            //return \App\News::all();
-            //return \App\News::paginate();
         }
 
          /**

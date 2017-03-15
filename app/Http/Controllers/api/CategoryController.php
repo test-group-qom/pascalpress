@@ -6,6 +6,7 @@ use App\Category;
 use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Config;
 
 class CategoryController extends Controller
 {
@@ -16,7 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::OrderBy('created_at', 'desc')->get();
+        $page = \App\Config::where('key','page')->first(['value']);
+        $categories = Category::OrderBy('created_at', 'desc')->paginate($page['value']);
         return response()->json($categories, 200);
     }
 

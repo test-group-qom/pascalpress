@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\News;
 use App\NewsDetail;
+use App\Config;
 
 class pageController extends Controller
 {
@@ -46,20 +47,17 @@ class pageController extends Controller
         */
         public function index(Request $request)
         {
+            $page = \App\Config::where('key','page')->first(['value']);
             $lang = $request->header('language');
             if($lang){
                 $news = \App\News::with(['newsdetails' => function ($query) use ($lang) {
                     $query->where('lang', '=', $lang);
-                }])->where('type','p')->get();
+                }])->where('type','p')->paginate($page['value']);
                 return $news;
             }
 
-            $news = \App\News::with('newsdetails')->where('type','p')->get();
+            $news = \App\News::with('newsdetails')->where('type','p')->paginate($page['value']);
             return $news;
-            //$news = \App\News::first();
-            // return $news->newsdetails;
-            //return \App\News::all();
-            //return \App\News::paginate();
         }
 
          /**

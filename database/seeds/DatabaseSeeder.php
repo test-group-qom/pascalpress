@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
          factory(App\User::class,3)->create();
          factory(App\News::class,10)->create();
          factory(App\NewsDetail::class,30)->create();
+         factory(App\Config::class,1)->create();
          Model::reguard();
 
           factory(App\Category::class, 3)
