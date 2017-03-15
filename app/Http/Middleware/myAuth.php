@@ -16,9 +16,9 @@ class myAuth
      */
     public function handle($request, Closure $next)
     {
-       $request->client=null;
-       $token=$request->header('token');
-       if(!empty($token) && $user=User::where('api_token','=',$token)->get()->first()){
+        $request->client=null;
+        $token=$request->header('token'); 
+        if(!empty($token) && $user=User::where('token','=',$token)->get()->first()){
            if(!empty($user)){
                $request->client=$user;
                return $next($request);

@@ -51,7 +51,7 @@ class LoginController extends Controller
                 return response([
                     'status' => Response::HTTP_OK,
                     'response_time' => microtime(true) - LARAVEL_START,
-                    'api_token' => $user->api_token
+                    'token' => $user->token
                 ],Response::HTTP_OK);
             }
         }
@@ -67,7 +67,7 @@ class LoginController extends Controller
 
      public function logout(Request $request) {
         $user = &$request->client;        
-        $user->api_token=NULL;
+        $user->token=NULL;
         //$user->update();
         return 'Logged out';
     }
