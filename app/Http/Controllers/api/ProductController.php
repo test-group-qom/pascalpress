@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Product;
+use App\ProductDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -17,8 +18,18 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $page = \App\Config::where('key','page')->first(['value']);
-        $products = Product::OrderBy('created_at', 'desc')->paginate($page['value']);
+        $language = $request->header('language');
+        $languages = ['ar', 'fa', 'en'];
+        $page = \App\Config::where('key', 'page')->first(['value']);
+
+        if (!empty($language) && in_array($language, $languages)) {
+            $products = Product::with(['productDetails' => function ($productFile) use ($language) {
+                $productFile->where('language', '=', $language);
+            }, 'productFiles'])->orderBy('created_at', 'desc')->paginate($page['value']);
+        } else {
+            $products = Product::with('productDetails', 'productFiles')->orderBy('created_at', 'desc')->get();
+
+        }
         return response()->json($products, 200);
     }
 
@@ -58,8 +69,11 @@ class ProductController extends Controller
      * @param  \App\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
+
+        $language = $request->header('language');
+        $languages = ['ar', 'fa', 'en'];
         $validator = Validator::make(['id' => $id], [
             'id' => 'required|integer|exists:products',
         ]);
@@ -67,7 +81,16 @@ class ProductController extends Controller
             return response()->json($validator->getMessageBag(), 422);
         }
         $product = Product::find($id);
-        return response()->json($product, 200);
+        if (!empty($language) && in_array($language, $languages)) {
+            $productInfo = $product->with(['productDetails' => function ($productFile) use ($language) {
+                $productFile->where('language', '=', $language);
+            }, 'productFiles'])->orderBy('created_at', 'desc');
+        } else {
+            $productInfo = $product->with('productDetails', 'productFiles')->orderBy('created_at', 'desc')->get();
+
+        }
+
+        return response()->json($productInfo, 200);
     }
 
     /**
