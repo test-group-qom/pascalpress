@@ -49,28 +49,27 @@ $factory->define(App\NewsDetail::class, function (Faker\Generator $faker) {
 });
 
 
-
 $factory->define(App\Category::class, function (Faker\Generator $faker) {
-   
+
     return [
-        'title' =>"{'fa:'.$faker->name.'en:'.$faker->name.'us:'.$faker->name}",
-      
+        'title' =>"{\"fa\":\"$faker->name\",\"en\":\"$faker->name\",\"ar\":\"$faker->name\"}",
+
     ];
 });
 
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
-   
+
     return [
-        'title' =>"{'fa:'.$faker->name.'en:'.$faker->name.'us:'.$faker->name}",
-        
-      
+        'title' =>"{\"fa\":\"$faker->name\",\"en\":\"$faker->name\",\"ar\":\"$faker->name\"}",
+
+
     ];
 });
 
 $factory->define(App\ProductDetail::class, function (Faker\Generator $faker) {
-   static $products;
+    static $products;
     $products = $products ?: App\Product::pluck('id');
-        $langs=['ar','fa','en'];
+    $langs=['ar','fa','en'];
     return [
         'config' =>$faker->name,
         'descriptions' =>$faker->name,
@@ -81,14 +80,15 @@ $factory->define(App\ProductDetail::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\ProductFile::class, function (Faker\Generator $faker) {
-   static $products;
+    static $products;
     $products = $products ?: App\Product::pluck('id');
-        $types=[1,2,3];
+    $types=[1,2,3];
     return [
         'path' =>$faker->title,
         'type'=>$types[rand(0,2)],
         'product_id'=>$products[rand(0,count($products)-1)]
     ];
 });
+
 
 

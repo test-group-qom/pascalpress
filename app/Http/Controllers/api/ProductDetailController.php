@@ -15,9 +15,16 @@ class ProductDetailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productDetails = ProductDetail::OrderBy('created_at', 'desc')->get();
+        $language =$request->header('language');
+        $languages = ['ar','fa','en'];
+
+        if(!empty($language) && in_array($language, $languages)){
+            $productDetails = ProductDetail::where('language','=',$language)->orderBy('created_at', 'desc')->get();
+        }else{
+            $productDetails = ProductDetail::OrderBy('created_at', 'desc')->get();
+        }
         return response()->json($productDetails, 200);
     }
 

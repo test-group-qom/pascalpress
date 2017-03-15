@@ -14,8 +14,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
         $products = Product::OrderBy('created_at', 'desc')->get();
         return response()->json($products, 200);
     }
