@@ -7,6 +7,7 @@ use App\ProductDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+use App\Config;
 
 class ProductDetailController extends Controller
 {
@@ -19,9 +20,9 @@ class ProductDetailController extends Controller
     {
         $language =$request->header('language');
         $languages = ['ar','fa','en'];
-
+        $page = \App\Config::where('key','page')->first(['value']);
         if(!empty($language) && in_array($language, $languages)){
-            $productDetails = ProductDetail::where('language','=',$language)->orderBy('created_at', 'desc')->get();
+            $productDetails = ProductDetail::where('language','=',$language)->orderBy('created_at', 'desc')->paginate($page['Value']);
         }else{
             $productDetails = ProductDetail::OrderBy('created_at', 'desc')->get();
         }

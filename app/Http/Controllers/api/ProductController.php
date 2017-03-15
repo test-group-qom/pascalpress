@@ -6,6 +6,7 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+use App\Config;
 
 class ProductController extends Controller
 {
@@ -16,8 +17,8 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-
-        $products = Product::OrderBy('created_at', 'desc')->get();
+        $page = \App\Config::where('key','page')->first(['value']);
+        $products = Product::OrderBy('created_at', 'desc')->paginate($page['value']);
         return response()->json($products, 200);
     }
 

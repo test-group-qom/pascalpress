@@ -63,6 +63,7 @@ Route::post('register',  [ 'as' => '', 'uses' => 'Auth\RegisterController@create
 Route::post('uploadfile',  [ 'as' => '', 'uses' => 'UploadFileController@showUploadFile', 'middleware' =>myAuth::class]);
 Route::get('uploadfile',  [ 'as' => '', 'uses' => 'UploadFileController@index']);
 //...config....................................................................................................
+
 Route::group(['middleware'=>myAuth::class], function(){
 	Route::get('config',  ['uses' => 'configController@index']);
 	Route::get('config/{id}',  [ 'uses' => 'configController@show']);
