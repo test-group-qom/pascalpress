@@ -261,13 +261,13 @@ class newsController extends Controller
             ->where('news_details.title','like','%'.$string.'%')
             ->orwhere('news_details.text','like','%'.$string.'%')
             ->orwhere('news_details.tags','like','%'.$string.'%')
-            ->select('news_details.id','news_details.title', 'news_details.text', 'news_details.tags','news.type');
+            ->select('news.id','news_details.title', 'news_details.text', 'news_details.tags','news.type');
 
             $search2 = DB::table('product_details') 
             ->join('products','products.id','=','product_details.product_id')
             ->where('products.title','like','%'.$string.'%')
             ->orwhere('product_details.config','like','%'.$string.'%')
-            ->select('product_details.id','products.title', 'product_details.config as text', 'product_details.language as tags',DB::raw('"pr" as tempfield'))
+            ->select('products.id','products.title', 'product_details.config as text', 'product_details.language as tags',DB::raw('"pr" as tempfield'))
             ->union($search)
             ->get();
            
@@ -280,6 +280,12 @@ class newsController extends Controller
 
             $result= new LengthAwarePaginator($currentPageSearchResults, count($search2), $perPage);
             $result->setPath($request->url());
+
+            // this is for web........................
+            if(\Route::currentRouteName() == 'search'){
+                return view('search',compact('result'));
+            }
+
             return $result;
         }
 }
