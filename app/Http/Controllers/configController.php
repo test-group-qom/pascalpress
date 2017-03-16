@@ -18,7 +18,7 @@ class configController extends Controller
         */
         public function index(Request $request)
         {
-            $page = \App\Config::where('key','page')->first(['value']);
+            $page = \App\Config::OrderBy('created_at', 'desc')->where('key','page')->first(['value']);
             return \App\Config::paginate($page['value']);
         }
 

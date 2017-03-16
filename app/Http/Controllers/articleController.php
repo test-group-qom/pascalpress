@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Config;
+use Illuminate\Support\Facades\Input;
 
 class articleController extends Controller
 {
@@ -26,38 +27,35 @@ class articleController extends Controller
         'summary3' => ['required'],
     ];
 
-    // public function index()
-    // {
-
-    // 	$news = News::all();
-    //     return view('news.index',compact('news'));
-    // }
-
-    // public function show($id)
-    // {
-    // 	$news_d = NewsDetail::where('news_id', $id)->get();
-    //     return view('news.show',compact('news_d'));
-    // }
-
     /**
         * Display a listing of the resource.
         * @return Response
         */
         public function index(Request $request)
-        {
+        {    // this is for pagination.............         
             $page = \App\Config::where('key','page')->first(['value']);
-            $lang = $request->header('language');
-            if($lang){
-                $news = \App\News::with(['newsdetails' => function ($query) use ($lang) {
-                    $query->where('lang', '=', $lang);
-                }])->where('type','a')->paginate($page['value']);
-                return $news;
+
+            // select language.....................
+            if($request->header('language'))
+                $lang = $request->header('language');
+            else if (Input::get('language'))
+                $lang =  Input::get('language');
+            else $lang = 'en';
+            
+            // query.................................
+            $news = \App\News::OrderBy('created_at', 'desc')->with(['newsdetails' => function ($query) use ($lang) {
+                $query->where('lang', '=', $lang);
+            }])->where('type','a')->paginate($page['value']);
+
+            // this is for web........................
+            if(\Route::currentRouteName() == 'web.article.index'){
+                return view('news.index',compact('news'));
             }
 
-            $news = \App\News::with('newsdetails')->where('type','a')->paginate($page['value']);
+            // this is for api........................
             return $news;
         }
-
+    
          /**
         * Display the specified resource.
         * @param  int  $id
@@ -65,32 +63,32 @@ class articleController extends Controller
         */
         public function show($id,Request $request)
         {
-            $lang = $request->header('language');
-            if($lang){
-                $news = \App\News::with(['newsdetails' => function ($query) use ($lang,$id) {
-                    $query->where('lang', '=', $lang);
-                }])->where('id', '=', $id)->where('type','a')->get();
-                if(empty($news)){
-                    return response('',404);
-                }
-                return $news;
-            }
+            // select language.....................
+            if($request->header('language'))
+                $lang = $request->header('language');
+            else if (Input::get('language'))
+                $lang =  Input::get('language');
+            else $lang = 'en';
 
-            $news = \App\News::find($id);
-            if(empty($news)){
+            // query.................................
+            $news = \App\News::with(['newsdetails' => function ($query) use ($lang,$id) {
+                $query->where('lang', '=', $lang);
+            }])->where('id', '=', $id)->where('type','a')->get();
+
+            if($news->isEmpty()){
+                if(\Route::currentRouteName() == 'web.article.show'){
+                    return view('errors.404');
+                }
                 return response('',404);
             }
-            $newsdetail = $news->newsdetails;
-            return $news;
-        }
-        
-        /**
-        * Show the form for creating a new resource.
-        * @return Response
-        */
-        public function create()
-        {
 
+            // this is for web........................
+            if(\Route::currentRouteName() == 'web.article.show'){
+                 return view('news.show',compact('news'));
+            }
+
+            // this is for api........................
+            return $news;
         }
         
         /**
@@ -138,19 +136,6 @@ class articleController extends Controller
         }
     
         /**
-        * Show the form for editing the specified resource.
-        * @param  int  $id
-        * @return Response
-        */
-        public function edit($id)
-        {
-            $news = \App\News::find($id);
-            $newsdetail = $news->newsdetails;
-            return $news;
-            //return \App\News::findOrFail($id);
-        }
-    
-        /**
         * Update the specified resource in storage.
         *
         * @param  int  $id
@@ -185,14 +170,9 @@ class articleController extends Controller
             if ($validator->fails()) 
                 return response()->json($validator->errors(), 422);
             
-
-            
             $news->image = $request->input('image');
             $news->options = $request->input('options');
             $news->save();
-
-            
-
 
             $newsdetails = $all_newsdetails[0];
             $newsdetails->lang = $request->input('lang');

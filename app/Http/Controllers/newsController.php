@@ -10,9 +10,10 @@ use App\ProductDetail;
 use Illuminate\Support\Facades\Auth;
 use App\Config;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Foundation\abort;
 
 class newsController extends Controller
 {
@@ -35,43 +36,35 @@ class newsController extends Controller
         'summary3' => ['required'],
     ];
 
-
-    // public function index()
-    // {
-
-    // 	$news = News::all();
-    //     return view('news.index',compact('news'));
-    // }
-
-    // public function show($id)
-    // {
-    // 	$news_d = NewsDetail::where('news_id', $id)->get();
-    //     return view('news.show',compact('news_d'));
-    // }
-
     /**
         * Display a listing of the resource.
         * @return Response
         */
         public function index(Request $request)
-        {
+        {    // this is for pagination.............         
             $page = \App\Config::where('key','page')->first(['value']);
-            $lang = $request->header('language');
-            if($lang){
-                $news = \App\News::with(['newsdetails' => function ($query) use ($lang) {
-                    $query->where('lang', '=', $lang);
-                }])->where('type','n')->paginate($page['value']);
-                return $news;
+
+            // select language.....................
+            if($request->header('language'))
+                $lang = $request->header('language');
+            else if (Input::get('language'))
+                $lang =  Input::get('language');
+            else $lang = 'en';
+           
+            // query.................................
+            $news = \App\News::OrderBy('created_at', 'desc')->with(['newsdetails' => function ($query) use ($lang) {
+                $query->where('lang', '=', $lang);
+            }])->where('type','n')->paginate($page['value']);
+
+            // this is for web........................
+            if(\Route::currentRouteName() == 'web.news.index'){
+                return view('news.index',compact('news'));
             }
 
-            $news = \App\News::with('newsdetails')->where('type','n')->paginate($page['value']);
+            // this is for api........................
             return $news;
-            //$news = \App\News::first();
-            // return $news->newsdetails;
-            //return \App\News::all();
-            //return \App\News::paginate();
         }
-
+    
          /**
         * Display the specified resource.
         * @param  int  $id
@@ -79,34 +72,34 @@ class newsController extends Controller
         */
         public function show($id,Request $request)
         {
-            $lang = $request->header('language');
-            if($lang){
-                $news = \App\News::with(['newsdetails' => function ($query) use ($lang,$id) {
-                    $query->where('lang', '=', $lang);
-                }])->where('id', '=', $id)->where('type','n')->get();
-                if(empty($news)){
-                    return response('',404);
-                }
-                return $news;
-            }
+            // select language.....................
+            if($request->header('language'))
+                $lang = $request->header('language');
+            else if (Input::get('language'))
+                $lang =  Input::get('language');
+            else $lang = 'en';
 
-            $news = \App\News::find($id);
-            if(empty($news)){
+            // query.................................
+            $news = \App\News::with(['newsdetails' => function ($query) use ($lang,$id) {
+                $query->where('lang', '=', $lang);
+            }])->where('id', '=', $id)->where('type','n')->get();
+
+            if($news->isEmpty()){
+                if(\Route::currentRouteName() == 'web.news.show'){
+                    return view('errors.404');
+                }
                 return response('',404);
             }
-            $newsdetail = $news->newsdetails;
-            return $news;//array('news' => $news, 'news_detail' => $newsdetail);
-           // return \App\News::findOrFail($id);
+
+            // this is for web........................
+            if(\Route::currentRouteName() == 'web.news.show'){
+                return view('news.show',compact('news'));
+            }
+
+            // this is for api........................
+            return $news;
         }
         
-        /**
-        * Show the form for creating a new resource.
-        * @return Response
-        */
-        public function create()
-        {
-
-        }
         
         /**
         * Store a newly created resource in storage.
@@ -157,13 +150,6 @@ class newsController extends Controller
         * @param  int  $id
         * @return Response
         */
-        public function edit($id)
-        {
-            $news = \App\News::find($id);
-            $newsdetail = $news->newsdetails;
-            return $news;
-            //return \App\News::findOrFail($id);
-        }
     
         /**
         * Update the specified resource in storage.
@@ -269,9 +255,7 @@ class newsController extends Controller
         * @return Response
         */
         public function search($string,Request $request)
-        {
-            $page = \App\Config::where('key','page')->first(['value']);
-           
+        {           
             $search = DB::table('news_details') 
             ->join('news','news.id','=','news_details.news_id')
             ->where('news_details.title','like','%'.$string.'%')
@@ -286,15 +270,16 @@ class newsController extends Controller
             ->select('product_details.id','products.title', 'product_details.config as text', 'product_details.language as tags',DB::raw('"pr" as tempfield'))
             ->union($search)
             ->get();
-       
-        $currentPage = LengthAwarePaginator::resolveCurrentPage();
-        $perPage = $page['value'];
-        $offset = ($currentPage * $perPage) - $perPage;
+           
+            $currentPage = LengthAwarePaginator::resolveCurrentPage();
+            $page = \App\Config::where('key','page')->first(['value']);
+            $perPage = $page['value'];
+            $offset = ($currentPage * $perPage) - $perPage;
 
-        $currentPageSearchResults = $search2->slice($offset, $perPage)->all();
+            $currentPageSearchResults = $search2->slice($offset, $perPage)->all();
 
-        $result= new LengthAwarePaginator($currentPageSearchResults, count($search2), $perPage);
-$result->setPath($request->url());
+            $result= new LengthAwarePaginator($currentPageSearchResults, count($search2), $perPage);
+            $result->setPath($request->url());
             return $result;
         }
 }
