@@ -19,3 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index');
+Route::group(['namespace' => 'api'], function () {
+
+    Route::get('/productList','ProductController@productList');
+    Route::get('/productDetail/{id}','ProductController@productDetail');
+});

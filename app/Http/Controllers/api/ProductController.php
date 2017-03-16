@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Product;
-use App\ProductDetail;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product;
+use Illuminate\Http\Request;
 use Validator;
-use App\Config;
 
 class ProductController extends Controller
 {
@@ -19,19 +17,10 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $language = $request->header('language');
-        $languages = ['ar', 'fa', 'en'];
-        $page = \App\Config::where('key', 'page')->first(['value']);
-
-        if (!empty($language) && in_array($language, $languages)) {
-            $products = Product::with(['productDetails' => function ($productFile) use ($language) {
-                $productFile->where('language', '=', $language);
-            }, 'productFiles'])->orderBy('created_at', 'desc')->paginate($page['value']);
-        } else {
-            $products = Product::with('productDetails', 'productFiles')->orderBy('created_at', 'desc')->get();
-
-        }
+        $products = $this->getProductList($language);
         return response()->json($products, 200);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -69,29 +58,13 @@ class ProductController extends Controller
      * @param  \App\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request,$id)
+    public function show(Request $request, $id)
     {
-
         $language = $request->header('language');
-        $languages = ['ar', 'fa', 'en'];
-        $validator = Validator::make(['id' => $id], [
-            'id' => 'required|integer|exists:products',
-        ]);
-        if ($validator->fails()) {
-            return response()->json($validator->getMessageBag(), 422);
-        }
-        $product = Product::find($id);
-        if (!empty($language) && in_array($language, $languages)) {
-            $productInfo = $product->with(['productDetails' => function ($productFile) use ($language) {
-                $productFile->where('language', '=', $language);
-            }, 'productFiles'])->orderBy('created_at', 'desc');
-        } else {
-            $productInfo = $product->with('productDetails', 'productFiles')->orderBy('created_at', 'desc')->get();
-
-        }
-
+        $productInfo = $this->getProductDetail($language, $id);
         return response()->json($productInfo, 200);
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -164,5 +137,60 @@ class ProductController extends Controller
             $product = Product::find($id);
             return response()->json($product, 200);
         }
+    }
+
+
+//    web functions
+    public function productList(Request $request)
+    {
+        $language = $request->language;
+        $products = $this->getProductList($language);
+        return view('product.index', compact('products', 'language'));
+    }
+
+    public function productDetail(Request $request, $id)
+    {
+        $language = $request->language;
+        $product = $this->getProductDetail($language, $id);
+        return view('product.show', compact('product'));
+    }
+
+    private function getProductList($language)
+    {
+        $languages = ['ar', 'fa', 'en'];
+        $page = \App\Config::where('key', 'page')->first(['value']);
+        if (!empty($language) && in_array($language, $languages)) {
+            $products = Product::with(['productDetails' => function ($productFile) use ($language) {
+                $productFile->where('language', '=', $language);
+            }, 'productFiles'])->orderBy('created_at', 'desc')->paginate($page['value']);
+        } else {
+            $products = Product::with('productDetails', 'productFiles')->orderBy('created_at', 'desc')->get();
+
+        }
+
+        return $products;
+    }
+
+    private function getProductDetail($language, $id)
+    {
+
+        $languages = ['ar', 'fa', 'en'];
+        $validator = Validator::make(['id' => $id], [
+            'id' => 'required|integer|exists:products',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->getMessageBag(), 422);
+        }
+
+        if (!empty($language) && in_array($language, $languages)) {
+            $productInfo = Product::with(['productDetails' => function ($productFile) use ($language) {
+                $productFile->where('language', '=', $language);
+            }, 'productFiles'])->whereId($id)->first();
+        } else {
+            $productInfo = Product::with('productDetails', 'productFiles')->whereId($id)->first();
+
+        }
+
+        return $productInfo;
     }
 }
