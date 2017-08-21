@@ -83,7 +83,7 @@ class PostController extends Controller {
 
 	public function add() {
 		$categories = Category::all();
-		$tags       = Tag::pluck( 'id' );
+		$tags       = Tag::all();
 
 		return view( 'post.create', compact( [ 'categories', 'tags' ] ) );
 	}
@@ -101,19 +101,43 @@ class PostController extends Controller {
 			return back()->with( [ 'errors' => $validator->errors() ] );
 		}
 
-		$tag_ids = array();
-		$tags    = explode( ',', $request->tags );
-		for ( $i = 0; $i < count( $tags ); $i ++ ) {
-			$tag = Tag::create( [
-				'name' => $tags[ $i ],
-			] );
-			array_push( $tag_ids, $tag->id );
+//********* TAGs
+		if ( ! empty( $request->tags ) ) {
+			$new_tags = explode( ',', $request->tags );
 		}
 
-		/*$tags = null;
-		if ( ! empty( $request->tag_id ) ) {
-			$tags = $request->tag_id;
-		}*/
+		//exist tags
+		$tags = null;
+		if ( ! empty( $request->result_tags ) ) {
+			$tags      = explode( ',', $request->result_tags );
+			$tags_name = Tag::whereIn( 'id', $tags )->pluck( 'name' );
+		}
+
+		//compare old_list with new_list
+		if ( ! empty( $new_tags ) && ! empty( $tags_name ) ) {
+			$new_tags = array_diff( $new_tags, $tags_name->toArray() );
+		}
+
+		// save new tags
+		$new_ids = array();
+		if ( ! empty( $new_tags ) ) {
+			foreach ( $new_tags as $item ) {
+				$tag = Tag::create( [ 'name' => $item, ] );
+				array_push( $new_ids, $tag->id );
+			}
+		}
+
+		if ( ! empty( $new_ids ) ) {
+			$tags = array_merge( $tags, $new_ids );
+		}
+
+		if ( !empty($request->excerpt) ) {
+			$excerpt = $request->excerpt;
+		} else {
+			$excerpt = null;
+		}
+
+		//********* END TAGs
 
 		if ( empty( $request->thumb ) ) {
 			$thumb = null;
@@ -149,8 +173,8 @@ class PostController extends Controller {
 
 		$post->category()->sync( $request->cat_id );
 
-		if ( ! empty( $tag_ids ) ) {
-			$post->tags()->sync( $tag_ids );
+		if ( ! empty( $tags ) ) {
+			$post->tags()->sync( $tags );
 		}
 
 		return redirect( '/admin/post' );

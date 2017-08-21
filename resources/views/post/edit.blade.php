@@ -58,6 +58,16 @@
                                     <div class="clear"></div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2 red">خلاصه مطلب</label>
+                                    <div class="col-lg-10">
+                                        <textarea class="form-control" name="excerpt"
+                                                  style="line-height:18px;padding:10px 5px;height:100px;"
+                                                  required>{{$post->excerpt}}</textarea>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
 
                                 <div class="form-group" style="margin-left: 0;margin-right: 0;">
                                     <textarea name="content" id="editor1" required>{{$post->content}}</textarea>

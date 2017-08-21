@@ -31,7 +31,7 @@
                             </div>
                         @endif
                         <form role="form" class="form-horizontal tasi-form" method="POST" action="/admin/post"
-                              enctype="multipart/form-data">
+                              enctype="multipart/form-data" onsubmit="return getTags()">
                             {{csrf_field()}}
 
                             <div class="col-lg-8">
@@ -53,6 +53,15 @@
                                     <div class="clear"></div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2 red">خلاصه مطلب</label>
+                                    <div class="col-lg-10">
+                                        <textarea class="form-control" name="excerpt"
+                                                  style="line-height:18px;padding:10px 5px;height:100px;"
+                                                  required></textarea>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
 
 
                                 <div class="form-group" style="margin-left: 0;margin-right: 0;">
@@ -73,21 +82,115 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <?php
+                                    $all = array();
+
+                                    $all = $tags->map( function ( $item ) {
+                                        $new         = array();
+                                        $new['id']   = $item->id;
+                                        $new['name'] = $item->name;
+
+                                        return $new;
+                                    } );
+                                    ?>
+
                                     <label class="control-label col-lg-2 red">تگ</label>
                                     <div class="col-lg-10">
-                                        <input name="tags" id="tagsinput" class="tagsinput" value="" />
+                                        <input name="tags" id="tagsinput" class="tagsinput" value=""/>
+                                        <input type="hidden" id="result_tags" name="result_tags" value="">
+                                        <div id="tag_suggestion"></div>
                                     </div>
+                                    <script type="text/javascript">
+
+                                        var tags = <?php echo json_encode( $all ); ?>;
+
+                                        function getTags() {
+                                            //first object from php
+                                            str = JSON.stringify(tags);
+
+                                            // tagsinput entry
+                                            var entry = document.getElementById("tagsinput").value;
+                                            entry = entry.split(',');
+
+                                            var exist_result = [];
+                                            var new_tags = [];
+                                            for (var i = 0; i < entry.length; i++) {
+                                                for (var j = 0; j < tags.length; j++) {
+                                                    if (tags[j].name === entry[i]) {
+                                                        exist_result.push(tags[j].id);
+                                                    }
+                                                }
+                                            }
+
+                                            document.getElementById('result_tags').value = exist_result;
+                                        }
+
+                                        // make unique array
+                                        function onlyUnique(value, index, self) {
+                                            return self.indexOf(value) === index;
+                                        }
+
+                                        // suggestion list of tags
+                                        function makeUL(data) {
+                                            var a = '<ul id="suggestion">';
+                                            var b = '</ul>';
+                                            var m = [];
+
+                                            for (var i = 0; i < data.length; i++) {
+                                                m += '<li ><a>' + data[i] + '</a></li>';
+                                            }
+
+                                            document.getElementById('tag_suggestion').innerHTML = a + m + b;
+                                        }
+
+
+                                        $(document).on('keyup', "#tagsinput_addTag input[id='tagsinput_tag']", function () {
+                                            if (this.value.length < 3) {
+                                                document.getElementById('tag_suggestion').style["display"] = "none";
+                                            } else {
+
+                                                var suggestion = [];
+                                                for (var i = 0; i < tags.length; i++) {
+                                                    if (tags[i].name.includes(this.value)) {
+                                                        document.getElementById('tag_suggestion').style["display"] = "block";
+                                                        suggestion.push(tags[i].name);
+                                                        var unique = suggestion.filter(onlyUnique);
+                                                    }
+                                                }
+
+                                                if (unique != null) {
+                                                    makeUL(unique);
+                                                }
+
+                                            }
+                                        });
+
+                                        $(document).on('mousedown', "ul#suggestion li", function () {
+                                            var tag_input = $("#tagsinput_addTag input[id='tagsinput_tag']");
+                                            tag_input.val($(this).text());
+                                            e = jQuery.Event("keypress")
+                                            e.which = 13 //choose the one you want
+                                            tag_input.keypress(function () {
+
+                                            }).trigger(e)
+                                            //alert($(this).text());
+                                        });
+                                        $(document).on('mouseup', "ul#suggestion li a", function () {
+                                            document.getElementById('tag_suggestion').style["display"] = "none";
+                                        });
+
+                                    </script>
                                     <div class="clear"></div>
                                 </div>
 
                             </div>
 
-                            <div class="col-lg-4" >
+                            <div class="col-lg-4">
 
                                 <label class=" red">دسته بندی</label>
                                 <div class="form-group">
 
-                                    <div class="col-lg-10 checkbox-container" >
+                                    <div class="col-lg-10 checkbox-container">
                                         @foreach($categories as $category)
 
                                             @if($category->parent_id == null)
