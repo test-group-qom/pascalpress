@@ -14,10 +14,10 @@
                 margin: 0;
                 padding: 0;
                 width: 100%;
-                color: #B0BEC5;
+                color: #0e161d;
                 display: table;
                 font-weight: 100;
-                font-family: 'Lato', sans-serif;
+                font-family: sans-serif, sans-serif;
             }
 
             .container {

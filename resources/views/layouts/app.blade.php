@@ -1,91 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <meta name="keywords" content=" @yield('keywords')">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="{{asset('img/favicon.html')}}">
 
-    <!-- CSRF Token -->
+    <title>{{env('APP_TITLE')}} | @yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <!-- <title>{{ config('app.name', 'Laravel') }}</title> -->
-    <title>@yield('title')</title>
-    <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('css/bootstrap-reset.css')}}" rel="stylesheet">
+    <script src="{{asset('js/jquery-1.8.3.min.js')}}"></script>
+    <!--external css-->
+    <link href="{{asset('assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet"/>
 
-    <!-- Scripts -->
-    <script>
-        window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
-    </script>
+    <!-- Custom styles for this template -->
+    <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('css/style-responsive.css')}}" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('fonts/iranianSans/iranianSans.css')}}"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="{{asset('js/html5shiv.js')}}"></script>
+    <script src="{{asset('js/respond.min.js')}}"></script>
+
+    <![endif]-->
 </head>
-<body dir="rtl">
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
+@yield('main_content')
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+        <!-- js placed at the end of the document so the pages load faster -->
+<script src="{{asset('js/jquery.js')}}"></script>
+<script src="{{asset('js/jquery-1.8.3.min.js')}}"></script>
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/jquery.sparkline.js')}}" type="text/javascript"></script>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+<script src="{{asset('js/jquery.customSelect.min.js')}}"></script>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+<!--custom tagsinput-->
+<script src="{{asset('js/jquery.tagsinput.js')}}"></script>
+<!--common script for all pages-->
+<script src="{{asset('js/common-scripts.js')}}"></script>
+<!--script for this page-->
+<script src="{{asset('js/form-component.js')}}"></script>
 
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        @yield('content')
-    </div>
-
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
-</body>
 </html>

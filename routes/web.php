@@ -1,116 +1,172 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('search/{string}', [ 'as' => 'search', 'uses' => 'newsController@search']);
-// news routes........................................................................................
-Route::get('news',  [ 'as' => 'web.news.index', 'uses' => 'newsController@index']);
-Route::get('news/{id}',  [ 'as' => 'web.news.show', 'uses' => 'newsController@show']);
-
-
-Route::group(['middleware'=>myAuth::class], function(){
-    Route::post('news',  [ 'as' => 'news.create', 'uses' => 'newsController@store']);
-	Route::put('news/{id}',  [ 'as' => 'news.create', 'uses' => 'newsController@update']);
-	//Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@destroy']);
-    Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@delete']);
-    Route::put('news/{id}/restore',  [ 'as' => 'news.index', 'uses' => 'newsController@restore']);
-});
-
-// article routes.......................................................................................
-Route::get('article',  [ 'as' => 'web.article.index', 'uses' => 'articleController@index']);
-Route::get('article/{id}',  [ 'as' => 'web.article.show', 'uses' => 'articleController@show']);
-
-Route::group(['middleware'=>myAuth::class], function(){
-	Route::put('article/{id}',  [ 'as' => 'article.update', 'uses' => 'articleController@update']);
-	Route::post('article',  [ 'as' => 'article.create', 'uses' => 'articleController@store']);
-	//Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@destroy']);
-	Route::delete('article/{id}',  [ 'as' => 'article.index', 'uses' => 'articleController@delete']);
-	Route::put('article/{id}/restore',  [ 'as' => 'article.index', 'uses' => 'articleController@restore']);
-});
-// pages routes........................................................................................
-Route::get('page',  [ 'as' => 'web.page.index', 'uses' => 'pageController@index']);
-Route::get('page/{id}',  [ 'as' => 'web.page.show', 'uses' => 'pageController@show']);
-
-Route::group(['middleware'=>myAuth::class], function(){
-    Route::post('page',  [ 'as' => 'page.create', 'uses' => 'pageController@store']);
-	Route::put('page/{id}',  [ 'as' => 'page.create', 'uses' => 'pageController@update']);
-	//Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@destroy']);
-    Route::delete('page/{id}',  [ 'as' => 'page.index', 'uses' => 'pageController@delete']);
-    Route::put('page/{id}/restore',  [ 'as' => 'page.index', 'uses' => 'pageController@restore']);
-});
-// login routes..........................................................................................
-Route::post('login',  [ 'as' => '', 'uses' => 'Auth\LoginController@login']);
-Route::get('logout',  [ 'as' => '', 'uses' => 'Auth\LoginController@logout', 'middleware' =>myAuth::class]);
-Route::post('register',  [ 'as' => '', 'uses' => 'Auth\RegisterController@create_api']);
-//..File upload..........................................................................................
-Route::post('uploadfile',  [ 'as' => '', 'uses' => 'UploadFileController@showUploadFile', 'middleware' =>myAuth::class]);
-Route::get('uploadfile',  [ 'as' => '', 'uses' => 'UploadFileController@index']);
-//...config....................................................................................................
-
-Route::group(['middleware'=>myAuth::class], function(){
-	Route::get('config',  ['uses' => 'configController@index']);
-	Route::get('config/{id}',  [ 'uses' => 'configController@show']);
-    Route::post('config',  ['uses' => 'configController@store']);
-	Route::put('config/{id}',  ['uses' => 'configController@update']);
-	//Route::delete('config/{id}',  ['uses' => 'configController@destroy']);
-    Route::delete('config/{id}',  ['uses' => 'configController@delete']);
-    Route::put('config/{id}/restore',  ['uses' => 'configController@restore']);
-});
-//.......................................................................................
-Route::get('user',  [ 'as' => 'user.index', 'uses' => 'userController@index']);
-Route::get('user/{id}',  [ 'as' => 'user.show', 'uses' => 'userController@show']);
-Route::get('user/{id}/edit',  [ 'as' => 'user.create', 'uses' => 'userController@edit']);
-Route::put('user/{id}',  [ 'as' => 'user.create', 'uses' => 'userController@update']);
-Route::delete('user/{id}',  [ 'as' => 'user.index', 'uses' => 'userController@destroy']);
-Route::put('user/{id}',  [ 'as' => 'user.index', 'uses' => 'userController@delete']);
-Route::put('user/{id}/restore',  [ 'as' => 'user.index', 'uses' => 'userController@restore']);
-
-//route product and depended on it
-Route::group(['namespace' => 'api'], function () {
-
-    Route::resource('/category', 'CategoryController',
-        ['only' => ['index', 'show']]);
-    Route::resource('/product', 'ProductController',
-        ['only' =>[ 'index', 'show']]);
-    Route::resource('/productFile', 'ProductFileController',
-        ['only' => ['index', 'show']]);
-    Route::resource('/productDetail', 'ProductDetailController',
-        ['only' => ['index', 'show']]);
-
-    Route::group(['middleware' => \App\Http\Middleware\myAuth::class], function () {
-        Route::resource('/category', 'CategoryController',
-            ['only' => ['store', 'update', 'destroy']]);
-        Route::resource('/product', 'ProductController',
-            ['only' => ['store', 'update', 'destroy']]);
-        Route::resource('/productFile', 'ProductFileController',
-            ['only' =>[ 'store', 'update', 'destroy']]);
-        Route::resource('/productDetail', 'ProductDetailController',
-            ['only' => ['store', 'update', 'destroy']]);
-
-        Route::get('/product/restore/{id}', 'ProductController@restore');
-        Route::get('/productDetail/restore/{id}', 'ProductDetailController@restore');
-        Route::get('/productFile/restore/{id}', 'ProductFileController@restore');
-        Route::get('/category/restore/{id}', 'CategoryController@restore');
-    });
-});
-        
 Auth::routes();
-Route::get('/home', 'HomeController@index');
-Route::group(['namespace' => 'api'], function () {
+Route::get( '/home', 'HomeController@index' )->name( 'home' );
 
-    Route::get('/productList','ProductController@productList');
-    Route::get('/productDetail/{id}','ProductController@productDetail');
+
+
+Route::get( '/admin/edit_profile', function () {
+	return view( 'admin.edit_profile' );
+} );
+
+Route::get( '/admin/category/edit', function () {
+	return view( 'category.edit' );
+} );
+
+Route::get( '/admin/tag/edit', function () {
+	return view( 'tag.edit' );
+} );
+
+Route::get( '/admin/poll/edit', function () {
+	return view( 'poll.edit' );
+} );
+
+Route::get('/admin/section/edit',function(){
+	return view('section.edit');
 });
+
+## post -----------------
+Route::get( '/admin/post/edit', function () {
+	return view( 'post.edit' );
+} );
+Route::get( '/admin/post/add', function () {
+	return view( 'post.create' );
+} );
+## product --------------
+Route::get( '/admin/product_cat/edit', function () {
+	return view( 'shop.productCat.edit' );
+} );
+
+Route::get( '/admin/product/add', function () {
+	return view( 'shop.product.create' );
+} );
+Route::get( '/admin/product/edit', function () {
+	return view( 'shop.product.edit' );
+} );
+
+Route::get( '/admin/dashboard', function () {
+	return view( 'dashboard' );
+} );
+
+Route::get( '/admin-panel', function () {
+	return view( 'auth.login' );
+} );
+
+
+Route::group( [ 'prefix' => 'admin', 'middleware' => [ 'auth', 'admin' ] ], function () {
+
+## Admin [Admin]
+	Route::get( '/logout', 'AdminController@logout' );
+	Route::post( '/change_password', 'AdminController@change_password' );
+	Route::post( '/edit_profile', 'AdminController@editProfile' );
+
+## User [Admin]
+	Route::get( '/user', 'UserController@index' );
+	Route::delete( '/user/{id}', 'UserController@destroy' );
+	Route::get( '/logout', 'UserController@logout' );
+	Route::post( '/user/change_password', 'UserController@change_password' );
+	Route::post( '/user/edit_profile', 'UserController@editProfile' );
+	Route::get( '/user/{id}', 'UserController@show' );
+	Route::post( '/user/forget', 'UserController@forgetPassword' );
+	Route::post( '/user/recover/{remember_token}', 'UserController@recover' );
+	Route::get( '/user_status/{id}', 'UserController@status' );
+
+## Section [Admin]
+	Route::post( '/section', 'SectionController@store' );
+	Route::put( '/section/{id}', 'SectionController@update' );
+	Route::get( '/section/edit/{id}', 'SectionController@edit' );
+	Route::delete( '/section/{id}', 'SectionController@destroy' );
+
+
+	## Category [Admin]
+	Route::post( '/category', 'CategoryController@store' );
+	Route::put( '/category/{id}', 'CategoryController@update' );
+	Route::get( '/category/edit/{id}', 'CategoryController@edit' );
+	Route::delete( '/category/{id}', 'CategoryController@destroy' );
+
+
+### Product Category [Admin]
+	Route::post( '/product_cat', 'ProductCatController@store' );
+	Route::put( '/product_cat/{id}', 'ProductCatController@update' );
+	Route::get( '/product_cat/edit/{id}', 'ProductCatController@edit' );
+	Route::delete( '/product_cat/{id}', 'ProductCatController@destroy' );
+
+### Product [Admin]
+	Route::get( '/product/add', 'ProductController@add' );
+	Route::post( '/product', 'ProductController@store' );
+	Route::get( '/product/edit/{id}', 'ProductController@edit' );
+	Route::put( '/product/{id}', 'ProductController@update' );
+	Route::delete( '/product/{id}', 'ProductController@destroy' );
+	Route::get( '/product_status/{id}', 'ProductController@status' );
+
+## Tag [Admin]
+	Route::post( '/tag', 'TagController@store' );
+	Route::get( '/tag/edit/{id}', 'TagController@edit' );
+	Route::put( '/tag/{id}', 'TagController@update' );
+	Route::delete( '/tag/{id}', 'TagController@destroy' );
+
+## Post [Admin]
+	Route::get( '/post/add', 'PostController@add' );
+	Route::post( '/post', 'PostController@store' );
+	Route::get( '/post/edit/{id}', 'PostController@edit' );
+	Route::put( '/post/{id}', 'PostController@update' );
+	Route::delete( '/post/{id}', 'PostController@destroy' );
+	Route::get( '/post_status/{id}', 'PostController@status' );
+
+## Contact [Admin]
+	Route::get( '/contact', 'ContactController@index' );
+	Route::delete( '/contact/{id}', 'ContactController@destroy' );
+
+## Poll [Admin]
+	Route::post( '/poll', 'PollController@store' );
+	Route::put( '/poll/{id}', 'PollController@update' );
+	Route::delete( '/poll/{id}', 'PollController@destroy' );
+	Route::get( '/poll_status/{id}', 'PollController@status' );
+	Route::get( '/poll/edit/{id}', 'PollController@edit' );
+
+/***********************************************************************************/
+	## Admin ----------
+	Route::post( 'admin/login', 'AdminController@login' );
+	Route::post( 'admin/forget', 'AdminController@forgetPassword' );
+	Route::post( 'admin/recover/{remember_token}', 'AdminController@recover' );
+
+## User ----------
+	Route::post( '/user', 'UserController@store' );
+	Route::post( '/user/login', 'UserController@login' );
+
+## Section ----------
+	Route::get( '/section', 'SectionController@index' );
+	Route::get( '/section/{id}', 'SectionController@show' );
+
+## Category ----------
+	Route::get( '/category', 'CategoryController@index' );
+	Route::get( '/category/{id}', 'CategoryController@show' );
+
+### Product Category ----------
+	Route::get( '/product_cat', 'ProductCatController@index' );
+	Route::get( '/product_cat/{id}', 'ProductCatController@show' );
+
+## Poll ----------
+	Route::get( '/poll', 'PollController@index' );
+	Route::get( '/poll/{id}', 'PollController@show' );
+
+## Contact ----------
+	Route::get( '/contact/{id}', 'ContactController@show' );
+	Route::post( '/contact', 'ContactController@store' );
+
+## Post ----------
+	Route::get( '/post', 'PostController@index' );
+	Route::get( '/post/{id}', 'PostController@show' );
+	Route::get( '/cat_post/{cat_id}', 'PostController@cat_post' );
+	Route::get( '/tag_post/{tag_id}', 'PostController@tag_post' );
+
+### Product ----------
+	Route::get( '/product', 'ProductController@index' );
+	Route::get( '/product/{id}', 'ProductController@show' );
+	Route::get( '/productCat_product/{productCat_id}', 'ProductController@cat_post' );
+
+
+## Tag ----------
+	Route::get( '/tag', 'TagController@index' );
+	Route::get( '/tag/{id}', 'TagController@show' );
+} );

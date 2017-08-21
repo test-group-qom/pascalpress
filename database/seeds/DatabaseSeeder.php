@@ -1,33 +1,34 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
-class DatabaseSeeder extends Seeder
-{
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {		
-         Model::unguard();
-//    	 $this->call(UserTableSeeder::class);
-//         $this->call(NewsTableSeeder::class);
-         factory(App\User::class,3)->create();
-         factory(App\News::class,10)->create();
-         factory(App\NewsDetail::class,30)->create();
-         factory(App\Config::class,1)->create();
-         Model::reguard();
+class DatabaseSeeder extends Seeder {
+	/**
+	 * Run the database seeds.
+	 *
+	 * @return void
+	 */
+	public function run() {
 
-          factory(App\Category::class, 3)
-           ->create()
-           ->each(function ($u) {
-                $u->products()->save(factory(App\Product::class)->make());
-            });
+		DB::table( 'categories' )->insert( [
+			[
+				'name'       => 'دسته بندی نشده',
+				'created_at' => Carbon::now()->format( 'Y-m-d H:i:s' ),
+				'updated_at' => Carbon::now()->format( 'Y-m-d H:i:s' )
+			]
+		] );
 
-       factory(App\ProductDetail::class,30)->create();
-       factory(App\ProductFile::class,30)->create();
-    }
+		DB::table( 'users' )->insert( [
+			'admin'      => 1,
+			'name'       => 'مدیریت',
+			'username'   => 'admin',
+			'password'   => bcrypt( 'secret' ),
+			'email'      => 'iransoft1390@gmail.com',
+			'mobile'     => '09191958533',
+			'created_at' => Carbon::now()->format( 'Y-m-d H:i:s' ),
+			'updated_at' => Carbon::now()->format( 'Y-m-d H:i:s' ),
+		] );
+	}
 }

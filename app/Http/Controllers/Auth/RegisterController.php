@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Model\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -46,36 +45,36 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+    protected function validator( array $data ) {
+        return Validator::make( $data, [
+            'name'        => 'required|string|max:255',
+            'father_name' => 'required|string|max:255',
+            'username'    => 'required|string|max:255|unique:users',
+            'email'       => 'required|string|email|max:255|unique:users',
+            'password'    => 'required|string|min:6|confirmed',
+            'mobile'      => 'required|numeric|digits:11',
+            'city'        => 'required|string|min:2|max:60',
+            'card_number' => 'required|numeric|digits:16',
+        ] );
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
+     *
      * @return User
      */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'token' => str_random(60), //slight change here
-        ]);
-    }
-
-    public function create_api(Request $request)
-    {
-        $validator = $this->validator($request->all());
-        if ($validator->fails()) 
-            return response()->json($validator->errors(), 422);
-        return $this->create($request->all());
+    protected function create( array $data ) {
+        return User::create( [
+            'name'        => $data['name'],
+            'father_name' => $data['father_name'],
+            'username'    => $data['username'],
+            'email'       => $data['email'],
+            'password'    => bcrypt( $data['password'] ),
+            'mobile'      => $data['mobile'],
+            'city'        => $data['city'],
+            'card_number' => $data['card_number'],
+        ] );
     }
 }

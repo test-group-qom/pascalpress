@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Http\Middleware\myAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,99 +13,71 @@ use App\Http\Middleware\myAuth;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+Route::group( [ 'middleware' => 'auth.token' ], function () {
+	
+	## Admin
+	Route::get( '/admin/logout', 'AdminController@logout' );
+	Route::post( '/admin/change_password', 'AdminController@change_password' );
+	Route::post( '/admin/edit_profile', 'AdminController@editProfile' );
 
+	## User
+	Route::get( '/user', 'UserController@index' );
+	Route::delete( '/user/{id}', 'UserController@destroy' );
+	Route::get( '/user/logout', 'UserController@logout' );
+	Route::post( '/user/change_password', 'UserController@change_password' );
+	Route::post( '/user/edit_profile', 'UserController@editProfile' );
+	Route::post( '/user/status/{user_id}', 'UserController@status' );
 
+	## Plan
+	Route::post( '/plan', 'PlanController@store' );
+	Route::put( '/plan/{id}', 'PlanController@update' );
+	Route::delete( '/plan/{id}', 'PlanController@destroy' );
+	Route::post( '/plan/status/{plan_id}', 'PlanController@status' );
 
-Route::get('search/{string}', ['uses' => 'newsController@search']);
-// news routes........................................................................................
-Route::get('news',  [ 'as' => 'news.index', 'uses' => 'newsController@index']);
-Route::get('news/{id}',  [ 'as' => 'news.show', 'uses' => 'newsController@show']);
+} );
 
-Route::group(['middleware'=>myAuth::class], function(){
-    Route::post('news',  [ 'as' => 'news.create', 'uses' => 'newsController@store']);
-	Route::put('news/{id}',  [ 'as' => 'news.create', 'uses' => 'newsController@update']);
-	//Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@destroy']);
-    Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@delete']);
-    Route::put('news/{id}/restore',  [ 'as' => 'news.index', 'uses' => 'newsController@restore']);
-});
+## Admin
+Route::post( '/admin/login', 'AdminController@login' );
+Route::post( '/admin/forget', 'AdminController@forgetPassword' );
+Route::post( '/admin/recover/{remember_token}', 'AdminController@recover' );
 
-// article routes.......................................................................................
-Route::get('article',  [ 'as' => 'article.index', 'uses' => 'articleController@index']);
-Route::get('article/{id}',  [ 'as' => 'article.show', 'uses' => 'articleController@show']);
+## User
+Route::post( '/user', 'UserController@store' );
+Route::get( '/user/{id}', 'UserController@show' );
+Route::post( '/user/login', 'UserController@login' );
+Route::post( '/user/forget', 'UserController@forgetPassword' );
+Route::post( '/user/recover/{remember_token}', 'UserController@recover' );
 
-Route::group(['middleware'=>myAuth::class], function(){
-	Route::put('article/{id}',  [ 'as' => 'article.update', 'uses' => 'articleController@update']);
-	Route::post('article',  [ 'as' => 'article.create', 'uses' => 'articleController@store']);
-	//Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@destroy']);
-	Route::delete('article/{id}',  [ 'as' => 'article.index', 'uses' => 'articleController@delete']);
-	Route::put('article/{id}/restore',  [ 'as' => 'article.index', 'uses' => 'articleController@restore']);
-});
-// pages routes........................................................................................
-Route::get('page',  [ 'as' => 'page.index', 'uses' => 'pageController@index']);
-Route::get('page/{id}',  [ 'as' => 'page.show', 'uses' => 'pageController@show']);
+## Category
+Route::get( '/category', 'CategoryController@index' );
+Route::get( '/category/{id}', 'CategoryController@show' );
+Route::post( '/category', 'CategoryController@store' );
+Route::put( '/category/{id}', 'CategoryController@update' );
+Route::delete( '/category/{id}', 'CategoryController@destroy' );
 
-Route::group(['middleware'=>myAuth::class], function(){
-    Route::post('page',  [ 'as' => 'page.create', 'uses' => 'pageController@store']);
-	Route::put('page/{id}',  [ 'as' => 'page.create', 'uses' => 'pageController@update']);
-	//Route::delete('news/{id}',  [ 'as' => 'news.index', 'uses' => 'newsController@destroy']);
-    Route::delete('page/{id}',  [ 'as' => 'page.index', 'uses' => 'pageController@delete']);
-    Route::put('page/{id}/restore',  [ 'as' => 'page.index', 'uses' => 'pageController@restore']);
-});
-// login routes..........................................................................................
-Route::post('login',  [ 'as' => '', 'uses' => 'Auth\LoginController@login']);
-Route::get('logout',  [ 'as' => '', 'uses' => 'Auth\LoginController@logout', 'middleware' =>myAuth::class]);
-Route::post('register',  [ 'as' => '', 'uses' => 'Auth\RegisterController@create_api']);
-//..File upload..........................................................................................
-Route::post('uploadfile',  [ 'as' => '', 'uses' => 'UploadFileController@showUploadFile', 'middleware' =>myAuth::class]);
-Route::get('uploadfile',  [ 'as' => '', 'uses' => 'UploadFileController@index']);
-//...config....................................................................................................
+## Tag
+Route::get( '/tag', 'TagController@index' );
+Route::get( '/tag/{id}', 'TagController@show' );
+Route::post( '/tag', 'TagController@store' );
+Route::put( '/tag/{id}', 'TagController@update' );
+Route::delete( '/tag/{id}', 'TagController@destroy' );
 
-Route::group(['middleware'=>myAuth::class], function(){
-	Route::get('config',  ['uses' => 'configController@index']);
-	Route::get('config/{id}',  [ 'uses' => 'configController@show']);
-    Route::post('config',  ['uses' => 'configController@store']);
-	Route::put('config/{id}',  ['uses' => 'configController@update']);
-	//Route::delete('config/{id}',  ['uses' => 'configController@destroy']);
-    Route::delete('config/{id}',  ['uses' => 'configController@delete']);
-    Route::put('config/{id}/restore',  ['uses' => 'configController@restore']);
-});
-//.......................................................................................
-Route::get('user',  [ 'as' => 'user.index', 'uses' => 'userController@index']);
-Route::get('user/{id}',  [ 'as' => 'user.show', 'uses' => 'userController@show']);
-Route::get('user/{id}/edit',  [ 'as' => 'user.create', 'uses' => 'userController@edit']);
-Route::put('user/{id}',  [ 'as' => 'user.create', 'uses' => 'userController@update']);
-Route::delete('user/{id}',  [ 'as' => 'user.index', 'uses' => 'userController@destroy']);
-Route::put('user/{id}',  [ 'as' => 'user.index', 'uses' => 'userController@delete']);
-Route::put('user/{id}/restore',  [ 'as' => 'user.index', 'uses' => 'userController@restore']);
+## Post
+Route::get( '/post', 'PostController@index' );
+Route::get( '/post/{id}', 'PostController@show' );
+Route::post( '/post', 'PostController@store' );
+Route::put( '/post/{id}', 'PostController@update' );
+Route::delete( '/post/{id}', 'PostController@destroy' );
+Route::post( '/post_status', 'PostController@status' );
+Route::get( '/cat_post/{cat_id}', 'PostController@cat_post' );
+Route::get( '/tag_post/{tag_id}', 'PostController@tag_post' );
 
-//route product and depended on it
-Route::group(['namespace' => 'api'], function () {
+## Contact
+Route::get( '/contact', 'ContactController@index' );
+Route::get( '/contact/{id}', 'ContactController@show' );
+Route::post( '/contact', 'ContactController@store' );
+Route::delete( '/contact/{id}', 'ContactController@destroy' );
 
-    Route::resource('/category', 'CategoryController',
-        ['only' => ['index', 'show']]);
-    Route::resource('/product', 'ProductController',
-        ['only' =>[ 'index', 'show']]);
-    Route::resource('/productFile', 'ProductFileController',
-        ['only' => ['index', 'show']]);
-    Route::resource('/productDetail', 'ProductDetailController',
-        ['only' => ['index', 'show']]);
-
-    Route::group(['middleware' => \App\Http\Middleware\myAuth::class], function () {
-        Route::resource('/category', 'CategoryController',
-            ['only' => ['store', 'update', 'destroy']]);
-        Route::resource('/product', 'ProductController',
-            ['only' => ['store', 'update', 'destroy']]);
-        Route::resource('/productFile', 'ProductFileController',
-            ['only' =>[ 'store', 'update', 'destroy']]);
-        Route::resource('/productDetail', 'ProductDetailController',
-            ['only' => ['store', 'update', 'destroy']]);
-
-        Route::get('/product/restore/{id}', 'ProductController@restore');
-        Route::get('/productDetail/restore/{id}', 'ProductDetailController@restore');
-        Route::get('/productFile/restore/{id}', 'ProductFileController@restore');
-        Route::get('/category/restore/{id}', 'CategoryController@restore');
-    });
-});
+## Plan
+Route::get( '/plan', 'PlanController@index' );
+Route::get( '/plan/{id}', 'PlanController@show' );
