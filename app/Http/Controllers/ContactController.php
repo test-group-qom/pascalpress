@@ -14,7 +14,7 @@ class ContactController extends Controller {
 		$count       = $all_contact->get()->count();
 		$all_contact = $all_contact->skip( $offset )->take( $mount )->get();
 
-		return view('contact.index', [ 'all_contact' => $all_contact, 'count' => $count ]);
+		return view('admin.contact.index', [ 'all_contact' => $all_contact, 'count' => $count ]);
 	}
 
 	public function show( $id ) {
@@ -26,7 +26,7 @@ class ContactController extends Controller {
 		}
 		$contact = Contact::find( $id );
 
-		return view('contact.show', ['contact'=>$contact] );
+		return view('admin.contact.show', ['contact'=>$contact] );
 	}
 
 	public function store( Request $request ) {

@@ -11,7 +11,7 @@ class CategoryController extends Controller {
 	public function index() {
 		$categories = Category::where( 'id', '!=', 1 )->orderBy( 'id' )->get();
 
-		return view( 'category.index', compact( 'categories' ) );
+		return view( 'admin.category.index', compact( 'categories' ) );
 	}
 
 	public function show( $id ) {
@@ -23,7 +23,7 @@ class CategoryController extends Controller {
 		}
 		$oneCat = Category::find( $id );
 
-		return view( 'category.show', [ 'oneCat' => $oneCat ] );
+		return view( 'admin.category.show', [ 'oneCat' => $oneCat ] );
 	}
 
 	public function store( Request $request ) {
@@ -61,7 +61,7 @@ class CategoryController extends Controller {
 		$oneCat     = Category::find( $id );
 		$categories = Category::where( 'id', '!=', 1 )->orderBy( 'id' )->get();
 
-		return view( 'category.edit', compact( [ 'oneCat', 'categories' ] ) );
+		return view( 'admin.category.edit', compact( [ 'oneCat', 'categories' ] ) );
 	}
 
 	public function update( Request $request, $id ) {

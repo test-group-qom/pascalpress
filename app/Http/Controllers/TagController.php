@@ -16,7 +16,7 @@ class TagController extends Controller {
 		$count  = $tags->get()->count();
 		$tags   = $tags->skip( $offset )->take( $mount )->get();
 
-		return view( 'tag.index', [ 'tags' => $tags, 'count' => $count ] );
+		return view( 'admin.tag.index', [ 'tags' => $tags, 'count' => $count ] );
 	}
 
 	public function show( $id ) {
@@ -28,7 +28,7 @@ class TagController extends Controller {
 		}
 		$tag = Tag::find( $id );
 
-		return view( 'tag.show', [ 'tag' => $tag ] );
+		return view( 'admin.tag.show', [ 'tag' => $tag ] );
 	}
 
 	public function store( Request $request ) {
@@ -55,7 +55,7 @@ class TagController extends Controller {
 
 		$tag = Tag::find( $id );
 
-		return view( 'tag.edit', [ 'tag' => $tag ] );
+		return view( 'admin.tag.edit', [ 'tag' => $tag ] );
 	}
 
 	public function update( Request $request, $id ) {

@@ -1,5 +1,5 @@
 @section('title', 'یافت نشد!')
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('main_content')
 
     <body class="body-404">

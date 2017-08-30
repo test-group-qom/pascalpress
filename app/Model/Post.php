@@ -7,9 +7,26 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model {
 	use SoftDeletes;
-	protected $fillable = [ 'title', 'thumb', 'excerpt', 'content', 'post_type', 'visit', 'status' ];
+	protected $fillable = [
+		'title',
+		'thumb',
+		'excerpt',
+		'content',
+		'post_type',// 0 = article , 1 = page , 2 = product
+		'visit',
+		'status',
+		//---------- just for products
+		'specs',
+		'property',
+		'video',
+		'catalog_file',
+		'catalog_image',
+		//----------
+	];
 	protected $dates = [ 'created_at', 'updated_at', 'deleted_at' ];
 	protected $hidden = [ 'updated_at', 'deleted_at' ];
+	
+	protected $casts = [ 'specs' => 'array', 'property' => 'array' ];
 
 	public function category() {
 		return $this->belongsToMany( Category::class, 'post_categories', 'post_id', 'cat_id' )->withTimestamps();

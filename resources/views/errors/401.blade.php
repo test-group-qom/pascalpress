@@ -1,5 +1,5 @@
 @section('title', 'دسترسی غیرمجاز')
-@extends('layouts.app')
+@extends('admin.layouts.app')
 @section('main_content')
 
     <body class="body-401">

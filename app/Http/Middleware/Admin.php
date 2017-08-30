@@ -21,6 +21,6 @@ class Admin {
 		}
 		auth()->logout();
 
-		return redirect( '/admin-panel' );
+		return redirect( '/admin-panel', 302 );
 	}
 }

@@ -20,6 +20,11 @@ class CreatePostsTable extends Migration {
 			$table->integer( 'post_type' )->default( 0 );
 			$table->integer( 'visit' )->default( 0 );
 			$table->integer( 'status' )->default( 1 );
+			$table->text('specs')->nullable();
+			$table->text('property')->nullable();
+			$table->text('video')->nullable();
+			$table->text('catalog_file')->nullable();
+			$table->text('catalog_image')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		} );

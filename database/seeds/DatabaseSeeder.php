@@ -30,5 +30,12 @@ class DatabaseSeeder extends Seeder {
 			'created_at' => Carbon::now()->format( 'Y-m-d H:i:s' ),
 			'updated_at' => Carbon::now()->format( 'Y-m-d H:i:s' ),
 		] );
+
+		DB::table('configs')->insert([
+			'title' => 'عنوان سایت نمونه',
+			'copyright' => 'تمامی حقوق این سایت برای صاحبان آن محفوظ است.',
+			'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+			'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+		]);
 	}
 }

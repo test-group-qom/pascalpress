@@ -20,7 +20,7 @@ class UserController extends Controller {
 			unset( $item->token );
 		} );
 
-		return view( 'user.index', [ 'all_user' => $all_user, 'count' => $count ] );
+		return view( 'admin.user.index', [ 'all_user' => $all_user, 'count' => $count ] );
 	}
 
 	public function show( $id ) {
@@ -114,7 +114,7 @@ class UserController extends Controller {
 
 		$user->update();
 */
-		return view('/dashboard');
+		return redirect()->route('home');
 	}
 
 	public function logout( ) {//$admin

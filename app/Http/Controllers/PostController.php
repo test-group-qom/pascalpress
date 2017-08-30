@@ -14,10 +14,10 @@ use App\helper\jdf;
 class PostController extends Controller {
 	public function index( Request $request ) {
 
-		if ( empty( $request->post_type ) ) {
+		if ( empty( $request->post_type ) || (int) $request->post_type > 2 || (int) $request->post_type < 0 ) {
 			$post_type = 0;
 		} else {
-			$post_type = 1;
+			$post_type = $request->post_type;
 		}
 
 		$order_type = strtolower( $request->order_type );
@@ -51,7 +51,7 @@ class PostController extends Controller {
 			} );
 		} );
 
-		return view( 'post.index', compact( [ 'all_post', 'count', 'post_type' ] ) );
+		return view( 'admin.post.index', compact( [ 'all_post', 'count', 'post_type' ] ) );
 	}
 
 	public function show( $id ) {
@@ -78,14 +78,19 @@ class PostController extends Controller {
 			unset( $item->pivot );
 		} );
 
-		return view( 'post.show', [ 'post' => $post ] );
+		return view( 'admin.post.show', [ 'post' => $post ] );
 	}
 
-	public function add() {
+	public function add( Request $request ) {
+		if ( empty( $request->post_type ) ) {
+			$post_type = 0;
+		} else {
+			$post_type = $request->post_type;
+		}
 		$categories = Category::all();
 		$tags       = Tag::all();
 
-		return view( 'post.create', compact( [ 'categories', 'tags' ] ) );
+		return view( 'admin.post.create', compact( [ 'categories', 'tags', 'post_type' ] ) );
 	}
 
 	public function store( Request $request ) {
@@ -95,123 +100,19 @@ class PostController extends Controller {
 			'title'     => 'required|max:255',
 			'thumb'     => 'nullable|max:2048',
 			'content'   => 'required|min:5',
-			'post_type' => 'nullable|numeric|between:0,1',
+			'post_type' => 'nullable|numeric|between:0,2',
 		] );
 		if ( $validator->fails() ) {
 			return back()->with( [ 'errors' => $validator->errors() ] );
 		}
 
-//********* TAGs
-		if ( ! empty( $request->tags ) ) {
-			$new_tags = explode( ',', $request->tags );
-		}
+		#####################
+		// Specs
+		$spec = $this->get_prop( $request->spec_name, $request->spec_value );
+		// Properties
+		$prop = $this->get_prop( $request->prop_name, $request->prop_value );
 
-		//exist tags
-		$tags = null;
-		if ( ! empty( $request->result_tags ) ) {
-			$tags      = explode( ',', $request->result_tags );
-			$tags_name = Tag::whereIn( 'id', $tags )->pluck( 'name' );
-		}
-
-		//compare old_list with new_list
-		if ( ! empty( $new_tags ) && ! empty( $tags_name ) ) {
-			$new_tags = array_diff( $new_tags, $tags_name->toArray() );
-		}
-
-		// save new tags
-		$new_ids = array();
-		if ( ! empty( $new_tags ) ) {
-			foreach ( $new_tags as $item ) {
-				$tag = Tag::create( [ 'name' => $item, ] );
-				array_push( $new_ids, $tag->id );
-			}
-		}
-
-		if ( ! empty( $new_ids ) ) {
-			$tags = array_merge( $tags, $new_ids );
-		}
-
-		if ( !empty($request->excerpt) ) {
-			$excerpt = $request->excerpt;
-		} else {
-			$excerpt = null;
-		}
-
-		//********* END TAGs
-
-		if ( empty( $request->thumb ) ) {
-			$thumb = null;
-		} else {
-			$file = $request->file( 'thumb' );
-			if ( $request->hasFile( 'thumb' ) && $file->isValid() ) {
-				$fileName = $file->getClientOriginalName();
-				$file->move( public_path( "/upload/images/" ), $fileName );
-				$thumb = $fileName;
-			}
-		}
-
-
-		if ( $request->post_type == null || $request->post_type == '0' ) {
-			$post_type = 0;
-		} else {
-			$post_type = (int) $request->post_type;
-		}
-
-		if ( !empty($request->excerpt) ) {
-			$excerpt = $request->excerpt;
-		} else {
-			$excerpt = null;
-		}
-
-		$post = Post::create( [
-			'title'     => $request->title,
-			'thumb'     => $thumb,
-			'excerpt'   => $request->excerpt,
-			'content'   => $request->input( 'content' ),
-			'post_type' => $post_type
-		] );
-
-		$post->category()->sync( $request->cat_id );
-
-		if ( ! empty( $tags ) ) {
-			$post->tags()->sync( $tags );
-		}
-
-		return redirect( '/admin/post' );
-	}
-
-	public function edit( $id ) {
-		$validator = Validator::make( [ 'id' => $id ], [
-			'id' => 'required|numeric|exists:posts,id,deleted_at,NULL',
-		] );
-		if ( $validator->fails() ) {
-			return back()->with( [ 'errors' => $validator->errors() ] );
-		}
-
-		$post = Post::find( $id );
-		$post->category->map( function ( $cat ) {
-			unset( $cat->pivot );
-		} );
-
-		$categories = Category::all();
-		$tags       = Tag::all();
-
-		return view( 'post.edit', compact( [ 'post', 'categories', 'tags' ] ) );
-	}
-
-	public function update( Request $request, $id ) {
-		$request = array_add( $request, 'id', $id );
-
-		$validator = Validator::make( $request->all(), [
-			'id'       => 'required|numeric|exists:posts,id,deleted_at,NULL',
-			'cat_id.*' => 'required|numeric|exists:categories,id,deleted_at,NULL',
-			'title'    => 'required|max:255',
-			'thumb'    => 'nullable|max:255',
-			'content'  => 'required',
-		] );
-		if ( $validator->fails() ) {
-			return back()->with( [ 'errors' => $validator->errors() ] );
-		}
+		#####################
 
 		//********* TAGs
 		if ( ! empty( $request->tags ) ) {
@@ -243,7 +144,7 @@ class PostController extends Controller {
 			$tags = array_merge( $tags, $new_ids );
 		}
 
-		if ( !empty($request->excerpt) ) {
+		if ( ! empty( $request->excerpt ) ) {
 			$excerpt = $request->excerpt;
 		} else {
 			$excerpt = null;
@@ -251,11 +152,136 @@ class PostController extends Controller {
 
 		//********* END TAGs
 
-		if ( $request->post_type == null || $request->post_type == '' ) {
+		if ( empty( $request->thumb ) ) {
+			$thumb = null;
+		} else {
+			$file = $request->file( 'thumb' );
+			if ( $request->hasFile( 'thumb' ) && $file->isValid() ) {
+				$fileName = $file->getClientOriginalName();
+				$file->move( public_path( "/upload/images/" ), $fileName );
+				$thumb = $fileName;
+			}
+		}
+
+
+		if ( $request->post_type == null || $request->post_type == '0' ) {
 			$post_type = 0;
 		} else {
-			$post_type = $request->post_type;
+			$post_type = (int) $request->post_type;
 		}
+
+		if ( ! empty( $request->excerpt ) ) {
+			$excerpt = $request->excerpt;
+		} else {
+			$excerpt = null;
+		}
+
+		$post = Post::create( [
+			'title'     => $request->title,
+			'thumb'     => $thumb,
+			'excerpt'   => $request->excerpt,
+			'content'   => $request->input( 'content' ),
+			'post_type' => $post_type,
+			'specs'     => $spec,
+			'property'  => $prop,
+		] );
+
+		$post->category()->sync( $request->cat_id );
+
+		if ( ! empty( $tags ) ) {
+			$post->tags()->sync( $tags );
+		}
+
+		if ( $post_type != 0 ) {
+			return redirect( '/admin/post?post_type=' . $post_type, 302 );
+		}
+
+		return redirect( '/admin/post', 302 );
+	}
+
+	public function edit( Request $request, $id ) {
+		if ( $request->post_type == null || $request->post_type == '0' ) {
+			$post_type = 0;
+		} else {
+			$post_type = (int) $request->post_type;
+		}
+
+		$validator = Validator::make( [ 'id' => $id ], [
+			'id' => 'required|numeric|exists:posts,id,deleted_at,NULL',
+		] );
+		if ( $validator->fails() ) {
+			return back()->with( [ 'errors' => $validator->errors() ] );
+		}
+
+		$post = Post::find( $id );
+		$post->category->map( function ( $cat ) {
+			unset( $cat->pivot );
+		} );
+
+		$categories = Category::all();
+		$tags       = Tag::all();
+
+		return view( 'admin.post.edit', compact( [ 'post', 'categories', 'tags', 'post_type' ] ) );
+	}
+
+	public function update( Request $request, $id ) {
+		$request = array_add( $request, 'id', $id );
+
+		$validator = Validator::make( $request->all(), [
+			'id'       => 'required|numeric|exists:posts,id,deleted_at,NULL',
+			'cat_id.*' => 'required|numeric|exists:categories,id,deleted_at,NULL',
+			'title'    => 'required|max:255',
+			'thumb'    => 'nullable|max:255',
+			'content'  => 'required',
+		] );
+		if ( $validator->fails() ) {
+			return back()->with( [ 'errors' => $validator->errors() ] );
+		}
+
+		#####################
+		// Specs
+		$spec = $this->get_prop( $request->spec_name, $request->spec_value );
+		// Properties
+		$prop = $this->get_prop( $request->prop_name, $request->prop_value );
+
+		#####################
+		//********* TAGs
+		if ( ! empty( $request->tags ) ) {
+			$new_tags = explode( ',', $request->tags );
+		}
+
+		//exist tags
+		$tags = null;
+		if ( ! empty( $request->result_tags ) ) {
+			$tags      = explode( ',', $request->result_tags );
+			$tags_name = Tag::whereIn( 'id', $tags )->pluck( 'name' );
+		}
+
+		//compare old_list with new_list
+		if ( ! empty( $new_tags ) && ! empty( $tags_name ) ) {
+			$new_tags = array_diff( $new_tags, $tags_name->toArray() );
+		}
+
+		// save new tags
+		$new_ids = array();
+		if ( ! empty( $new_tags ) ) {
+			foreach ( $new_tags as $item ) {
+				$tag = Tag::create( [ 'name' => $item, ] );
+				array_push( $new_ids, $tag->id );
+			}
+		}
+
+		if ( ! empty( $new_ids ) ) {
+			$tags = array_merge( $tags, $new_ids );
+		}
+
+		if ( ! empty( $request->excerpt ) ) {
+			$excerpt = $request->excerpt;
+		} else {
+			$excerpt = null;
+		}
+
+		//********* END TAGs
 
 		$post        = Post::find( $id );
 		$post->title = $request->title;
@@ -268,8 +294,10 @@ class PostController extends Controller {
 				$post->thumb = $thumb;
 			}
 		}
-		$post->excerpt = $request->input( 'excerpt' );
-		$post->content = $request->input( 'content' );
+		$post->excerpt  = $request->input( 'excerpt' );
+		$post->content  = $request->input( 'content' );
+		$post->specs    = $spec;
+		$post->property = $prop;
 		$post->update();
 
 		$post->category()->sync( $request->cat_id );
@@ -278,13 +306,14 @@ class PostController extends Controller {
 			$post->tags()->sync( $tags );
 		}
 
-		return redirect( '/admin/post' );
+		if ( $request->post_type != 0 ) {
+			return redirect( '/admin/post?post_type=' . $request->post_type, 302 );
+		}
+
+		return redirect( '/admin/post', 302 );
 	}
 
-	public
-	function destroy(
-		$id
-	) {
+	public function destroy( Request $request, $id ) {
 		$validator = Validator::make( [ 'id' => $id ], [
 			'id' => 'required|numeric|exists:posts,id,deleted_at,NULL'
 		] );
@@ -294,13 +323,13 @@ class PostController extends Controller {
 
 		$post = Post::find( $id );
 
-		// post categories
+// post categories
 		$cats = PostCategory::where( 'post_id', $post->id )->get();
 		$cats->map( function ( $item ) {
 			$item->delete();
 		} );
 
-		// post tags
+// post tags
 		$tags = PostTag::where( 'post_id', $post->id )->get();
 		$tags->map( function ( $item ) {
 			$item->delete();
@@ -308,13 +337,14 @@ class PostController extends Controller {
 
 		$post->delete();
 
-		return back();
+		if ( $request->post_type != 0 ) {
+			return redirect( '/admin/post?post_type=' . $request->post_type, 302 );
+		}
+
+		return back( 302 );
 	}
 
-	public
-	function status(
-		$id
-	) {
+	public function status( Request $request, $id ) {
 		$validator = Validator::make( [ 'id' => $id ], [
 			'id' => 'required|numeric|exists:posts,id,deleted_at,NULL',
 		] );
@@ -336,7 +366,11 @@ class PostController extends Controller {
 			$status = 'deactivated';
 		}
 
-		return back();
+		if ( $request->post_type != 0 ) {
+			return redirect( '/admin/post?post_type=' . $request->post_type, 302 );
+		}
+
+		return back( 302 );
 	}
 
 	public
@@ -388,5 +422,65 @@ class PostController extends Controller {
 		} );
 
 		return response( [ 'all_post' => $all_post, 'count' => $count ], 200 );
+	}
+
+
+	/**
+	 * convert latin number to persian
+	 *
+	 * @param string $string
+	 *   string that we want change number format
+	 *
+	 * @return formatted string
+	 */
+	function LatinToPersian( $string ) {
+		//arrays of persian and latin numbers
+		$persian_num = array( '۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹' );//۲۳۵۰۰۰
+		$latin_num   = range( 0, 9 );
+
+		$string = str_replace( $latin_num, $persian_num, $string );
+
+		return $string;
+	}
+
+	/**
+	 * convert persian number to latin
+	 *
+	 * @param string $string
+	 *   string that we want change number format
+	 *
+	 * @return formatted string
+	 */
+	function PersianToLatin( $string ) {
+		//arrays of persian and latin numbers
+		$persian_num = array( '۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹' );
+		$latin_num   = range( 0, 9 );
+
+		$string = str_replace( $persian_num, $latin_num, $string );
+
+		return $string;
+	}
+
+	public
+	function get_prop(
+		array $arr_name, array $arr_value
+	) {
+		if ( ! empty( array_filter( $arr_name ) ) && ! empty( array_filter( $arr_value ) ) ) {
+			$result = array_combine( $arr_name, $arr_value );
+
+			$result = array_filter( $result, function ( $value ) {
+				return $value != null || $value != '';
+			} );
+
+			$result = array_filter( array_flip( $result ), function ( $value ) {
+				return $value != null || $value != '';
+			} );
+
+			$result = array_flip( $result );
+
+			return $result;
+		}
+
+		return null;
 	}
 }
