@@ -11,6 +11,7 @@
     <!-- Bootstrap core CSS -->
     <link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('admin/css/bootstrap-reset.css')}}" rel="stylesheet">
+    <script src="{{asset('admin/css/dropzone.css')}}"></script>
     <script src="{{asset('admin/js/jquery-1.8.3.min.js')}}"></script>
     <!--external css-->
     <link href="{{asset('admin/assets/font-awesome/css/font-awesome.css')}}" rel="stylesheet"/>
@@ -45,5 +46,6 @@
 <script src="{{asset('admin/js/common-scripts.js')}}"></script>
 <!--script for this page-->
 <script src="{{asset('admin/js/form-component.js')}}"></script>
+<script src="{{asset('admin/js/dropzone.js')}}"></script>
 
 </html>

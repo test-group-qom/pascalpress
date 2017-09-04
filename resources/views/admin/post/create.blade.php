@@ -41,7 +41,7 @@ if ( $post_type == 0 ) {
                                 </ul>
                             </div>
                         @endif
-                        <form role="form" class="form-horizontal tasi-form" method="POST" action="/admin/post"
+                        <form role="form" class="form-horizontal tasi-form dropzone" id="my-awesome-dropzone" method="POST" action="/admin/post"
                               enctype="multipart/form-data" onsubmit="return getTags();check_spec();">
                             {{csrf_field()}}
                             <input type="hidden" name="post_type" value="{{$post_type}}">
@@ -293,10 +293,17 @@ if ( $post_type == 0 ) {
                                         </script>
                                     </div>
 
+
+
+
                                     <div class="form-group">
                                         <label class="control-label col-lg-2 red">کاتالوگ</label>
                                         <div class="col-lg-10">
-                                            <input type="file" name="catalog" class="btn btn-default btn-sm">
+
+                                            <div class="fallback">
+                                                <input name="file" type="file" />
+                                            </div>
+
                                         </div>
                                         <div class="clear"></div>
                                     </div>
@@ -370,9 +377,18 @@ if ( $post_type == 0 ) {
                             <button type="submit" class="btn btn-info">ذخیره</button>
                         </form>
 
+                            <form action="/upload" class="dropzone needsclick dz-clickable" id="demo-upload">
+
+                                <div class="dz-message needsclick">
+                                    Drop files here or click to upload.<br>
+                                    <span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
+                                </div>
+
+                            </form>
 
                     </div>
                 </section>
+
             </div>
         </div>
 
