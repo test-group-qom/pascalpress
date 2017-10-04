@@ -1,0 +1,84 @@
+.flex--flickity{
+  width: $width;
+  .main-carousel{
+    width: $width;
+    .carousel-cell{
+      width: $width;
+      margin-left: 27px;
+      .img--user{
+        width: $width;
+        height: $height;
+      }
+      .overlay{
+        width: $width;
+        height: $height;
+        position: absolute;
+        top: 0px;
+        display: flex;
+        flex-direction: column;
+        .flex--parent{
+          width: $width;
+          height: $height;
+          display: flex;
+          position: relative;
+          .flex--center{
+            width: 669px;
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+            margin-top: 50px;
+            position: absolute;
+            bottom: 80px;
+            right: 0px;
+            left: 0px;
+            @media#{$tablet}{
+              width: 70%;
+              bottom: 0px;
+            }
+            .title{
+              @include Bold(29);
+              color: $white;
+              @media#{$tablet}{
+                font-size: 26px;
+              }
+
+            }
+            .descrption{
+              width: $width;
+              @include Web(19);
+              color: $white;
+              margin-bottom: 40px;
+              @media#{$tablet}{
+                font-size: 16px;
+              }
+              @media screen and ("max-width:800px"){
+                display: none;
+              }
+            }
+            .flex--text{
+              @media screen and ("max-width:800px"){
+                display: none;
+              }
+            }
+            .flex--menu{
+              @media screen and ("max-width:800px"){
+                margin-bottom: 20px;
+              }
+            }
+            .flex--button{
+              @media screen and ("max-width:500px"){
+                width: $width;
+              }
+              .button{
+                @media screen and ("max-width:500px"){
+                  font-size: 18px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

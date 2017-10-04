@@ -1,0 +1,23 @@
+.min--logo{
+  width: $width;
+  background: #26324a;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  @extend .dir;
+  @media screen and ("max-width:900px"){
+    justify-content: flex-end;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  @media#{$mobile-big}{
+    padding-left: 0px;
+    padding-right: 0px;
+    justify-content: center;
+  }
+  .img--logo{
+    width: 220px;
+    height: 39px;
+  }
+}

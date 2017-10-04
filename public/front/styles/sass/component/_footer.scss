@@ -1,0 +1,262 @@
+footer{
+  width: $width;
+  background: #1b263e;
+  @extend .dir;
+  padding-bottom: 20px;
+  .flex--parent{
+    display: flex;
+    border-bottom: solid 1px #ccc;
+    width: $width;
+    padding-bottom: 20px;
+    .flex--wrap{
+      display: flex;
+      @media#{$Medium}{
+        flex-direction: column;
+      }
+      .flex---right{
+        display: flex;
+        width: 585px;
+        justify-content: center;
+        flex-flow: column;
+        @media#{$tablet}{
+          width: 50%;
+        }
+        @media#{$Medium}{
+          width: $width;
+        }
+        @media#{$mobile}{
+          width: $width;
+        }
+        .min--logo{
+          background:none;
+          margin-right: auto;
+          margin-left: auto;
+          @media screen and ("max-width:900px"){
+            justify-content: center;
+          }
+          @media#{$Medium}{
+            justify-content: center;
+          }
+        }
+        .flex--right{
+          display: flex;
+          flex-flow: column;
+          @media#{$tablet}{
+            width: $width;
+            padding-left: 20px;
+          }
+
+          .flex--item{
+            width: $width;
+            margin-bottom: 18px;
+            display: flex;
+            flex-wrap: wrap;
+            .icon--right{       /// right ///
+              display: flex;
+              width: 5%;
+              @media#{$tablet }{
+                width:auto;
+              }
+              .icon{
+                width: 25px;
+                height: 25px;
+              }
+            }
+            .flex---content{    /// left ///
+              width:90%;
+              display: flex;
+              padding-right: 13px;
+              flex-wrap: wrap;
+              @media#{$mobile}{
+                width: 70%;
+              }
+              .title{
+                @include Web(18);
+                color:$white;
+                cursor: default;
+              }
+              .number{
+                color:$white;
+                @include Web(18);
+                cursor: default;
+                margin-right: 4px;
+              }
+            }
+          }
+        }
+
+      }
+      .flex---left{
+        display: flex;
+        width: 585px;
+        margin-top: 30px;
+        border-right: dashed 1px $white;
+        @media#{$tablet}{
+          width: 50%;
+        }
+        @media#{$Medium}{
+          width: $width;
+          margin-top: 10px;
+          border: none;
+        }
+        .flex--right{
+          display: flex;
+          flex-direction: column;
+          width: 528px;
+          margin-right: auto;
+          margin-left: auto;
+          padding-top: 115px;
+          @media#{$tablet}{
+            width: 95%;
+          }
+          @media#{$Medium}{
+            width: 85%;
+            padding-top: 0px;
+            margin:inherit;
+          }
+          @media#{$mobile}{
+            width: $width;
+          }
+          .flex--info{
+            width: $width;
+            display: flex;
+            @media#{$mobile}{
+              flex-direction: column;
+            }
+            .flex--icon{
+              width: 57px;
+              height: 57px;
+              display: flex;
+              background: #f7c300;
+              justify-content: center;
+              align-items: center;
+              .img--user{
+                width: 39px;
+                height: 39px;
+              }
+            }
+            .flex--message{
+              display: flex;
+              flex-direction: column;
+              width: $width;
+              padding-right: 11px;
+              padding-left: 11px;
+              @media#{$mobile}{
+                margin-top: 15px;
+              }
+              .text{
+                @include Web(18);
+                color: $white;
+              }
+              .title{
+                @include Web(14);
+                color:#fefefe;
+              }
+            }
+          }
+        }
+        .flex--input{
+          width: $width;
+          display: flex;
+          margin-top: 16px;
+          position: relative;
+          .send_mail{
+            border: none;
+            @include Medium(14);
+            color: #000000;
+            width: $width;
+            padding-right: 20px;
+            padding-left: 20px;
+            padding-top: 14px;
+            padding-bottom: 13px;
+            color: #000000;
+            transition: all 98ms ease-in;
+          }
+          .send_mail::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: #000000;
+          }
+          .send_mail::-moz-placeholder { /* Firefox 19+ */
+            color: #000000;
+          }
+          .send_mail:-ms-input-placeholder { /* IE 10+ */
+            color: #000000;
+          }
+          .send_mail:-moz-placeholder { /* Firefox 18- */
+            color: #000000;
+          }
+          .flex--submit{
+            width: 51px;
+            height: 49px;
+            position: absolute;
+            left: 1px;
+            top: 1px;
+            background: #f7c300;
+            cursor: default;
+            transition: all 125ms ease-in;
+            &:hover{
+                opacity: .75;
+                transition: all 125ms ease-in;
+            }
+            .submit{
+              width: $width;
+              height: $height;
+              border: none;
+              background: transparent;
+              cursor: pointer;
+              position: relative;
+              z-index: 2;
+              transition: all 125ms ease-in;
+            }
+            .icon--arrow{
+              width: 28px;
+              height: 28px;
+              position: absolute;
+              top: 10px;
+              right: 0px;
+              left: 0px;
+              margin-right: auto;
+              margin-left: auto;
+            }
+          }
+        }
+        .flex--social{
+          width: 412px;
+          display: flex;
+          padding-top: 45px;
+          margin-right: auto;
+          margin-left: auto;
+          justify-content: center;
+          @media#{$Medium}{
+            width: $width;
+          }
+          .flex--bg{
+            width: 50px;
+            height: 50px;
+            background: #f7c300;
+            display: flex;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+            margin-left: 20px;
+            .icon{
+              width: 30px;
+              height: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .flex--copy-right{
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    padding-top: 22px;
+    padding-bottom: 8px;
+    .title{
+      @include Web(18);
+      color: $white;
+      cursor: default;
+    }
+  }
+}

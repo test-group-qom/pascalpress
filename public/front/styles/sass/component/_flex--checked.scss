@@ -1,0 +1,148 @@
+.flex---parnet{
+  width: $width;
+  display: flex;
+  padding-top: 40px;
+  @media screen and ("max-width:900px"){
+    flex-direction: column;
+  }
+  .flex---right{
+    display: flex;
+    justify-content: flex-start;
+    flex-grow: 1;
+    width: 585px;
+    flex-wrap: wrap;
+    @media#{$desktop }{
+      width: 58%;
+    }
+    @media screen and ("max-width:900px"){
+      width: $width;
+    }
+    .flex---min{
+      display: flex;
+      width: $width;
+      flex-direction: column;
+      @media screen and ("max-width:500px"){
+        margin-bottom: 10px;
+      }
+      .info{
+        display: flex;
+        width: $width;
+        padding-right: 10px;
+        padding-left: 10px;
+        flex-wrap: wrap;
+        .flex--right{
+          display: flex;
+          flex-grow: 1;
+          @media screen and ("max-width:500px"){
+            width: $width;
+          }
+          .title{
+            @include Medium(18);
+            color: #20445e;
+            cursor: default;
+          }
+        }
+        .flex--left{
+          display: flex;
+          padding-top: 6px;
+          @media screen and ("max-width:500px"){
+            width: $width;
+            justify-content: flex-end;
+            margin-bottom: 5px;
+          }
+          .date{
+            @include Medium(12);
+            color: #315355;
+            margin-top: 1px;
+            margin-left: 15px;
+            cursor: default;
+          }
+          .flex--button{
+            width: 58px;
+            height: 22px;
+            text-align: center;
+            margin: inherit;
+            padding:0px;
+            cursor: pointer;
+            .button{
+              @include Web(12);
+              color: #26324a;
+              padding:0px;
+              background: #f0f1f2;
+            }
+          }
+          .flex--plus{
+            display: flex;
+            margin-right: 30px;
+            &:nth-child(4){
+              margin-right: 13px;
+              .plus{
+                background: #26324a;
+              }
+              .number{
+                color: #26324a;
+              }
+            }
+            .number{
+              @include Medium(12);
+              color: #f4605c;
+              margin-left: 8px;
+              margin-top: 2px;
+              cursor: default;
+            }
+            .plus{
+              width: 22px;
+              height: 22px;
+              display: flex;
+              background: #f4605c;
+              align-items: center;
+              cursor: pointer;
+              .icon--symbol{
+                width: 12px;
+                height: 12px;
+                margin-right: auto;
+                margin-left: auto;
+                fill:$white;
+              }
+            }
+          }
+        }
+      }
+    }
+    .flex--col{
+      display: flex;
+      height: 136px;
+      overflow: auto;
+      direction: ltr;
+      padding-right: 10px;
+      padding-left: 10px;
+      .desrcption{
+        @include Web(14);
+        color: #515151;
+        @extend .dir;
+        cursor: default;
+        @media screen and ("max-width:900px"){
+          width: $width;
+        }
+      }
+    }
+
+  }
+  .flex---left{
+    width: 585px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+    padding-top: 10px;
+    @media#{$desktop }{
+      width: 40%;
+    }
+    @media screen and ("max-width:900px"){
+      width: $width;
+      padding-right: 0px;
+    }
+    .flex--left{
+      display: flex;
+    }
+  }
+}

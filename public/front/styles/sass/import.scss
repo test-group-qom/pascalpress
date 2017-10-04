@@ -1,0 +1,36 @@
+/// component //
+@import "component/header";
+@import "component/nav-top";
+@import "component/flex--flickity";
+@import "component/min--logo";
+@import "component/flex---items";
+@import "component/flex--text";
+@import "component/flex--button";
+@import "component/flex--products";
+@import "component/flex---news";
+@import "component/footer";
+@import "component/flex--menu_down";
+@import "component/flex--dependents";
+@import "component/flex--inputs";
+@import "component/flex--checked";
+
+// Regulation //
+@import "Regulation/Mixin";
+@import "Regulation/media";
+@import "Regulation/font";
+@import "Regulation/Regulation";
+
+// index //
+@import "index/container";
+
+// news //
+@import "news/container";
+
+// single //
+@import "single/container";
+
+// product //
+@import "product/container";
+
+// contact //
+@import "contact/container";

@@ -1,0 +1,84 @@
+.flex---products{
+  width: $width;
+  margin-right: auto;
+  margin-left: auto;
+  height: 894px;
+  background: url("../img/cover.jpg")no-repeat;
+  display: flex;
+  flex-direction: column;
+  margin-top: 48px;
+  @extend .dir;
+  @media#{$desktop}{
+    background-size: $width $width;
+    height: auto;
+  }
+  .flex--text{
+    .text{
+      color: $white;
+      margin-top: 90px;
+    }
+    .flex--line{
+      margin-top: 5px;
+    }
+  }
+  .flex--product{
+    display: flex;
+    width: $width;
+    @media#{$desktop}{
+      padding-bottom: 30px;
+    }
+    .flex--pic{
+      display: flex;
+      width: $width;
+      flex-wrap: wrap;
+      .flex--right{
+        display: flex;
+        width: 372px;
+        height: 233px;
+        margin-left: 27px;
+        margin-bottom: 25px;
+        @media#{$desktop}{
+          width: 32%;
+          margin-left: 2%;
+        }
+        @media screen and ("max-width:700px"){
+          width: 48%;
+          margin-left: 4%;
+        }
+        @media screen and ("max-width:500px"){
+          width: $width;
+          margin-left: 0px;
+          height: auto;
+        }
+        &:nth-child(3n){
+          margin-left: 0px;
+          @media screen and ("max-width:700px"){
+            margin-left: 4%;
+          }
+          @media screen and ("max-width:500px"){
+            margin-left: 0px;
+          }
+        }
+        &:nth-child(2n){
+          @media screen and ("max-width:700px"){
+            margin-left: 0px;
+          }
+        }
+        .min--pic{
+          width: $width;
+          cursor: pointer;
+          .img--user{
+            width: $width;
+            height: $height;
+          }
+        }
+      }
+    }
+  }
+  .flex--button{
+    margin-top: 28px;
+  }
+  .flex--text{
+    margin-bottom:28px;
+  }
+}

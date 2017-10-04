@@ -1,0 +1,231 @@
+body {
+  direction: ltr;
+}
+footer .flex--parent .flex--wrap .flex---left{
+  border-left:dashed 1px #fff;
+  border-right: none;
+}
+footer .flex--parent .flex--wrap .flex---left .flex--input .flex--submit{
+  right: 0px;
+  left: inherit;
+}
+.flex--nav_top ul li:after{
+  display: none;
+}
+.flex--nav_top ul li:before{
+  content: "";
+  width: 1px;
+  border-left: solid 1px #2e2e2e;
+  margin-right: 14px;
+  height: 17px;
+}
+.flex--nav_top ul li:first-child::before{
+  height: 17px;
+  pointer-events: none;
+  opacity: 0;
+}
+.flex--nav_top ul li:last-of-type{
+  margin-left: 14px;
+}
+.flex---products .flex--product .flex--pic .flex--right:nth-child(3n){
+  margin-right: 0px;
+  margin-left: 0px;
+}
+.flex---products .flex--product .flex--pic .flex--right{
+  margin-right: 27px;
+  margin-left: 0px;
+}
+@media screen and (max-width:900px){
+    .flex--nav_top ul li::before{
+      display: none;
+    }
+}
+@media screen and (max-width:1338px){
+  .flex---products .flex--product .flex--pic .flex--right{
+    margin-right: 2%;
+    margin-left: 0px;
+  }
+  .flex---items .flex--parent .flex---wrap .flex--item{
+    margin-right: 2%;
+    margin-left: 0px;
+  }
+    .flex---items .flex--parent .flex---wrap .flex--item:nth-child(3n) {
+      margin-left: 0px;
+      margin-right: 0px;
+  }
+  .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .flex---items .flex--item{
+    margin-right: 1%;
+    margin-left: 0px;
+  }
+  .flex--about .flex---items .flex--parent .flex---wrap .flex--item {
+      margin-right: 2% !important;
+      margin-left: 0px !important;
+  }
+  .flex--about .flex---items .flex--parent .flex---wrap .flex--item:first-child{
+    margin-right: 0px !important;
+  }
+  .flex--about .flex---items .flex--parent .flex---wrap .flex--item:nth-child(3){
+    margin-right: 0px !important;
+  }
+}
+  @media screen and (max-width:700px){
+    .flex--product .flex--pic .flex--right:nth-child(2n) {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  .flex--nav_top ul li {
+      margin-left: 0px;
+  }
+  .flex--product .flex--pic .flex--right:nth-child(3n) {
+    margin-right: 2% !important;
+    margin-left: 0px;
+  }
+  .flex--nav_top ul li:last-of-type{
+    margin-left: 0px;
+  }
+}
+@media screen and (max-width:500px){
+    .flex---products .flex--product .flex--pic .flex--right {
+      margin-right: 0px;
+      margin-left: 0px;
+  }
+  .flex--product .flex--pic .flex--right:nth-child(3n) {
+    margin-right: 0% !important;
+    margin-left: 0px;
+  }
+}
+@media screen and (max-width:860px){
+    footer .flex--parent .flex--wrap .flex---left {
+      border-left: none;
+  }
+  .flex---items .flex--parent .flex---wrap .flex--item:nth-child(2n) {
+      margin-left: 0px;
+      margin-right: 0px;
+  }
+    .flex---items .flex--parent .flex---wrap .flex--item {
+      margin-right: 0px;
+      margin-left: 0px;
+  }
+  header.index .flex--nav-top .flex--wrap .flex---right{
+    flex-direction: row-reverse;
+  }
+  .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .flex---items .flex--item:nth-child(2n) {
+      margin-right: 0px;
+  }
+  .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .flex---items .flex--item:nth-child(3n){
+    margin-right: 0px;
+  }
+  .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption:nth-child(4){
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+.container.single .flex---about .flex--parent .flex--text .flex---left .flex--item .flex--right{
+  margin-right: 30px;
+  margin-left: inherit;
+}
+.container.single .flex---about .flex--parent .flex--text .flex---left .flex--item .flex--right .day{
+  margin-left: inherit;
+  margin-right: 30px;
+}
+.flex--dependent{
+  padding-left: 30px;
+  padding-right: inherit;
+}
+.flex--inputs .flex--input .input{
+  padding-left: 10px;
+  padding-right: 0px;
+}
+.flex--inputs .textarea{
+  padding-left: 10px;
+  padding-right: 0px;
+}
+.min--logo{
+  direction: rtl;
+}
+.flex--nav_top{
+  direction: rtl;
+}
+.flex--nav_top ul .flex--wrap{
+  direction: ltr;
+}
+.flex---parnet .flex---right .flex---min .info .flex--left .date{
+  margin-left: 0px;
+  margin-right: 15px;
+}
+.flex---parnet .flex---right .flex---min .info .flex--left .flex--plus{
+  margin-right: 0px;
+  margin-left: 30px;
+}
+.flex---items .flex--parent .flex---wrap .flex--item{
+  margin-left: 0px;
+  margin-right: 20px;
+}
+.flex---items .flex--parent .flex---wrap .flex--item:nth-child(3n) {
+    margin-right: 0px;
+}
+.flex---parnet .flex---right{
+  direction: ltr;
+}
+.flex---parnet .flex---right .flex---min .info .flex--left .flex--plus .number{
+  margin-left: 0px;
+  margin-right: 8px;
+}
+.flex---parnet .flex---right .flex---min .info .flex--left .flex--plus:nth-child(4) .number {
+  margin-left:0px;
+  margin-right: 8px;
+}
+.flex---parnet .flex---right .flex---min .info .flex--left .flex--plus:nth-child(4) {
+    margin-right: 13px;
+    margin-left: 13px;
+}
+footer .flex--parent .flex--wrap .flex---right .flex--right .flex--item .flex---content{
+  padding-right:0px;
+  padding-left: 13px;
+}
+.flex--menu_down .flex--menu ul li:after:first-child{
+  display: none;
+}
+.flex--menu_down .flex--menu ul li:after:last-of-type{
+  display:block;
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: #26324a;
+  position: absolute;
+  left: 0px;
+  top: 12px;
+}
+.container.single .flex---about .flex---single .flex---desrcption .flex--desrcption .flex--left .flex--icon{
+  left:inherit;
+  right:0px;
+}
+.container.single .flex---min .flex---slider .flex---left .flex--cols .flex--col .flex--left{
+  margin-right: 0px;
+  margin-left: 20px;
+  padding-right: 0px;
+  padding-left: 8px;
+}
+.container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption:nth-child(4){
+  padding-left: 35px;
+  padding-right: 10px;
+}
+.container.single .flex---about .flex---single .flex--info--item .flex--left{
+  margin-left:auto;
+  margin-right: inherit;
+}
+.container.single .flex---about .flex---single .flex--info--item .flex--left .desrcption{
+  text-align: justify;
+}
+.container.news .flex--parnet .flex--items .flex--text .flex---left .flex--select .arrow_down{
+  left: inherit;
+  right: 10px;
+}
+.container.news .flex--parnet .flex--items .flex--text .flex---left .flex--select .select{
+  padding-right: 0px;
+  padding-left: 13px;
+}
+.flex--about .flex---items .flex--parent .flex---wrap .flex--item {
+    margin-left: 10px;
+    margin-right: 0px;
+}

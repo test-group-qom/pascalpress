@@ -1,0 +1,140 @@
+<div class="flex--flickity" style="height: 501px;">
+          <div class="main-carousel">
+              <div class="carousel-cell">
+                <img src="styles/img/slider--img.jpg" class="img--user" alt="">
+                <div class="overlay">
+                    <div class="flex--parent">
+                      <div class="flex--center">
+                        <div class="flex--menu">
+                              <a ui-sref="master.single" href="#" >
+                                <div class="flex--text">
+                                        <h3 class="text">
+                                      عنوان اسلایدر
+                                          <div class="flex--line">
+                                              <div class="flex--right">      <!-- right -->
+                                                <span class="line"></span>
+                                              </div>
+                                              <div class="flex--left">          <!-- left -->
+                                                <span class="line"></span>
+                                              </div>
+                                          </div>
+                                        </h3>
+                                    </div>
+                                  <p class="descrption">
+                                      خلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در مورد
+                                  </p>
+                                </a>
+                                <div class="flex--button">
+                                    <a href="#" ui-sref="master.single">
+                                      <button type="button" class="button" name="button">  ادامه</button>
+                                    </a>
+                                </div>
+                            </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-cell">
+                <img src="styles/img/slider--img.jpg" class="img--user" alt="">
+                <div class="overlay">
+                    <div class="flex--parent">
+                      <div class="flex--center">
+                        <div class="flex--menu">
+                              <a ui-sref="master.single" href="#" >
+                                <div class="flex--text">
+                                        <h3 class="text">
+                                      عنوان اسلایدر
+                                          <div class="flex--line">
+                                              <div class="flex--right">      <!-- right -->
+                                                <span class="line"></span>
+                                              </div>
+                                              <div class="flex--left">          <!-- left -->
+                                                <span class="line"></span>
+                                              </div>
+                                          </div>
+                                        </h3>
+                                    </div>
+                                  <p class="descrption">
+                                      خلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در مورد
+                                  </p>
+                                </a>
+                                <div class="flex--button">
+                                    <a href="#" ui-sref="master.single">
+                                      <button type="button" class="button" name="button">ادامه</button>
+                                    </a>
+                                </div>
+                            </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-cell">
+                <img src="styles/img/slider--img.jpg" class="img--user" alt="">
+                <div class="overlay">
+                    <div class="flex--parent">
+                      <div class="flex--center">
+                        <div class="flex--menu">
+                              <a ui-sref="master.single" href="#" >
+                                <div class="flex--text">
+                                        <h3 class="text">
+                                      عنوان اسلایدر
+                                          <div class="flex--line">
+                                              <div class="flex--right">      <!-- right -->
+                                                <span class="line"></span>
+                                              </div>
+                                              <div class="flex--left">          <!-- left -->
+                                                <span class="line"></span>
+                                              </div>
+                                          </div>
+                                        </h3>
+                                    </div>
+                                  <p class="descrption">
+                                      خلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در مورد
+                                  </p>
+                                </a>
+                                <div class="flex--button">
+                                    <a href="#" ui-sref="master.single">
+                                      <button type="button" class="button" name="button">ادامه</button>
+                                    </a>
+                                </div>
+                            </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-cell">
+                <img src="styles/img/slider--img.jpg" class="img--user" alt="">
+                <div class="overlay">
+                    <div class="flex--parent">
+                      <div class="flex--center">
+                        <div class="flex--menu">
+                              <a ui-sref="master.single" href="#" >
+                                <div class="flex--text">
+                                        <h3 class="text">
+                                      عنوان اسلایدر
+                                          <div class="flex--line">
+                                              <div class="flex--right">      <!-- right -->
+                                                <span class="line"></span>
+                                              </div>
+                                              <div class="flex--left">          <!-- left -->
+                                                <span class="line"></span>
+                                              </div>
+                                          </div>
+                                        </h3>
+                                    </div>
+                                  <p class="descrption">
+                                      خلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در موردخلاصه مطلب در این قسمت نمایش داده خواهد شد در مورد
+                                  </p>
+                                </a>
+                                <div class="flex--button">
+                                    <a href="#" ui-sref="master.single">
+                                      <button type="button" class="button" name="button">ادامه</button>
+                                    </a>
+                                </div>
+                            </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+</div>

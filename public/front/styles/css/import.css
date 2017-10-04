@@ -1,0 +1,2007 @@
+@font-face {
+  font-family: 'IRANSansWeb';
+  src: url("../fonts/IRANSansWeb.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'IRANSansWeb_Bold';
+  src: url("../fonts/IRANSansWeb_Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'IRANSansWeb_Light';
+  src: url("../fonts/IRANSansWeb_Light.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'IRANSansWeb_Medium';
+  src: url("../fonts/IRANSansWeb_Medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'IRANSansWeb_UltraLight';
+  src: url("../fonts/IRANSansWeb_UltraLight.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'BYekan';
+  src: url("../fonts/BYekan.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+body {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-flow: column; }
+
+ul, li, h1, h2, h3, h4, h5, figure {
+  margin: 0px;
+  padding: 0px; }
+
+.wrapper {
+  width: 1170px;
+  margin: auto; }
+  @media (max-width: 1338px) {
+    .wrapper {
+      width: 95%; } }
+
+.dir, header.index, .flex--nav_top, .min--logo, .flex---items, .flex---products, .flex---news, footer, .flex---parnet .flex---right .flex--col .desrcption, .container, .container.news, .container.single, .container.single .flex---about .flex---single .flex--note, .contact {
+  box-sizing: border-box; }
+
+.right {
+  float: right; }
+
+.left {
+  float: left; }
+
+.align-center {
+  text-align: center; }
+
+*, *::after, *::before {
+  box-sizing: border-box;
+  outline: none; }
+
+.clear-fix {
+  clear: both; }
+
+a {
+  text-decoration: none; }
+
+li {
+  list-style: none; }
+
+img {
+  vertical-align: middle; }
+
+.golden {
+  fill: #f7c300 !important; }
+
+.min-humber {
+  display: none; }
+  @media screen and (max-width: 900px) {
+    .min-humber {
+      display: flex;
+      flex-grow: 1; } }
+  @media (max-width: 600px) {
+    .min-humber {
+      display: none; } }
+
+.nav-opener {
+  cursor: pointer; }
+
+.display--none {
+  pointer-events: none !important;
+  transition: all 120ms ease-in-out;
+  opacity: 0 !important;
+  height: 0; }
+
+#slider2 .flickity-prev-next-button {
+  display: none; }
+
+#slider1 .flickity-prev-next-button {
+  display: none; }
+
+.Repertory {
+  padding-top: 120px; }
+  @media screen and (max-width: 900px) {
+    .Repertory {
+      padding-top: 30px; } }
+  .Repertory .descrption {
+    margin-top: 0px; }
+
+#pic {
+  width: 100%;
+  height: 300px;
+  position: relative; }
+
+header.index {
+  width: 100%; }
+  header.index .flex--nav-top {
+    display: flex;
+    width: 100%;
+    background: #1b263e;
+    padding-bottom: 3px; }
+    header.index .flex--nav-top .flex--wrap {
+      display: flex; }
+      @media (max-width: 860px) {
+        header.index .flex--nav-top .flex--wrap {
+          flex-direction: column; } }
+      header.index .flex--nav-top .flex--wrap .flex---right {
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+        padding-top: 5px;
+        flex-wrap: wrap; }
+        @media (max-width: 860px) {
+          header.index .flex--nav-top .flex--wrap .flex---right {
+            width: 100%;
+            flex-grow: 0;
+            margin-bottom: 8px; } }
+        header.index .flex--nav-top .flex--wrap .flex---right .flex--date_time {
+          display: flex;
+          margin-left: 20px; }
+          @media (max-width: 430px) {
+            header.index .flex--nav-top .flex--wrap .flex---right .flex--date_time {
+              width: 100%;
+              margin-bottom: 8px;
+              justify-content: center; } }
+          header.index .flex--nav-top .flex--wrap .flex---right .flex--date_time .title {
+            font: 14px "IRANSansWeb";
+            color: #9ba0aa;
+            cursor: default;
+            margin-left: 5px; }
+        header.index .flex--nav-top .flex--wrap .flex---right .flex--language {
+          display: flex; }
+          @media (max-width: 430px) {
+            header.index .flex--nav-top .flex--wrap .flex---right .flex--language {
+              justify-content: center;
+              width: 100%;
+              margin-bottom: 8px; } }
+          header.index .flex--nav-top .flex--wrap .flex---right .flex--language .title {
+            font: 14px "IRANSansWeb";
+            margin-left: 15px;
+            cursor: pointer;
+            color: #d6d6d9;
+            transition: all 95ms ease-in-out; }
+            header.index .flex--nav-top .flex--wrap .flex---right .flex--language .title:hover {
+              color: #f7b400;
+              transition: all 95ms ease-in-out; }
+      header.index .flex--nav-top .flex--wrap .flex---left {
+        width: 345px;
+        display: flex;
+        justify-content: flex-end; }
+        @media (max-width: 860px) {
+          header.index .flex--nav-top .flex--wrap .flex---left {
+            width: 100%;
+            margin-bottom: 8px; } }
+        header.index .flex--nav-top .flex--wrap .flex---left .flex--right {
+          display: flex;
+          width: 100%; }
+          @media (max-width: 860px) {
+            header.index .flex--nav-top .flex--wrap .flex---left .flex--right {
+              width: 100%; } }
+          @media (max-width: 430px) {
+            header.index .flex--nav-top .flex--wrap .flex---left .flex--right {
+              width: 100%; } }
+          header.index .flex--nav-top .flex--wrap .flex---left .flex--right .input {
+            width: 100%;
+            font: 17px "IRANSansWeb";
+            color: #9ba0aa;
+            background: #26324a;
+            border: none;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-right: 15px;
+            padding-left: 15px; }
+        header.index .flex--nav-top .flex--wrap .flex---left .flex--left {
+          width: 60px;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          background: #f7c300;
+          text-align: center;
+          align-items: center; }
+          @media (max-width: 860px) {
+            header.index .flex--nav-top .flex--wrap .flex---left .flex--left {
+              height: auto; } }
+          header.index .flex--nav-top .flex--wrap .flex---left .flex--left .img--user {
+            width: 29px;
+            height: 29px; }
+
+.flex--nav_top {
+  display: flex;
+  position: absolute;
+  top: 186px;
+  z-index: 11;
+  left: 0px;
+  right: 0px;
+  margin-right: auto;
+  margin-left: auto; }
+  @media (max-width: 1338px) {
+    .flex--nav_top {
+      margin: inherit; } }
+  @media screen and (max-width: 900px) {
+    .flex--nav_top {
+      display: none;
+      right: 32px; } }
+  @media (max-width: 600px) {
+    .flex--nav_top {
+      display: block;
+      right: 0px;
+      position: relative;
+      top: 0px; } }
+  .flex--nav_top ul {
+    background: #f7c300;
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto; }
+    @media (max-width: 1338px) {
+      .flex--nav_top ul {
+        width: 100%;
+        margin: inherit; } }
+    @media screen and (max-width: 900px) {
+      .flex--nav_top ul {
+        width: 250px;
+        padding-right: 10px;
+        background: #ccc; } }
+    @media (max-width: 600px) {
+      .flex--nav_top ul {
+        width: 100%;
+        padding-right: 0px; } }
+    .flex--nav_top ul .flex--wrap {
+      display: flex;
+      margin-right: auto;
+      margin-left: auto;
+      justify-content: center; }
+      @media (max-width: 860px) {
+        .flex--nav_top ul .flex--wrap {
+          width: 100%;
+          margin-left: inherit; } }
+    .flex--nav_top ul li {
+      display: inline-flex;
+      margin-left: 14px;
+      align-items: center; }
+      @media screen and (max-width: 900px) {
+        .flex--nav_top ul li {
+          width: 100%; } }
+      @media (max-width: 600px) {
+        .flex--nav_top ul li {
+          text-align: center;
+          margin-left: 0px; } }
+      @media (max-width: 600px) {
+        .flex--nav_top ul li:last-of-type {
+          margin-bottom: 30px; } }
+      .flex--nav_top ul li:after {
+        content: "";
+        width: 1px;
+        border-left: solid 1px #2e2e2e;
+        margin-right: 14px;
+        height: 17px; }
+        @media screen and (max-width: 900px) {
+          .flex--nav_top ul li:after {
+            display: none; } }
+      .flex--nav_top ul li:last-of-type {
+        margin-left: 0px; }
+        .flex--nav_top ul li:last-of-type:after {
+          display: none;
+          margin-right: 0px; }
+    .flex--nav_top ul a {
+      width: 100%;
+      font: 17px "IRANSansWeb_Bold";
+      color: #191f42;
+      transition: 95ms ease-in-out;
+      padding-top: 35px;
+      padding-bottom: 25px; }
+      .flex--nav_top ul a:hover {
+        color: #fff;
+        transition: 95ms ease-in-out; }
+        @media screen and (max-width: 900px) {
+          .flex--nav_top ul a:hover {
+            color: #000; } }
+        .flex--nav_top ul a:hover .border--bottom {
+          opacity: 1;
+          transition: 95ms ease-in-out; }
+      @media screen and (max-width: 900px) {
+        .flex--nav_top ul a {
+          padding-bottom: 0px;
+          padding-top: 0px;
+          margin-top: 35px; } }
+      .flex--nav_top ul a .border--bottom {
+        width: 100%;
+        height: 9px;
+        background: #191f42;
+        display: block;
+        position: relative;
+        top: 26px;
+        opacity: 0;
+        transition: 95ms ease-in-out; }
+        @media screen and (max-width: 900px) {
+          .flex--nav_top ul a .border--bottom {
+            display: none; } }
+
+.flex--flickity {
+  width: 100%; }
+  .flex--flickity .main-carousel {
+    width: 100%; }
+    .flex--flickity .main-carousel .carousel-cell {
+      width: 100%;
+      margin-left: 27px; }
+      .flex--flickity .main-carousel .carousel-cell .img--user {
+        width: 100%;
+        height: 100%; }
+      .flex--flickity .main-carousel .carousel-cell .overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        display: flex;
+        flex-direction: column; }
+        .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          position: relative; }
+          .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent .flex--center {
+            width: 669px;
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+            margin-top: 50px;
+            position: absolute;
+            bottom: 80px;
+            right: 0px;
+            left: 0px; }
+            @media (max-width: 1200px) {
+              .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent .flex--center {
+                width: 70%;
+                bottom: 0px; } }
+            .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent .flex--center .title {
+              font: 29px "IRANSansWeb_Bold";
+              color: #fff; }
+              @media (max-width: 1200px) {
+                .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent .flex--center .title {
+                  font-size: 26px; } }
+            .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent .flex--center .descrption {
+              width: 100%;
+              font: 19px "IRANSansWeb";
+              color: #fff;
+              margin-bottom: 40px; }
+              @media (max-width: 1200px) {
+                .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent .flex--center .descrption {
+                  font-size: 16px; } }
+              @media screen and (max-width: 800px) {
+                .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent .flex--center .descrption {
+                  display: none; } }
+            @media screen and (max-width: 800px) {
+              .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent .flex--center .flex--text {
+                display: none; } }
+            @media screen and (max-width: 800px) {
+              .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent .flex--center .flex--menu {
+                margin-bottom: 20px; } }
+            @media screen and (max-width: 500px) {
+              .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent .flex--center .flex--button {
+                width: 100%; } }
+            @media screen and (max-width: 500px) {
+              .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent .flex--center .flex--button .button {
+                font-size: 18px; } }
+
+.min--logo {
+  width: 100%;
+  background: #26324a;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  padding-bottom: 50px; }
+  @media screen and (max-width: 900px) {
+    .min--logo {
+      justify-content: flex-end;
+      padding-left: 30px;
+      padding-right: 30px; } }
+  @media (max-width: 600px) {
+    .min--logo {
+      padding-left: 0px;
+      padding-right: 0px;
+      justify-content: center; } }
+  .min--logo .img--logo {
+    width: 220px;
+    height: 39px; }
+
+.flex---items {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap; }
+  .flex---items .flex--parent {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-flow: column; }
+    .flex---items .flex--parent .flex---wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      width: 100%; }
+      .flex---items .flex--parent .flex---wrap .flex--item {
+        width: 376px;
+        display: flex;
+        flex-flow: column;
+        transition: all 98ms ease-in-out;
+        margin-left: 20px;
+        margin-bottom: 50px; }
+        @media (max-width: 1338px) {
+          .flex---items .flex--parent .flex---wrap .flex--item {
+            width: 32%;
+            margin-left: 2%; } }
+        @media (max-width: 860px) {
+          .flex---items .flex--parent .flex---wrap .flex--item {
+            width: 49%; } }
+        @media screen and (max-width: 500px) {
+          .flex---items .flex--parent .flex---wrap .flex--item {
+            width: 100%;
+            margin-left: 0px; } }
+        .flex---items .flex--parent .flex---wrap .flex--item:nth-child(3n) {
+          margin-left: 0px; }
+          @media (max-width: 860px) {
+            .flex---items .flex--parent .flex---wrap .flex--item:nth-child(3n) {
+              margin-left: 2%; } }
+        @media (max-width: 860px) {
+          .flex---items .flex--parent .flex---wrap .flex--item:nth-child(2n) {
+            margin-left: 0px; } }
+        .flex---items .flex--parent .flex---wrap .flex--item:hover {
+          transition: all 98ms ease-in-out; }
+          .flex---items .flex--parent .flex---wrap .flex--item:hover .flex--img {
+            transition: all 98ms ease-in-out;
+            border-color: #f7c300; }
+          .flex---items .flex--parent .flex---wrap .flex--item:hover .flex--content .title {
+            transition: all 98ms ease-in-out;
+            color: #f79100; }
+          .flex---items .flex--parent .flex---wrap .flex--item:hover .flex--content .descrption {
+            color: #3b4771;
+            transition: all 98ms ease-in-out; }
+        .flex---items .flex--parent .flex---wrap .flex--item .flex--img {
+          display: flex;
+          height: 100%;
+          border: solid 10px #fff;
+          transition: all 98ms ease-in-out;
+          height: 248px; }
+          @media screen and (max-width: 500px) {
+            .flex---items .flex--parent .flex---wrap .flex--item .flex--img {
+              height: auto; } }
+          .flex---items .flex--parent .flex---wrap .flex--item .flex--img .img--content {
+            width: 100%;
+            height: 100%; }
+        .flex---items .flex--parent .flex---wrap .flex--item .flex--content {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          padding-top: 25px;
+          padding-right: 8px;
+          padding-left: 8px;
+          transition: all 98ms ease-in-out; }
+          .flex---items .flex--parent .flex---wrap .flex--item .flex--content .title {
+            font: 20px "IRANSansWeb_Bold";
+            color: #000000;
+            margin-bottom: 8px;
+            transition: all 98ms ease-in-out; }
+            @media (max-width: 600px) {
+              .flex---items .flex--parent .flex---wrap .flex--item .flex--content .title {
+                font-size: 18px; } }
+          .flex---items .flex--parent .flex---wrap .flex--item .flex--content .descrption {
+            font: 18px "IRANSansWeb";
+            color: #000000;
+            width: 100%;
+            transition: all 98ms ease-in;
+            margin-bottom: 0px;
+            padding-bottom: 0px; }
+            @media (max-width: 600px) {
+              .flex---items .flex--parent .flex---wrap .flex--item .flex--content .descrption {
+                font-size: 16px; } }
+
+.flex--text {
+  text-align: center;
+  width: 200px;
+  margin-right: auto;
+  margin-left: auto; }
+  .flex--text .text {
+    font: 29px "IRANSansWeb_Bold";
+    color: #000000;
+    display: block;
+    cursor: default;
+    margin-top: 50px;
+    margin-bottom: 50px; }
+  .flex--text .flex--line {
+    display: flex;
+    justify-content: center; }
+    .flex--text .flex--line .flex--right {
+      display: flex;
+      width: 22%;
+      margin-left: 5px; }
+      .flex--text .flex--line .flex--right .line {
+        width: 100%;
+        background: #f7c300;
+        height: 5px;
+        display: block; }
+    .flex--text .flex--line .flex--left {
+      display: flex;
+      width: 22%; }
+      .flex--text .flex--line .flex--left .line {
+        width: 100%;
+        background: #cdcdcd;
+        height: 5px;
+        display: block; }
+
+.flex--button {
+  width: 142px;
+  margin-right: auto;
+  margin-left: auto; }
+  .flex--button .button {
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 9px;
+    text-align: center;
+    font: 21px "IRANSansWeb";
+    background: #f7c300;
+    color: #191f42;
+    border: none;
+    cursor: pointer;
+    transition: all 120ms ease-in; }
+    .flex--button .button:hover, .flex--button .button:active {
+      background: #f2aa0e;
+      transition: all 120ms ease-in; }
+
+.flex---products {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  height: 894px;
+  background: url("../img/cover.jpg") no-repeat;
+  display: flex;
+  flex-direction: column;
+  margin-top: 48px; }
+  @media (max-width: 1338px) {
+    .flex---products {
+      background-size: 100% 100%;
+      height: auto; } }
+  .flex---products .flex--text .text {
+    color: #fff;
+    margin-top: 90px; }
+  .flex---products .flex--text .flex--line {
+    margin-top: 5px; }
+  .flex---products .flex--product {
+    display: flex;
+    width: 100%; }
+    @media (max-width: 1338px) {
+      .flex---products .flex--product {
+        padding-bottom: 30px; } }
+    .flex---products .flex--product .flex--pic {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap; }
+      .flex---products .flex--product .flex--pic .flex--right {
+        display: flex;
+        width: 372px;
+        height: 233px;
+        margin-left: 27px;
+        margin-bottom: 25px; }
+        @media (max-width: 1338px) {
+          .flex---products .flex--product .flex--pic .flex--right {
+            width: 32%;
+            margin-left: 2%; } }
+        @media screen and (max-width: 700px) {
+          .flex---products .flex--product .flex--pic .flex--right {
+            width: 48%;
+            margin-left: 4%; } }
+        @media screen and (max-width: 500px) {
+          .flex---products .flex--product .flex--pic .flex--right {
+            width: 100%;
+            margin-left: 0px;
+            height: auto; } }
+        .flex---products .flex--product .flex--pic .flex--right:nth-child(3n) {
+          margin-left: 0px; }
+          @media screen and (max-width: 700px) {
+            .flex---products .flex--product .flex--pic .flex--right:nth-child(3n) {
+              margin-left: 4%; } }
+          @media screen and (max-width: 500px) {
+            .flex---products .flex--product .flex--pic .flex--right:nth-child(3n) {
+              margin-left: 0px; } }
+        @media screen and (max-width: 700px) {
+          .flex---products .flex--product .flex--pic .flex--right:nth-child(2n) {
+            margin-left: 0px; } }
+        .flex---products .flex--product .flex--pic .flex--right .min--pic {
+          width: 100%;
+          cursor: pointer; }
+          .flex---products .flex--product .flex--pic .flex--right .min--pic .img--user {
+            width: 100%;
+            height: 100%; }
+  .flex---products .flex--button {
+    margin-top: 28px; }
+  .flex---products .flex--text {
+    margin-bottom: 28px; }
+
+.flex---news {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+  .flex---news .flex--parent {
+    display: flex; }
+    @media screen and (max-width: 700px) {
+      .flex---news .flex--parent {
+        width: 100%;
+        flex-direction: column; } }
+    .flex---news .flex--parent .flex---right {
+      display: flex;
+      flex-direction: column;
+      margin-top: 187px;
+      width: 539px; }
+      @media screen and (max-width: 1100px) {
+        .flex---news .flex--parent .flex---right {
+          width: 53%; } }
+      @media screen and (max-width: 700px) {
+        .flex---news .flex--parent .flex---right {
+          width: 75%;
+          margin-top: 60px; } }
+      @media screen and (max-width: 500px) {
+        .flex---news .flex--parent .flex---right {
+          width: 100%; } }
+      .flex---news .flex--parent .flex---right .flex--right {
+        display: flex;
+        width: 384px;
+        justify-content: flex-start;
+        position: relative;
+        flex-flow: column;
+        border-right: solid 1px #e8e8e8;
+        border-left: solid 1px #e8e8e8;
+        border-bottom: solid 1px #e8e8e8;
+        padding-bottom: 20px;
+        transition: all 98ms ease-in-out; }
+        .flex---news .flex--parent .flex---right .flex--right:hover {
+          transition: all 98ms ease-in-out; }
+          .flex---news .flex--parent .flex---right .flex--right:hover .flex--info .title {
+            color: #f79100;
+            transition: all 98ms ease-in-out; }
+          .flex---news .flex--parent .flex---right .flex--right:hover .flex--info .descrption {
+            color: #3b4771;
+            transition: all 98ms ease-in-out; }
+        @media screen and (max-width: 1100px) {
+          .flex---news .flex--parent .flex---right .flex--right {
+            width: 85%; } }
+        @media screen and (max-width: 500px) {
+          .flex---news .flex--parent .flex---right .flex--right {
+            width: 100%; } }
+        .flex---news .flex--parent .flex---right .flex--right .flex--img {
+          width: 100%;
+          height: 268px; }
+          @media screen and (max-width: 500px) {
+            .flex---news .flex--parent .flex---right .flex--right .flex--img {
+              height: auto; } }
+          .flex---news .flex--parent .flex---right .flex--right .flex--img .img--user {
+            width: 100%;
+            height: 100%; }
+        .flex---news .flex--parent .flex---right .flex--right .flex--status {
+          height: 71px;
+          width: 68px;
+          background: #f7c300;
+          justify-content: center;
+          text-align: center;
+          position: absolute;
+          top: 0px;
+          right: 10px;
+          flex-direction: column;
+          display: flex;
+          cursor: default;
+          align-items: center; }
+          .flex---news .flex--parent .flex---right .flex--right .flex--status .flex--time {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            margin-top: 5px; }
+            .flex---news .flex--parent .flex---right .flex--right .flex--status .flex--time .time {
+              font: 24px "IRANSansWeb_Bold";
+              color: #000000; }
+          .flex---news .flex--parent .flex---right .flex--right .flex--status .flex--day {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            top: -12px;
+            position: relative; }
+            .flex---news .flex--parent .flex---right .flex--right .flex--status .flex--day .day {
+              font: 20px "IRANSansWeb_Bold";
+              color: #000000; }
+        .flex---news .flex--parent .flex---right .flex--right .flex--info {
+          width: 350px;
+          padding-top: 13px;
+          margin-right: auto;
+          margin-left: auto; }
+          @media screen and (max-width: 1100px) {
+            .flex---news .flex--parent .flex---right .flex--right .flex--info {
+              width: 90%; } }
+          @media screen and (max-width: 500px) {
+            .flex---news .flex--parent .flex---right .flex--right .flex--info {
+              padding-top: 23px; } }
+          .flex---news .flex--parent .flex---right .flex--right .flex--info .title {
+            font: 20px "IRANSansWeb_Bold";
+            color: #000000;
+            transition: all 98ms ease-in-out; }
+            @media screen and (max-width: 700px) {
+              .flex---news .flex--parent .flex---right .flex--right .flex--info .title {
+                font-size: 19px; } }
+          .flex---news .flex--parent .flex---right .flex--right .flex--info .descrption {
+            font: 18px "IRANSansWeb";
+            color: #000000;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            transition: all 98ms ease-in-out; }
+            @media screen and (max-width: 1100px) {
+              .flex---news .flex--parent .flex---right .flex--right .flex--info .descrption {
+                font-size: 16px; } }
+    .flex---news .flex--parent .flex---left {
+      width: 632px;
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 68px; }
+      @media screen and (max-width: 1100px) {
+        .flex---news .flex--parent .flex---left {
+          width: 63%; } }
+      @media screen and (max-width: 700px) {
+        .flex---news .flex--parent .flex---left {
+          width: 85%;
+          padding-top: 40px; } }
+      @media screen and (max-width: 500px) {
+        .flex---news .flex--parent .flex---left {
+          width: 100%; } }
+      .flex---news .flex--parent .flex---left .flex--about {
+        display: flex;
+        flex-flow: column;
+        width: 100%; }
+        .flex---news .flex--parent .flex---left .flex--about .text {
+          margin-top: 0px;
+          color: #1f2847; }
+        .flex---news .flex--parent .flex---left .flex--about .flex--text {
+          margin: inherit; }
+          @media (max-width: 430px) {
+            .flex---news .flex--parent .flex---left .flex--about .flex--text {
+              margin-right: auto;
+              margin-left: auto; } }
+        .flex---news .flex--parent .flex---left .flex--about .flex--news {
+          width: 90%;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          display: flex;
+          flex-wrap: wrap;
+          position: relative; }
+          @media screen and (max-width: 1100px) {
+            .flex---news .flex--parent .flex---left .flex--about .flex--news {
+              width: 100%; } }
+          .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group {
+            display: flex;
+            flex-direction: column; }
+            .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item {
+              display: flex;
+              align-items: flex-start;
+              margin-bottom: 15px; }
+              @media (max-width: 430px) {
+                .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item {
+                  flex-direction: column;
+                  margin-bottom: 60px; } }
+              .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item:last-of-type {
+                margin-bottom: 0px; }
+              .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item .flex--right {
+                display: flex;
+                width: 168px;
+                height: 126px; }
+                @media (max-width: 430px) {
+                  .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item .flex--right {
+                    width: 100%;
+                    height: auto; } }
+                .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item .flex--right .flex--img {
+                  display: flex;
+                  width: 100%;
+                  height: 100%; }
+                  .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item .flex--right .flex--img .img--user {
+                    width: 100%;
+                    height: 100%; }
+              .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item .flex--left {
+                display: flex;
+                width: 435px;
+                flex-direction: column;
+                position: relative;
+                margin-top: 6px; }
+                @media screen and (max-width: 1100px) {
+                  .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item .flex--left {
+                    width: 100%; } }
+                @media (max-width: 430px) {
+                  .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item .flex--left {
+                    margin-top: 20px; } }
+                .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item .flex--left .flex--padding {
+                  display: flex;
+                  flex-flow: column;
+                  width: 86%;
+                  margin-right: auto;
+                  margin-left: auto;
+                  transition: all 98ms ease-in-out; }
+                  .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item .flex--left .flex--padding:hover {
+                    transition: all 98ms ease-in-out; }
+                    .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item .flex--left .flex--padding:hover .title {
+                      color: #f79100;
+                      transition: all 98ms ease-in-out; }
+                    .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item .flex--left .flex--padding:hover .descrption {
+                      color: #3b4771;
+                      transition: all 98ms ease-in-out; }
+                  .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item .flex--left .flex--padding .title {
+                    font: 18px "IRANSansWeb_Bold";
+                    color: #000000;
+                    transition: all 98ms ease-in-out; }
+                  .flex---news .flex--parent .flex---left .flex--about .flex--news .flex--group .flex--item .flex--left .flex--padding .descrption {
+                    width: 100%;
+                    font: 16px "IRANSansWeb";
+                    margin-top: 10px;
+                    color: black;
+                    margin-bottom: 0px;
+                    transition: all 98ms ease-in-out; }
+        .flex---news .flex--parent .flex---left .flex--about .flex--button {
+          position: absolute;
+          bottom: 0px;
+          right: 0px;
+          width: 100%; }
+
+footer {
+  width: 100%;
+  background: #1b263e;
+  padding-bottom: 20px; }
+  footer .flex--parent {
+    display: flex;
+    border-bottom: solid 1px #ccc;
+    width: 100%;
+    padding-bottom: 20px; }
+    footer .flex--parent .flex--wrap {
+      display: flex; }
+      @media (max-width: 860px) {
+        footer .flex--parent .flex--wrap {
+          flex-direction: column; } }
+      footer .flex--parent .flex--wrap .flex---right {
+        display: flex;
+        width: 585px;
+        justify-content: center;
+        flex-flow: column; }
+        @media (max-width: 1200px) {
+          footer .flex--parent .flex--wrap .flex---right {
+            width: 50%; } }
+        @media (max-width: 860px) {
+          footer .flex--parent .flex--wrap .flex---right {
+            width: 100%; } }
+        @media (max-width: 430px) {
+          footer .flex--parent .flex--wrap .flex---right {
+            width: 100%; } }
+        footer .flex--parent .flex--wrap .flex---right .min--logo {
+          background: none;
+          margin-right: auto;
+          margin-left: auto; }
+          @media screen and (max-width: 900px) {
+            footer .flex--parent .flex--wrap .flex---right .min--logo {
+              justify-content: center; } }
+          @media (max-width: 860px) {
+            footer .flex--parent .flex--wrap .flex---right .min--logo {
+              justify-content: center; } }
+        footer .flex--parent .flex--wrap .flex---right .flex--right {
+          display: flex;
+          flex-flow: column; }
+          @media (max-width: 1200px) {
+            footer .flex--parent .flex--wrap .flex---right .flex--right {
+              width: 100%;
+              padding-left: 20px; } }
+          footer .flex--parent .flex--wrap .flex---right .flex--right .flex--item {
+            width: 100%;
+            margin-bottom: 18px;
+            display: flex;
+            flex-wrap: wrap; }
+            footer .flex--parent .flex--wrap .flex---right .flex--right .flex--item .icon--right {
+              display: flex;
+              width: 5%; }
+              @media (max-width: 1200px) {
+                footer .flex--parent .flex--wrap .flex---right .flex--right .flex--item .icon--right {
+                  width: auto; } }
+              footer .flex--parent .flex--wrap .flex---right .flex--right .flex--item .icon--right .icon {
+                width: 25px;
+                height: 25px; }
+            footer .flex--parent .flex--wrap .flex---right .flex--right .flex--item .flex---content {
+              width: 90%;
+              display: flex;
+              padding-right: 13px;
+              flex-wrap: wrap; }
+              @media (max-width: 430px) {
+                footer .flex--parent .flex--wrap .flex---right .flex--right .flex--item .flex---content {
+                  width: 70%; } }
+              footer .flex--parent .flex--wrap .flex---right .flex--right .flex--item .flex---content .title {
+                font: 18px "IRANSansWeb";
+                color: #fff;
+                cursor: default; }
+              footer .flex--parent .flex--wrap .flex---right .flex--right .flex--item .flex---content .number {
+                color: #fff;
+                font: 18px "IRANSansWeb";
+                cursor: default;
+                margin-right: 4px; }
+      footer .flex--parent .flex--wrap .flex---left {
+        display: flex;
+        width: 585px;
+        margin-top: 30px;
+        border-right: dashed 1px #fff; }
+        @media (max-width: 1200px) {
+          footer .flex--parent .flex--wrap .flex---left {
+            width: 50%; } }
+        @media (max-width: 860px) {
+          footer .flex--parent .flex--wrap .flex---left {
+            width: 100%;
+            margin-top: 10px;
+            border: none; } }
+        footer .flex--parent .flex--wrap .flex---left .flex--right {
+          display: flex;
+          flex-direction: column;
+          width: 528px;
+          margin-right: auto;
+          margin-left: auto;
+          padding-top: 115px; }
+          @media (max-width: 1200px) {
+            footer .flex--parent .flex--wrap .flex---left .flex--right {
+              width: 95%; } }
+          @media (max-width: 860px) {
+            footer .flex--parent .flex--wrap .flex---left .flex--right {
+              width: 85%;
+              padding-top: 0px;
+              margin: inherit; } }
+          @media (max-width: 430px) {
+            footer .flex--parent .flex--wrap .flex---left .flex--right {
+              width: 100%; } }
+          footer .flex--parent .flex--wrap .flex---left .flex--right .flex--info {
+            width: 100%;
+            display: flex; }
+            @media (max-width: 430px) {
+              footer .flex--parent .flex--wrap .flex---left .flex--right .flex--info {
+                flex-direction: column; } }
+            footer .flex--parent .flex--wrap .flex---left .flex--right .flex--info .flex--icon {
+              width: 57px;
+              height: 57px;
+              display: flex;
+              background: #f7c300;
+              justify-content: center;
+              align-items: center; }
+              footer .flex--parent .flex--wrap .flex---left .flex--right .flex--info .flex--icon .img--user {
+                width: 39px;
+                height: 39px; }
+            footer .flex--parent .flex--wrap .flex---left .flex--right .flex--info .flex--message {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              padding-right: 11px;
+              padding-left: 11px; }
+              @media (max-width: 430px) {
+                footer .flex--parent .flex--wrap .flex---left .flex--right .flex--info .flex--message {
+                  margin-top: 15px; } }
+              footer .flex--parent .flex--wrap .flex---left .flex--right .flex--info .flex--message .text {
+                font: 18px "IRANSansWeb";
+                color: #fff; }
+              footer .flex--parent .flex--wrap .flex---left .flex--right .flex--info .flex--message .title {
+                font: 14px "IRANSansWeb";
+                color: #fefefe; }
+        footer .flex--parent .flex--wrap .flex---left .flex--input {
+          width: 100%;
+          display: flex;
+          margin-top: 16px;
+          position: relative; }
+          footer .flex--parent .flex--wrap .flex---left .flex--input .send_mail {
+            border: none;
+            font: 14px "IRANSansWeb_Medium";
+            color: #000000;
+            width: 100%;
+            padding-right: 20px;
+            padding-left: 20px;
+            padding-top: 14px;
+            padding-bottom: 13px;
+            color: #000000;
+            transition: all 98ms ease-in; }
+          footer .flex--parent .flex--wrap .flex---left .flex--input .send_mail::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
+            color: #000000; }
+          footer .flex--parent .flex--wrap .flex---left .flex--input .send_mail::-moz-placeholder {
+            /* Firefox 19+ */
+            color: #000000; }
+          footer .flex--parent .flex--wrap .flex---left .flex--input .send_mail:-ms-input-placeholder {
+            /* IE 10+ */
+            color: #000000; }
+          footer .flex--parent .flex--wrap .flex---left .flex--input .send_mail:-moz-placeholder {
+            /* Firefox 18- */
+            color: #000000; }
+          footer .flex--parent .flex--wrap .flex---left .flex--input .flex--submit {
+            width: 51px;
+            height: 49px;
+            position: absolute;
+            left: 1px;
+            top: 1px;
+            background: #f7c300;
+            cursor: default;
+            transition: all 125ms ease-in; }
+            footer .flex--parent .flex--wrap .flex---left .flex--input .flex--submit:hover {
+              opacity: .75;
+              transition: all 125ms ease-in; }
+            footer .flex--parent .flex--wrap .flex---left .flex--input .flex--submit .submit {
+              width: 100%;
+              height: 100%;
+              border: none;
+              background: transparent;
+              cursor: pointer;
+              position: relative;
+              z-index: 2;
+              transition: all 125ms ease-in; }
+            footer .flex--parent .flex--wrap .flex---left .flex--input .flex--submit .icon--arrow {
+              width: 28px;
+              height: 28px;
+              position: absolute;
+              top: 10px;
+              right: 0px;
+              left: 0px;
+              margin-right: auto;
+              margin-left: auto; }
+        footer .flex--parent .flex--wrap .flex---left .flex--social {
+          width: 412px;
+          display: flex;
+          padding-top: 45px;
+          margin-right: auto;
+          margin-left: auto;
+          justify-content: center; }
+          @media (max-width: 860px) {
+            footer .flex--parent .flex--wrap .flex---left .flex--social {
+              width: 100%; } }
+          footer .flex--parent .flex--wrap .flex---left .flex--social .flex--bg {
+            width: 50px;
+            height: 50px;
+            background: #f7c300;
+            display: flex;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+            margin-left: 20px; }
+            footer .flex--parent .flex--wrap .flex---left .flex--social .flex--bg .icon {
+              width: 30px;
+              height: 30px; }
+  footer .flex--copy-right {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    padding-top: 22px;
+    padding-bottom: 8px; }
+    footer .flex--copy-right .title {
+      font: 18px "IRANSansWeb";
+      color: #fff;
+      cursor: default; }
+
+.flex--menu_down {
+  width: 100%;
+  display: flex;
+  background: #f7c300;
+  padding-top: 20px;
+  padding-bottom: 21px; }
+  .flex--menu_down .flex--menu {
+    width: 100%;
+    display: flex; }
+    .flex--menu_down .flex--menu ul {
+      display: flex; }
+      .flex--menu_down .flex--menu ul li {
+        display: inline-flex;
+        transition: all 120ms ease-in;
+        position: relative;
+        margin-left: 10px;
+        padding-left: 20px; }
+        .flex--menu_down .flex--menu ul li:after {
+          content: "";
+          width: 7px;
+          height: 7px;
+          background: #26324a;
+          position: absolute;
+          left: 0px;
+          top: 12px; }
+        .flex--menu_down .flex--menu ul li:nth-child(2) a {
+          padding-right: 0px; }
+        .flex--menu_down .flex--menu ul li:last-of-type {
+          margin-left: 0px; }
+          .flex--menu_down .flex--menu ul li:last-of-type:after {
+            display: none; }
+      .flex--menu_down .flex--menu ul a {
+        display: block;
+        font: 18px "IRANSansWeb";
+        color: #191f42; }
+
+.flex--dependent {
+  display: flex;
+  width: 100%;
+  background: #26324a;
+  padding-top: 18px;
+  padding-bottom: 19px;
+  padding-right: 35px; }
+  .flex--dependent .text {
+    font: 18px "IRANSansWeb_Medium";
+    color: #fff;
+    cursor: default; }
+
+.flex--inputs {
+  display: flex;
+  width: 100%;
+  flex-direction: column; }
+  .flex--inputs .flex--input {
+    display: flex;
+    width: 373px;
+    margin-bottom: 10px;
+    transition: all 95ms ease-in; }
+    @media (max-width: 1200px) {
+      .flex--inputs .flex--input {
+        width: 100%; } }
+    .flex--inputs .flex--input .input {
+      width: 100%;
+      font: 14px "IRANSansWeb_Medium";
+      color: #617b7c;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      background: #f0f1f2;
+      border: solid 1px #d3d3d3;
+      color: #617b7c;
+      transition: all 95ms ease-in;
+      padding-right: 10px; }
+      .flex--inputs .flex--input .input:focus {
+        transition: all 95ms ease-in;
+        border-color: #2490ce; }
+      .flex--inputs .flex--input .input::-webkit-input-placeholder {
+        color: #617b7c; }
+      .flex--inputs .flex--input .input:-moz-placeholder {
+        color: #617b7c; }
+      .flex--inputs .flex--input .input::-moz-placeholder {
+        color: #617b7c; }
+      .flex--inputs .flex--input .input:-ms-input-placeholder {
+        color: #617b7c; }
+  .flex--inputs .textarea {
+    width: 100%;
+    font: 14px "IRANSansWeb_Medium";
+    background: #f0f1f2;
+    border: solid 1px #d3d3d3;
+    margin-top: 5px;
+    padding-right: 10px;
+    padding-top: 10px;
+    background: #f0f1f2;
+    transition: all 95ms ease-in; }
+    .flex--inputs .textarea:focus {
+      transition: all 95ms ease-in;
+      border-color: #2490ce; }
+  .flex--inputs .submit {
+    width: 106px;
+    height: 35px;
+    background: #2e2e2e;
+    text-align: center;
+    font: 13px "IRANSansWeb_Bold";
+    color: #fff;
+    margin-top: 8px;
+    border: none;
+    cursor: pointer;
+    background: #26324a;
+    transition: all 95ms ease-in-out; }
+    @media (max-width: 430px) {
+      .flex--inputs .submit {
+        width: 60%; } }
+    .flex--inputs .submit:hover {
+      background: #f7b400;
+      transition: all 95ms ease-in-out; }
+  .flex--inputs .textarea::-webkit-input-placeholder {
+    color: #617b7c; }
+  .flex--inputs .textarea:-moz-placeholder {
+    color: #617b7c; }
+  .flex--inputs .textarea::-moz-placeholder {
+    color: #617b7c; }
+  .flex--inputs .textarea:-ms-input-placeholder {
+    color: #617b7c; }
+
+.flex---parnet {
+  width: 100%;
+  display: flex;
+  padding-top: 40px; }
+  @media screen and (max-width: 900px) {
+    .flex---parnet {
+      flex-direction: column; } }
+  .flex---parnet .flex---right {
+    display: flex;
+    justify-content: flex-start;
+    flex-grow: 1;
+    width: 585px;
+    flex-wrap: wrap; }
+    @media (max-width: 1338px) {
+      .flex---parnet .flex---right {
+        width: 58%; } }
+    @media screen and (max-width: 900px) {
+      .flex---parnet .flex---right {
+        width: 100%; } }
+    .flex---parnet .flex---right .flex---min {
+      display: flex;
+      width: 100%;
+      flex-direction: column; }
+      @media screen and (max-width: 500px) {
+        .flex---parnet .flex---right .flex---min {
+          margin-bottom: 10px; } }
+      .flex---parnet .flex---right .flex---min .info {
+        display: flex;
+        width: 100%;
+        padding-right: 10px;
+        padding-left: 10px;
+        flex-wrap: wrap; }
+        .flex---parnet .flex---right .flex---min .info .flex--right {
+          display: flex;
+          flex-grow: 1; }
+          @media screen and (max-width: 500px) {
+            .flex---parnet .flex---right .flex---min .info .flex--right {
+              width: 100%; } }
+          .flex---parnet .flex---right .flex---min .info .flex--right .title {
+            font: 18px "IRANSansWeb_Medium";
+            color: #20445e;
+            cursor: default; }
+        .flex---parnet .flex---right .flex---min .info .flex--left {
+          display: flex;
+          padding-top: 6px; }
+          @media screen and (max-width: 500px) {
+            .flex---parnet .flex---right .flex---min .info .flex--left {
+              width: 100%;
+              justify-content: flex-end;
+              margin-bottom: 5px; } }
+          .flex---parnet .flex---right .flex---min .info .flex--left .date {
+            font: 12px "IRANSansWeb_Medium";
+            color: #315355;
+            margin-top: 1px;
+            margin-left: 15px;
+            cursor: default; }
+          .flex---parnet .flex---right .flex---min .info .flex--left .flex--button {
+            width: 58px;
+            height: 22px;
+            text-align: center;
+            margin: inherit;
+            padding: 0px;
+            cursor: pointer; }
+            .flex---parnet .flex---right .flex---min .info .flex--left .flex--button .button {
+              font: 12px "IRANSansWeb";
+              color: #26324a;
+              padding: 0px;
+              background: #f0f1f2; }
+          .flex---parnet .flex---right .flex---min .info .flex--left .flex--plus {
+            display: flex;
+            margin-right: 30px; }
+            .flex---parnet .flex---right .flex---min .info .flex--left .flex--plus:nth-child(4) {
+              margin-right: 13px; }
+              .flex---parnet .flex---right .flex---min .info .flex--left .flex--plus:nth-child(4) .plus {
+                background: #26324a; }
+              .flex---parnet .flex---right .flex---min .info .flex--left .flex--plus:nth-child(4) .number {
+                color: #26324a; }
+            .flex---parnet .flex---right .flex---min .info .flex--left .flex--plus .number {
+              font: 12px "IRANSansWeb_Medium";
+              color: #f4605c;
+              margin-left: 8px;
+              margin-top: 2px;
+              cursor: default; }
+            .flex---parnet .flex---right .flex---min .info .flex--left .flex--plus .plus {
+              width: 22px;
+              height: 22px;
+              display: flex;
+              background: #f4605c;
+              align-items: center;
+              cursor: pointer; }
+              .flex---parnet .flex---right .flex---min .info .flex--left .flex--plus .plus .icon--symbol {
+                width: 12px;
+                height: 12px;
+                margin-right: auto;
+                margin-left: auto;
+                fill: #fff; }
+    .flex---parnet .flex---right .flex--col {
+      display: flex;
+      height: 136px;
+      overflow: auto;
+      direction: ltr;
+      padding-right: 10px;
+      padding-left: 10px; }
+      .flex---parnet .flex---right .flex--col .desrcption {
+        font: 14px "IRANSansWeb";
+        color: #515151;
+        cursor: default; }
+        @media screen and (max-width: 900px) {
+          .flex---parnet .flex---right .flex--col .desrcption {
+            width: 100%; } }
+  .flex---parnet .flex---left {
+    width: 585px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+    padding-top: 10px; }
+    @media (max-width: 1338px) {
+      .flex---parnet .flex---left {
+        width: 40%; } }
+    @media screen and (max-width: 900px) {
+      .flex---parnet .flex---left {
+        width: 100%;
+        padding-right: 0px; } }
+    .flex---parnet .flex---left .flex--left {
+      display: flex; }
+
+.container {
+  width: 100%; }
+  .container .flex--wrap {
+    display: flex;
+    width: 100%;
+    flex-direction: column; }
+    .container .flex--wrap .flex---slider {
+      width: 100%;
+      display: flex;
+      flex-direction: column; }
+      .container .flex--wrap .flex---slider .flex--menu .flex--text .text {
+        color: #fff;
+        cursor: pointer;
+        margin-bottom: 35px; }
+        .container .flex--wrap .flex---slider .flex--menu .flex--text .text .flex--line {
+          margin-top: 5px; }
+    .container .flex--wrap .flex---content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 68px; }
+      .container .flex--wrap .flex---content .logo-min2 .min--logo {
+        background: #f7c300; }
+        @media screen and (max-width: 800px) {
+          .container .flex--wrap .flex---content .logo-min2 .min--logo {
+            justify-content: center; } }
+
+.container.news {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+  .container.news .flex--parnet {
+    width: 100%;
+    display: flex;
+    flex-direction: column; }
+    .container.news .flex--parnet .flex--cover {
+      display: flex;
+      width: 100%; }
+      .container.news .flex--parnet .flex--cover .img--user {
+        width: 100%;
+        max-height: 346px;
+        height: 100%; }
+    .container.news .flex--parnet .flex--items {
+      width: 100%;
+      display: flex;
+      flex-flow: column; }
+      .container.news .flex--parnet .flex--items .flex--text {
+        width: 100%;
+        display: flex;
+        margin-right: inherit;
+        margin-left: inherit;
+        align-items: center; }
+        @media screen and (max-width: 500px) {
+          .container.news .flex--parnet .flex--items .flex--text {
+            flex-direction: column; } }
+        .container.news .flex--parnet .flex--items .flex--text .flex---right {
+          width: 200px; }
+        .container.news .flex--parnet .flex--items .flex--text .flex---left {
+          display: flex;
+          justify-content: flex-end;
+          flex-grow: 1;
+          padding-left: 10px; }
+          @media screen and (max-width: 500px) {
+            .container.news .flex--parnet .flex--items .flex--text .flex---left {
+              margin-bottom: 30px; } }
+          .container.news .flex--parnet .flex--items .flex--text .flex---left .flex--select {
+            display: flex;
+            position: relative; }
+            .container.news .flex--parnet .flex--items .flex--text .flex---left .flex--select .select {
+              width: 180px;
+              height: 42px;
+              border: solid 1px #c7c7c7;
+              font: 14px "IRANSansWeb_Bold";
+              color: #8a8a8a;
+              appearance: none;
+              -moz-appearance: none;
+              /* Firefox */
+              -webkit-appearance: none;
+              /* Safari and Chrome */
+              padding-right: 13px; }
+            .container.news .flex--parnet .flex--items .flex--text .flex---left .flex--select .arrow_down {
+              width: 10px;
+              height: 10px;
+              position: absolute;
+              left: 10px;
+              top: 18px; }
+        @media screen and (max-width: 500px) {
+          .container.news .flex--parnet .flex--items .flex--text .text {
+            margin-bottom: 40px; } }
+
+.container.single .flex--parnet .flex--cover .img--user {
+  width: 100%;
+  max-height: 346px; }
+.container.single .flex---about {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+  .container.single .flex---about .flex--parent {
+    display: flex;
+    width: 100%; }
+    .container.single .flex---about .flex--parent .flex--text {
+      width: 100%;
+      display: flex;
+      margin-right: inherit;
+      margin-left: inherit;
+      align-items: center; }
+      @media (max-width: 600px) {
+        .container.single .flex---about .flex--parent .flex--text {
+          justify-content: center;
+          flex-direction: column;
+          margin-bottom: 20px; } }
+      .container.single .flex---about .flex--parent .flex--text .flex---right {
+        width: 200px; }
+        .container.single .flex---about .flex--parent .flex--text .flex---right .text {
+          margin-bottom: 20px;
+          margin-top: 20px; }
+      .container.single .flex---about .flex--parent .flex--text .flex---left {
+        display: flex;
+        flex-grow: 1;
+        justify-content: flex-end; }
+        @media (max-width: 600px) {
+          .container.single .flex---about .flex--parent .flex--text .flex---left {
+            width: 100%;
+            justify-content: center; } }
+        .container.single .flex---about .flex--parent .flex--text .flex---left .flex--item {
+          display: flex;
+          align-items: center; }
+          @media screen and (max-width: 500px) {
+            .container.single .flex---about .flex--parent .flex--text .flex---left .flex--item {
+              flex-direction: column;
+              justify-content: center; } }
+          .container.single .flex---about .flex--parent .flex--text .flex---left .flex--item .flex--right {
+            display: flex;
+            align-items: center;
+            margin-left: 30px; }
+            @media screen and (max-width: 500px) {
+              .container.single .flex---about .flex--parent .flex--text .flex---left .flex--item .flex--right {
+                margin-bottom: 15px; } }
+            .container.single .flex---about .flex--parent .flex--text .flex---left .flex--item .flex--right:nth-child(2) {
+              margin-left: 20px; }
+              .container.single .flex---about .flex--parent .flex--text .flex---left .flex--item .flex--right:nth-child(2) .pic {
+                width: 25px;
+                height: 25px;
+                margin-right: 2px; }
+            .container.single .flex---about .flex--parent .flex--text .flex---left .flex--item .flex--right .day {
+              font: 18px "IRANSansWeb_Medium";
+              color: #3c3c3c;
+              margin-left: 13px;
+              margin-top: 5px;
+              cursor: default; }
+            .container.single .flex---about .flex--parent .flex--text .flex---left .flex--item .flex--right .pic {
+              width: 36px;
+              height: 36px; }
+          .container.single .flex---about .flex--parent .flex--text .flex---left .flex--item .min---icon {
+            display: flex; }
+            @media screen and (max-width: 500px) {
+              .container.single .flex---about .flex--parent .flex--text .flex---left .flex--item .min---icon {
+                margin-top: 5px; } }
+            .container.single .flex---about .flex--parent .flex--text .flex---left .flex--item .min---icon .min--icon {
+              margin-left: 15px;
+              cursor: pointer; }
+            .container.single .flex---about .flex--parent .flex--text .flex---left .flex--item .min---icon .pic {
+              width: 40px;
+              height: 40px;
+              margin-right: 2px; }
+  .container.single .flex---about .flex--center {
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center; }
+    @media (max-width: 600px) {
+      .container.single .flex---about .flex--center {
+        width: 90%; } }
+    .container.single .flex---about .flex--center .title {
+      font: 18px "IRANSansWeb";
+      color: #20363d;
+      cursor: default;
+      font-weight: 400;
+      margin-bottom: 8px; }
+    .container.single .flex---about .flex--center .text {
+      font: 24px "IRANSansWeb_Bold";
+      color: #26324a;
+      cursor: default;
+      margin-bottom: 8px; }
+      @media (max-width: 600px) {
+        .container.single .flex---about .flex--center .text {
+          font-size: 20px; } }
+  .container.single .flex---about .flex---single {
+    width: 100%;
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    flex-flow: column; }
+    .container.single .flex---about .flex---single .flex---desrcption {
+      width: 100%;
+      display: flex;
+      background: #f0f1f2;
+      padding-top: 23px;
+      padding-bottom: 20px; }
+      .container.single .flex---about .flex---single .flex---desrcption .flex--desrcption {
+        width: 836px;
+        margin-right: auto;
+        margin-left: auto;
+        display: flex; }
+        @media (max-width: 1200px) {
+          .container.single .flex---about .flex---single .flex---desrcption .flex--desrcption {
+            width: 90%; } }
+        .container.single .flex---about .flex---single .flex---desrcption .flex--desrcption .flex--right {
+          display: flex;
+          margin-top: -6px; }
+          @media (max-width: 430px) {
+            .container.single .flex---about .flex---single .flex---desrcption .flex--desrcption .flex--right {
+              display: none; } }
+          .container.single .flex---about .flex---single .flex---desrcption .flex--desrcption .flex--right .icon--quotations {
+            width: 35px;
+            height: 35px; }
+        .container.single .flex---about .flex---single .flex---desrcption .flex--desrcption .flex--left {
+          display: flex;
+          width: 868px;
+          position: relative; }
+          .container.single .flex---about .flex---single .flex---desrcption .flex--desrcption .flex--left .desrcption {
+            width: 95.5%;
+            font: 18px "IRANSansWeb";
+            color: #26324a;
+            cursor: default;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            font-weight: 600;
+            word-wrap: break-word; }
+            @media (max-width: 430px) {
+              .container.single .flex---about .flex---single .flex---desrcption .flex--desrcption .flex--left .desrcption {
+                width: 100%;
+                font-size: 17px; } }
+          .container.single .flex---about .flex---single .flex---desrcption .flex--desrcption .flex--left .flex--icon {
+            position: absolute;
+            left: 0px;
+            bottom: 0px; }
+            @media (max-width: 430px) {
+              .container.single .flex---about .flex---single .flex---desrcption .flex--desrcption .flex--left .flex--icon {
+                display: none; } }
+            .container.single .flex---about .flex---single .flex---desrcption .flex--desrcption .flex--left .flex--icon .icon--quotations {
+              width: 35px;
+              height: 35px; }
+    .container.single .flex---about .flex---single .flex--info--item {
+      width: 100%;
+      display: flex;
+      padding-top: 26px;
+      align-items: flex-start; }
+      @media (max-width: 860px) {
+        .container.single .flex---about .flex---single .flex--info--item {
+          flex-direction: column; } }
+      .container.single .flex---about .flex---single .flex--info--item .flex--right {
+        display: flex;
+        width: 516px;
+        height: 100%;
+        margin-top: 12px;
+        margin-bottom: 40px; }
+        @media (max-width: 1338px) {
+          .container.single .flex---about .flex---single .flex--info--item .flex--right {
+            width: 50%; } }
+        @media (max-width: 860px) {
+          .container.single .flex---about .flex---single .flex--info--item .flex--right {
+            width: 100%; } }
+        .container.single .flex---about .flex---single .flex--info--item .flex--right .user--img {
+          width: 100%;
+          max-height: 328px; }
+      .container.single .flex---about .flex---single .flex--info--item .flex--left {
+        display: flex;
+        width: 630px;
+        margin-right: auto;
+        margin-top: 1px; }
+        @media (max-width: 1338px) {
+          .container.single .flex---about .flex---single .flex--info--item .flex--left {
+            width: 50%;
+            margin-top: 4px; } }
+        @media (max-width: 860px) {
+          .container.single .flex---about .flex---single .flex--info--item .flex--left {
+            width: 100%;
+            margin: inherit; } }
+        @media (max-width: 600px) {
+          .container.single .flex---about .flex---single .flex--info--item .flex--left {
+            padding-left: 5px;
+            padding-right: 5px;
+            margin-bottom: 10px; } }
+        .container.single .flex---about .flex---single .flex--info--item .flex--left .desrcption {
+          font: 18px "IRANSansWeb";
+          color: #202735;
+          width: 100%;
+          margin-top: 0px;
+          cursor: default;
+          font-weight: 500;
+          word-wrap: break-word; }
+          @media (max-width: 1338px) {
+            .container.single .flex---about .flex---single .flex--info--item .flex--left .desrcption {
+              width: 90%;
+              margin-right: auto;
+              margin-left: auto; } }
+          @media (max-width: 860px) {
+            .container.single .flex---about .flex---single .flex--info--item .flex--left .desrcption {
+              width: 100%;
+              margin-top: 15px;
+              font-size: 16px; } }
+    .container.single .flex---about .flex---single .links {
+      width: 100%; }
+      .container.single .flex---about .flex---single .links .flex---right {
+        display: flex;
+        flex-flow: column; }
+        .container.single .flex---about .flex---single .links .flex---right .flex--links {
+          display: flex;
+          width: 100%;
+          flex-wrap: wrap; }
+          .container.single .flex---about .flex---single .links .flex---right .flex--links .flex--right {
+            display: flex;
+            justify-content: flex-start;
+            margin-left: 10px;
+            margin-bottom: 8px; }
+            .container.single .flex---about .flex---single .links .flex---right .flex--links .flex--right .button {
+              padding-right: 25px;
+              padding-left: 25px;
+              padding-top: 4px;
+              padding-bottom: 5px;
+              background: #f0f2f1;
+              transition: all 95ms ease-in-out;
+              border: none;
+              font: 15px "IRANSansWeb_Medium";
+              color: #26324a;
+              cursor: pointer; }
+              .container.single .flex---about .flex---single .links .flex---right .flex--links .flex--right .button:hover, .container.single .flex---about .flex---single .links .flex---right .flex--links .flex--right .button:active {
+                background: #f7c300;
+                transition: all 95ms ease-in-out;
+                color: #fff; }
+                .container.single .flex---about .flex---single .links .flex---right .flex--links .flex--right .button:hover .icon--link, .container.single .flex---about .flex---single .links .flex---right .flex--links .flex--right .button:active .icon--link {
+                  fill: #fff;
+                  transition: all 95ms ease-in-out; }
+              .container.single .flex---about .flex---single .links .flex---right .flex--links .flex--right .button .icon--link {
+                width: 16px;
+                height: 16px;
+                fill: #26324a;
+                margin-left: 3px;
+                position: relative;
+                top: 4px;
+                transition: all 95ms ease-in-out; }
+    .container.single .flex---about .flex---single .flex--dependents {
+      width: 100%;
+      display: flex;
+      padding-top: 30px;
+      padding-bottom: 40px;
+      flex-direction: column; }
+      .container.single .flex---about .flex---single .flex--dependents .flex---items {
+        padding-top: 20px; }
+    .container.single .flex---about .flex---single .flex--note {
+      width: 100%;
+      display: flex;
+      flex-direction: column; }
+      .container.single .flex---about .flex---single .flex--note .flex--dependent {
+        background: #f7c300; }
+        .container.single .flex---about .flex---single .flex--note .flex--dependent .text {
+          color: #26324a; }
+
+.container.single .flex--slider {
+  width: 100%;
+  padding-bottom: 30px; }
+  .container.single .flex--slider .slider {
+    width: 643px;
+    margin-right: auto;
+    margin-left: auto; }
+    @media (max-width: 1200px) {
+      .container.single .flex--slider .slider {
+        width: 64%; } }
+    @media (max-width: 860px) {
+      .container.single .flex--slider .slider {
+        width: 90%; } }
+    .container.single .flex--slider .slider .main-carousel {
+      width: 100%;
+      height: 300px; }
+      .container.single .flex--slider .slider .main-carousel .carousel-cell {
+        width: 100%;
+        height: 100%; }
+        .container.single .flex--slider .slider .main-carousel .carousel-cell .img--user {
+          width: 100%;
+          height: 100%; }
+  .container.single .flex--slider .nav_slider2 {
+    width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+    border: solid 1px #ccc;
+    margin-top: 40px; }
+    @media (max-width: 860px) {
+      .container.single .flex--slider .nav_slider2 {
+        width: 80%; } }
+    @media (max-width: 600px) {
+      .container.single .flex--slider .nav_slider2 {
+        width: 100%; } }
+    .container.single .flex--slider .nav_slider2 .carousel-nav {
+      width: 100%; }
+      .container.single .flex--slider .nav_slider2 .carousel-nav .carousel-cell {
+        width: 30%;
+        margin-right: 5%;
+        height: 125px; }
+        @media (max-width: 1200px) {
+          .container.single .flex--slider .nav_slider2 .carousel-nav .carousel-cell {
+            width: 30%;
+            margin-right: 5%; } }
+        @media (max-width: 600px) {
+          .container.single .flex--slider .nav_slider2 .carousel-nav .carousel-cell {
+            width: 48%;
+            margin-right: 2%; } }
+        @media (max-width: 600px) {
+          .container.single .flex--slider .nav_slider2 .carousel-nav .carousel-cell:nth-child(2n) {
+            margin-right: 0px; } }
+        @media (max-width: 430px) {
+          .container.single .flex--slider .nav_slider2 .carousel-nav .carousel-cell {
+            width: 100%; } }
+        .container.single .flex--slider .nav_slider2 .carousel-nav .carousel-cell .img--user {
+          width: 100%;
+          height: 100%; }
+  .container.single .flex--slider .video {
+    width: 100%;
+    height: 100%; }
+.container.single .flex--tabs {
+  width: 100%;
+  display: flex;
+  padding-bottom: 20px; }
+  .container.single .flex--tabs .menu_tab {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    border: solid 1px #dfdfdf; }
+    .container.single .flex--tabs .menu_tab .tabs {
+      display: flex;
+      width: 100%; }
+      .container.single .flex--tabs .menu_tab .tabs ul {
+        display: flex;
+        width: 100%;
+        background: #26324a;
+        flex-wrap: wrap; }
+        @media screen and (max-width: 500px) {
+          .container.single .flex--tabs .menu_tab .tabs ul {
+            flex-direction: column; } }
+        .container.single .flex--tabs .menu_tab .tabs ul .selected {
+          background: #f7c300;
+          transition: all 120ms ease-in; }
+          .container.single .flex--tabs .menu_tab .tabs ul .selected .title {
+            color: #26324a;
+            transition: all 120ms ease-in; }
+        .container.single .flex--tabs .menu_tab .tabs ul li {
+          display: inline-flex;
+          padding-top: 8px;
+          transition: all 120ms ease-in;
+          border-left: solid 1px #7b818d; }
+          @media screen and (max-width: 500px) {
+            .container.single .flex--tabs .menu_tab .tabs ul li {
+              width: 100%;
+              text-align: center;
+              justify-content: center; } }
+          .container.single .flex--tabs .menu_tab .tabs ul li:last-of-type {
+            border: none; }
+          .container.single .flex--tabs .menu_tab .tabs ul li .title {
+            font: 18px "IRANSansWeb_Bold";
+            color: #fff;
+            padding-right: 18px;
+            padding-left: 18px;
+            padding-top: 8px;
+            padding-bottom: 16px;
+            cursor: pointer;
+            transition: all 120ms ease-in; }
+    .container.single .flex--tabs .menu_tab .flex---descrption {
+      width: 100%;
+      display: flex;
+      flex-direction: column; }
+      .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption {
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        padding-top: 20px;
+        padding-bottom: 13px;
+        padding-right: 18px;
+        padding-left: 18px; }
+        .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption:first-child {
+          display: flex; }
+        .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption:nth-child(3) {
+          display: block; }
+        .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption:nth-child(4) {
+          padding-right: 33px;
+          padding-left: 13px; }
+        .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .Checking_tab {
+          width: 100%;
+          display: flex;
+          flex-direction: column; }
+          .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .Checking_tab .title {
+            font: 16px "IRANSansWeb";
+            color: #2e2e2e;
+            font-weight: 600;
+            width: 100%;
+            cursor: default;
+            margin-bottom: 18px; }
+          .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .Checking_tab .descrption {
+            width: 100%;
+            font: 14px "IRANSansWeb";
+            cursor: default;
+            margin-top: 0px; }
+        .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .property {
+          width: 100%;
+          display: flex; }
+          .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .property .flex--cols {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap; }
+            .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .property .flex--cols .flex--col {
+              display: flex;
+              margin-bottom: 15px;
+              align-items: flex-start; }
+              .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .property .flex--cols .flex--col .item {
+                width: 240px;
+                background: #dcdee0;
+                transition: all 95ms ease-in-out;
+                font: 16px "IRANSansWeb";
+                color: #2e2e2e;
+                text-align: center;
+                padding-right: 70px;
+                padding-left: 70px;
+                padding-bottom: 6px;
+                padding-top: 6px;
+                margin-left: 20px;
+                cursor: pointer; }
+        .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .flex---items .flex--item {
+          width: 360px; }
+          @media (max-width: 1338px) {
+            .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .flex---items .flex--item {
+              width: 32%;
+              margin-left: 2%; } }
+          @media (max-width: 860px) {
+            .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .flex---items .flex--item {
+              width: 49%; } }
+          @media screen and (max-width: 500px) {
+            .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .flex---items .flex--item {
+              width: 100%;
+              margin-left: 0px; } }
+          .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .flex---items .flex--item:nth-child(3n) {
+            margin-left: 0px; }
+            @media (max-width: 860px) {
+              .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .flex---items .flex--item:nth-child(3n) {
+                margin-left: 2%; } }
+          @media (max-width: 860px) {
+            .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .flex---items .flex--item:nth-child(2n) {
+              margin-left: 0px; } }
+          .container.single .flex--tabs .menu_tab .flex---descrption .flex--descrption .flex---items .flex--item .descrption {
+            word-break: break-all; }
+.container.single .flex---min {
+  width: 100%;
+  display: flex;
+  align-items: flex-start; }
+  .container.single .flex---min .flex---slider {
+    display: flex;
+    width: 100%; }
+    @media (max-width: 1200px) {
+      .container.single .flex---min .flex---slider {
+        flex-direction: column; } }
+    .container.single .flex---min .flex---slider .flex---right {
+      width: 50%;
+      display: flex;
+      justify-content: center; }
+      @media (max-width: 1200px) {
+        .container.single .flex---min .flex---slider .flex---right {
+          width: 100%; } }
+      .container.single .flex---min .flex---slider .flex---right .slider {
+        width: 100%; }
+      .container.single .flex---min .flex---slider .flex---right .nav_slider2 {
+        width: 100%; }
+    .container.single .flex---min .flex---slider .flex---left {
+      width: 50%;
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      padding-right: 20px; }
+      @media (max-width: 1200px) {
+        .container.single .flex---min .flex---slider .flex---left {
+          width: 100%;
+          margin-bottom: 40px; } }
+      .container.single .flex---min .flex---slider .flex---left .flex---text {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-bottom: 15px;
+        cursor: default; }
+        .container.single .flex---min .flex---slider .flex---left .flex---text .text {
+          font: 18px "IRANSansWeb";
+          color: #000000; }
+      .container.single .flex---min .flex---slider .flex---left .flex--cols {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap; }
+        .container.single .flex---min .flex---slider .flex---left .flex--cols .flex--col {
+          display: flex;
+          width: 100%;
+          margin-bottom: 10px;
+          align-items: flex-start; }
+          .container.single .flex---min .flex---slider .flex---left .flex--cols .flex--col .flex--right {
+            display: flex;
+            width: 25%;
+            background: #f0f1f2;
+            padding-right: 8px;
+            padding-left: 8px; }
+            .container.single .flex---min .flex---slider .flex---left .flex--cols .flex--col .flex--right .title {
+              font: 16px "IRANSansWeb";
+              color: #2e2e2e;
+              padding-top: 5px;
+              padding-bottom: 4px;
+              cursor: default;
+              width: 100%; }
+          .container.single .flex---min .flex---slider .flex---left .flex--cols .flex--col .flex--left {
+            width: 75%;
+            display: flex;
+            background: #f7f9fa;
+            margin-right: 20px;
+            padding-right: 8px; }
+            .container.single .flex---min .flex---slider .flex---left .flex--cols .flex--col .flex--left .title {
+              font: 16px "IRANSansWeb";
+              padding-top: 5px;
+              padding-bottom: 4px;
+              cursor: default; }
+
+.contact {
+  width: 100%; }
+  .contact .flex--contact {
+    width: 100%;
+    display: flex;
+    padding-top: 130px;
+    padding-bottom: 50px;
+    flex-wrap: wrap; }
+    @media screen and (max-width: 900px) {
+      .contact .flex--contact {
+        padding-top: 30px; } }
+    @media (max-width: 860px) {
+      .contact .flex--contact {
+        flex-direction: column; } }
+    .contact .flex--contact .flex---right {
+      display: flex;
+      align-items: flex-start;
+      width: 50%; }
+      @media (max-width: 860px) {
+        .contact .flex--contact .flex---right {
+          width: 100%; } }
+      .contact .flex--contact .flex---right .items {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap; }
+        @media (max-width: 860px) {
+          .contact .flex--contact .flex---right .items {
+            margin-bottom: 20px; } }
+        .contact .flex--contact .flex---right .items .item {
+          width: 100%;
+          margin-top: 8px;
+          margin-bottom: 8px;
+          display: flex; }
+          .contact .flex--contact .flex---right .items .item .text {
+            font: 16px "IRANSansWeb";
+            color: #2e2e2e;
+            cursor: default; }
+          .contact .flex--contact .flex---right .items .item .title {
+            font: 16px "IRANSansWeb";
+            color: #000000;
+            cursor: default;
+            margin-right: 8px;
+            cursor: default; }
+    .contact .flex--contact .flex---left {
+      display: flex;
+      width: 50%; }
+      @media (max-width: 860px) {
+        .contact .flex--contact .flex---left {
+          width: 100%; } }
+  .contact .Map {
+    width: 100%;
+    height: 300px; }
+    .contact .Map #googleMap {
+      width: 100%;
+      height: 100%; }
+
+/*# sourceMappingURL=import.css.map */

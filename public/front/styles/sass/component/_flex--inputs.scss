@@ -1,0 +1,90 @@
+.flex--inputs{
+  display: flex;
+  width: $width;
+  flex-direction: column;
+  .flex--input{
+    display: flex;
+    width:373px;
+    margin-bottom: 10px;
+    transition: all 95ms ease-in;
+    @media#{$tablet}{
+      width: $width;
+    }
+    .input{
+      width: $width;
+      @include Medium(14);
+      color: #617b7c;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      background: #f0f1f2;
+      border: solid 1px #d3d3d3;
+      color: #617b7c;
+      transition: all 95ms ease-in;
+      padding-right: 10px;
+      &:focus{
+        transition: all 95ms ease-in;
+        border-color: #2490ce;
+      }
+      &::-webkit-input-placeholder {
+        color: #617b7c;
+      }
+      &:-moz-placeholder {
+         color: #617b7c;
+      }
+      &::-moz-placeholder {
+         color:#617b7c;
+      }
+      &:-ms-input-placeholder {
+         color: #617b7c;
+      }
+    }
+
+  }
+  .textarea{
+    width: $width;
+    @include Medium(14);
+    background: #f0f1f2;
+    border: solid 1px #d3d3d3;
+    margin-top: 5px;
+    padding-right: 10px;
+    padding-top: 10px;
+    background: #f0f1f2;
+    transition: all 95ms ease-in;
+    &:focus{
+      transition: all 95ms ease-in;
+      border-color: #2490ce;
+    }
+  }
+  .submit{
+    width: 106px;
+    height: 35px;
+    background: #2e2e2e;
+    text-align: center;
+    @include Bold(13);
+    color: $white;
+    margin-top: 8px;
+    border: none;
+    cursor: pointer;
+    background: #26324a;
+    transition: all 95ms ease-in-out;
+    @media#{$mobile}{
+      width: 60%;
+    }
+    &:hover{
+      background: #f7b400;
+      transition: all 95ms ease-in-out;
+    }
+  }
+  .textarea::-webkit-input-placeholder {
+    color: #617b7c;
+  }
+  .textarea:-moz-placeholder {
+     color: #617b7c;
+  }
+  .textarea::-moz-placeholder {
+     color:#617b7c;
+  }
+  .textarea:-ms-input-placeholder {
+     color: #617b7c;
+  }
+}

@@ -1,0 +1,115 @@
+.flex---items{
+  width: $width;
+  display: flex;
+  flex-wrap:wrap;
+  @extend .dir;
+  .flex--parent{
+    display: flex;
+    width: $width;
+    flex-wrap: wrap;
+    flex-flow: column;
+    .flex---wrap{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      width: $width;
+      .flex--item{
+        width: 376px;
+        display: flex;
+        flex-flow: column;
+        transition: all 98ms ease-in-out;
+        margin-left: 20px;
+        margin-bottom: 50px;
+        @media#{$desktop}{
+          width: 32%;
+          margin-left: 2%;
+        }
+        @media#{$Medium}{
+          width: 49%;
+        }
+        @media screen and ("max-width:500px"){
+          width: $width;
+          margin-left: 0px;
+        }
+        &:nth-child(3n){
+          margin-left: 0px;
+          @media#{$Medium}{
+            margin-left: 2%;
+          }
+        }
+        &:nth-child(2n){
+          @media#{$Medium}{
+            margin-left: 0px;
+          }
+        }
+        &:hover{
+          transition: all 98ms ease-in-out;
+          .flex--img{
+            transition: all 98ms ease-in-out;
+            border-color: $yellow;
+          }
+          .flex--content{
+            .title{
+              transition: all 98ms ease-in-out;
+              color: #f79100;
+            }
+            .descrption{
+              color: #3b4771;
+              transition: all 98ms ease-in-out;
+            }
+          }
+        }
+        .flex--img{
+          display: flex;
+          height: $width;
+          border: solid 10px $white;
+          transition: all 98ms ease-in-out;
+          height: 248px;
+          // @media#{$tablet}{
+          //   height: auto;
+          //   max-height: 248px;
+          // }
+          @media screen and ("max-width:500px"){
+            height: auto;
+          }
+          .img--content{
+            width: $width;
+            height: $height;
+          }
+        }
+        .flex--content{
+          width: $width;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          padding-top: 25px;
+          padding-right: 8px;
+          padding-left: 8px;
+          transition: all 98ms ease-in-out;
+          .title{
+            @include Bold(20);
+            color: #000000;
+            margin-bottom: 8px;
+            transition: all 98ms ease-in-out;
+            @media#{$mobile-big}{
+              font-size: 18px;
+            }
+          }
+          .descrption{
+            @include Web(18);
+            color: #000000;
+            width: $width;
+            transition: all 98ms ease-in;
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+            @media#{$mobile-big}{
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+}

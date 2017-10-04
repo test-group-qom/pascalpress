@@ -1,0 +1,13 @@
+.flex--dependent{
+  display: flex;
+  width: $width;
+  background: #26324a;
+  padding-top: 18px;
+  padding-bottom: 19px;
+  padding-right: 35px;
+  .text{
+    @include Medium(18);
+    color: $white;
+    cursor: default;
+  }
+}
