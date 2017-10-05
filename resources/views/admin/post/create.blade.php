@@ -64,15 +64,16 @@ if ( $post_type == 0 ) {
                                     <div class="clear"></div>
                                 </div>
 
+                                @if($post_type==0)
                                 <div class="form-group">
                                     <label class="control-label col-lg-2 red">خلاصه مطلب</label>
                                     <div class="col-lg-10">
                                         <textarea class="form-control" name="excerpt"
-                                                  style="line-height:18px;padding:10px 5px;height:100px;"
-                                                  required></textarea>
+                                                  style="line-height:18px;padding:10px 5px;height:100px;"></textarea>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
+                                @endif
 
 
                                 <div class="form-group" style="margin-left: 0;margin-right: 0;">

@@ -33,7 +33,7 @@ class ContactController extends Controller {
 		$validator = Validator::make( $request->all(), [
 			'name'    => 'required|min:3|max:255',
 			'email'   => 'required|email',
-			'mobile'  => 'required|numeric|digits:11',
+			'mobile'  => 'nullable|numeric|digits:11',
 			'message' => 'required|min:5|max:4000'
 		] );
 		if ( $validator->fails() ) {
@@ -46,7 +46,7 @@ class ContactController extends Controller {
 			'message' => $request->message
 		] );
 
-		return redirect( '/contact' );
+		return redirect('/contact',302)->with('sendMsg', 'پیام شما با موفقیت ارسال شد.');
 	}
 
 	public function destroy( $id ) {

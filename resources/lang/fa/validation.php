@@ -37,6 +37,7 @@ return [
     'dimensions'           => ':attribute دارای ابعاد تصویر نامعتبر می‌باشد.',
     'distinct'             => 'فیلد :attribute دارای یک مقدار تکراری می‌باشد.',
     'email'                => 'فرمت :attribute معتبر نیست.',
+    'message'                => 'فیلد پیام الزامی است.',
     'exists'               => ':attribute انتخاب شده، معتبر نیست.',
     'file'                 => ':attribute باید یک فایل باشد',
     'filled'               => 'فیلد :attribute الزامی است',

@@ -70,6 +70,7 @@ if ( $post_type == 0 ) {
                                     <div class="clear"></div>
                                 </div>
 
+                                @if($post_type==0)
                                 <div class="form-group">
                                     <label class="control-label col-lg-2 red">خلاصه مطلب</label>
                                     <div class="col-lg-10">
@@ -79,6 +80,7 @@ if ( $post_type == 0 ) {
                                     </div>
                                     <div class="clear"></div>
                                 </div>
+                                @endif
 
 
                                 <div class="form-group" style="margin-left: 0;margin-right: 0;">
@@ -394,12 +396,12 @@ if ( $post_type == 0 ) {
 
                                                     @if(in_array($category->id,$cat_ids))
                                                         <label class="checkbox-inline" style="color: #749413;">
-                                                            <input type="checkbox" name="tag_id[]"
+                                                            <input type="checkbox" name="cat_id[]"
                                                                    value="{{$category->id}}" checked>{{$category->name}}
                                                         </label>
                                                     @else
                                                         <label class="checkbox-inline" style="color: #749413;">
-                                                            <input type="checkbox" name="tag_id[]"
+                                                            <input type="checkbox" name="cat_id[]"
                                                                    value="{{$category->id}}">{{$category->name}}
                                                         </label>
                                                     @endif
@@ -413,12 +415,12 @@ if ( $post_type == 0 ) {
 
                                                             @if(in_array($sub1->id,$cat_ids))
                                                                 <label class="checkbox-inline checkbox-lvl1">
-                                                                    <input type="checkbox" name="tag_id[]"
+                                                                    <input type="checkbox" name="cat_id[]"
                                                                            value="{{$sub1->id}}" checked>{{$sub1->name}}
                                                                 </label>
                                                             @else
                                                                 <label class="checkbox-inline checkbox-lvl1">
-                                                                    <input type="checkbox" name="tag_id[]"
+                                                                    <input type="checkbox" name="cat_id[]"
                                                                            value="{{$sub1->id}}">{{$sub1->name}}
                                                                 </label>
                                                             @endif
@@ -432,13 +434,13 @@ if ( $post_type == 0 ) {
 
                                                                     @if(in_array($sub2->id,$cat_ids))
                                                                         <label class="checkbox-inline checkbox-lvl2">
-                                                                            <input type="checkbox" name="tag_id[]"
+                                                                            <input type="checkbox" name="cat_id[]"
                                                                                    value="{{$sub2->id}}"
                                                                                    checked>{{$sub2->name}}
                                                                         </label>
                                                                     @else
                                                                         <label class="checkbox-inline checkbox-lvl2">
-                                                                            <input type="checkbox" name="tag_id[]"
+                                                                            <input type="checkbox" name="cat_id[]"
                                                                                    value="{{$sub2->id}}">{{$sub2->name}}
                                                                         </label>
                                                                     @endif

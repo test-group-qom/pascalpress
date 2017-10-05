@@ -112,6 +112,7 @@ class PostController extends Controller {
 		// Properties
 		$prop = $this->get_prop( $request->prop_name, $request->prop_value );
 
+
 		#####################
 
 		//********* TAGs
@@ -231,7 +232,7 @@ class PostController extends Controller {
 			'id'       => 'required|numeric|exists:posts,id,deleted_at,NULL',
 			'cat_id.*' => 'required|numeric|exists:categories,id,deleted_at,NULL',
 			'title'    => 'required|max:255',
-			'thumb'    => 'nullable|max:255',
+			'thumb'    => 'nullable|max:2048',
 			'content'  => 'required',
 		] );
 		if ( $validator->fails() ) {
@@ -463,8 +464,9 @@ class PostController extends Controller {
 
 	public
 	function get_prop(
-		array $arr_name, array $arr_value
+		 $arr_name,  $arr_value
 	) {
+		if(count($arr_name) > 0 ){
 		if ( ! empty( array_filter( $arr_name ) ) && ! empty( array_filter( $arr_value ) ) ) {
 			$result = array_combine( $arr_name, $arr_value );
 
@@ -480,6 +482,7 @@ class PostController extends Controller {
 
 			return $result;
 		}
+	}
 
 		return null;
 	}
