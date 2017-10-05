@@ -2,7 +2,25 @@
 Auth::routes();
 
 Route::get( '/', function () {
-	return view( 'front.home' );
+	return view( 'front.index' );
+} );
+Route::get( 'about', function () {
+	return view( 'front.about' );
+} );
+Route::get( 'contact', function () {
+	return view( 'front.contact' );
+} );
+Route::get( 'products', function () {
+	return view( 'front.products' );
+} );
+Route::get( 'catalog', function () {
+	return view( 'front.catalog' );
+} );
+Route::get( 'articles', function () {
+	return view( 'front.articles' );
+} );
+Route::get( 'news', function () {
+	return view( 'front.news' );
 } );
 
 Route::get( '/admin-panel', function () {
@@ -57,8 +75,6 @@ Route::group( [ 'prefix' => 'admin', 'middleware' => [ 'auth', 'admin' ] ], func
 	Route::resource( 'contact', 'ContactController' );
 } );
 
-## Front home page
-Route::get( '/', 'FrontController@index' );
 ## Admin ----------
 Route::post( 'admin/login', 'AdminController@login' );
 Route::post( 'admin/forget', 'AdminController@forgetPassword' );
@@ -78,3 +94,26 @@ Route::get( '/cat_post/{cat_id}', 'PostController@cat_post' );
 Route::get( '/tag_post/{tag_id}', 'PostController@tag_post' );
 ## Tag ----------
 Route::resource( 'tag', 'TagController', [ 'only' => [ 'index', 'show' ] ] );
+
+
+## Front 
+// index
+Route::get( '/', 'FrontController@index' );
+
+// contact
+Route::get( 'contact', 'FrontController@contact' );
+
+// about
+Route::get( 'about', 'FrontController@about' );
+
+// news
+Route::get( 'news', 'FrontController@news' );
+
+// articles
+Route::get( 'articles', 'FrontController@articles' );
+
+// single post
+Route::get( 'single_post/{id}', 'FrontController@single_post' );
+
+
+
