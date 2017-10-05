@@ -82,3 +82,64 @@ ul.pagination li a.button:hover {
 p.descrption {
   text-align: justify;
 }
+
+.flex--nav_top{
+  top: 136px;
+}
+footer {
+  padding-bottom:0 !important ;
+}
+footer .flex--parent {
+  border-bottom: solid 1px #080b10;
+}
+footer .flex--copy-right {
+  display: flex;
+  margin-top: 0 !important;
+  justify-content: center;
+  padding: 15px 0 !important;
+  padding-bottom: 8px;
+  background: #171f31;
+  border-top: solid 1px #29344c;
+}
+footer .flex--copy-right .title {
+  font: 18px "IRANSansWeb";
+  color: #a9b5ce;
+  cursor: default;
+}
+footer .flex--parent .flex--wrap .flex---left .flex--right {
+  padding-top: 10px !important;
+}
+footer .flex--parent .flex--wrap .flex---left .flex--right .flex--info{
+  display: block !important;
+}
+footer .flex--parent h3.title {
+  color:white;
+  display: block;
+  padding: 5px 0 7px;
+  margin-bottom: 10px;
+  font-weight: normal;
+  border-bottom: 1px solid #3c4a69;
+}
+
+footer #last-products{
+
+}
+footer ul#last-products li {
+  margin-bottom: 5px;
+}
+footer ul#last-products li a{
+  color: #eee !important;
+}
+footer ul#last-products li a:hover{
+  color: gold !important;
+}
+footer ul#last-products li:hover > img{
+  border: 1px solid #ff464d;
+}
+footer ul#last-products li img{
+  height: 70px;
+  width: 65px;
+  border: 1px solid #e8d154;
+  padding: 3px;
+  
+}

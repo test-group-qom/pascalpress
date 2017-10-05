@@ -1,4 +1,4 @@
-<header class="index">
+<!--  <header class="index">
   <div class="flex--nav-top">
     <div class="wrapper">
       <div class="flex--wrap">
@@ -26,4 +26,4 @@
         </div>
     </div>
   </div>
-</header>
+</header>  -->

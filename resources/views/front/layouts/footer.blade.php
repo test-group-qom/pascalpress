@@ -16,35 +16,30 @@
               </div>
               <div class="flex---left">
                 <div class="flex--right">
-                    <div class="flex--info">
-                          <div class="flex--icon"> <!-- right -->
-                            <img src="{{asset('front/styles/img/email-filled-closed-envelope.svg')}}" class="img--user" alt="">
-                          </div>
-                          <div class="flex--message">  <!-- left -->
-                            <h3 class="text">
-                              از آخرین  مقالات و اخبار مطلع باشید
-                            </h3>
-                            <h3 class="title">
-                              با وارد کردن ایمیل خود آخرین اطلاعات را دریافت کنید...
-                            </h3>
-                          </div>
-                    </div>
-                    <div class="flex--input">
-                      <input type="text" class="send_mail" placeholder="" name="" value="">
-                      <div class="flex--submit">
-                          <input type="submit" class="submit" name="" value="">
-                          <img src="{{asset('front/styles/img/left-arrow-angle.svg')}}" class="icon--arrow" alt="">
-                      </div>
-                    </div>
-                    <div class="flex--social">
-                      <a href="#" class="flex--bg">
-                          <img src="{{asset('front/styles/img/telegram.svg')}}" class="icon" alt="">
-                      </a>
-                      <a href="#" class="flex--bg">
-                          <img src="{{asset('front/styles/img/instagram-logo.svg')}}" class="icon" alt="">
-                      </a>
 
+                    <div class="flex--info">
+                         <h3 class="title">آخرین محصولات</h3>
+                          <ul id="last-products">
+                            <li>
+                              <img src="{{asset('upload/images/art1.png')}}" width="90" height="90" class="img--user" alt="">
+                              <a href="javascript:;">عنوان محصول اینجا ...</a>
+                            </li>
+                            <li>
+                              <img src="{{asset('upload/images/art1.png')}}" width="90" height="90" class="img--user" alt="">
+                              <a href="javascript:;">عنوان محصول اینجا ...</a>
+                            </li>
+                            <li>
+                              <img src="{{asset('upload/images/art1.png')}}" width="90" height="90" class="img--user" alt="">
+                              <a href="javascript:;">عنوان محصول اینجا ...</a>
+                            </li>
+                            <li>
+                              <img src="{{asset('upload/images/art1.png')}}" width="90" height="90" class="img--user" alt="">
+                              <a href="javascript:;">عنوان محصول اینجا ...</a>
+                            </li>                         
+                          </ul>
                     </div>
+
+
                 </div>
               </div>
           </div>
