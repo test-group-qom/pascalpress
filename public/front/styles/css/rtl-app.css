@@ -1,5 +1,6 @@
 body {
   direction: rtl;
+  font-family: 'IRANSansWeb' !important;
 }
 header.index .flex--nav-top .flex--wrap .flex---left .flex--left {
   width: 60px;
@@ -15,4 +16,69 @@ header.index .flex--nav-top .flex--wrap .flex---left .flex--left {
   height: 100%;
   display: flex;
   position: relative;
+}
+footer #contact-info {
+  color: #fff;
+  font-size: 16px;
+}
+.alert-danger ul{
+  padding: 15px;
+}
+.alert-danger ul li {
+  list-style:circle !important ;
+}
+.clear {
+  clear: both;
+}
+.red {
+  color: #da5c52;
+}
+.green {
+  color: #92B30B;
+}
+div.alert ul {
+  padding-right: 10px;
+}
+
+button.close {
+  float: left;
+}
+
+/* pagination */
+ul.pagination {
+  list-style: none;
+  border-top: 1px solid #ddd;
+  width: 100%;
+  padding-top: 15px;
+  margin: 10px 0 20px;
+}
+
+ul.pagination li {
+  float: right;
+  margin-left: 5px !important;
+}
+
+ul.pagination li a.button {
+  color: #999;
+  padding: 3px 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  text-decoration: none;
+}
+ul.pagination li a.button:hover {
+  color: #D57A00;
+  border: 1px solid #DF922B;
+}
+
+.post{
+  display: block;
+  line-height: 30px;
+  padding: 10px;
+  text-align: justify;
+  color: #222;
+}
+p.descrption {
+  text-align: justify;
 }

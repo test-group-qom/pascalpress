@@ -1,6 +1,6 @@
-class slider {
-  constructor(slider) {
-    this.slider_name = slider;
+class slider_home {
+  constructor(slider_home) {
+    this.slider_name = slider_home;
     this.global();
   }
 
@@ -24,5 +24,5 @@ class slider {
   }
 }
 $(document).ready(function(){
-  new slider(".flex--flickity .main-carousel");
+  new slider_home(".flex--flickity .main-carousel");
 })

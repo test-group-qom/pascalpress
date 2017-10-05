@@ -6,37 +6,37 @@
         <div class="flex--parnet">
 
             <li>
-              <a href="index.php">خانه
+              <a href="/">خانه
                 <span class="border--bottom"></span>
               </a>
             </li>
             <li>
-              <a href="about.php">درباره ما
+              <a href="/about">درباره ما
                 <span class="border--bottom"></span>
               </a>
             </li>
             <li>
-              <a href="products.php">محصولات
+              <a href="/products">محصولات
                 <span class="border--bottom"></span>
               </a>
             </li>
             <li>
-              <a href="news.php"> اخبار
+              <a href="/news"> اخبار
                 <span class="border--bottom"></span>
               </a>
             </li>
             <li>
-              <a href="articals.php">مقالات
+              <a href="/articles">مقالات
                 <span class="border--bottom"></span>
               </a>
             </li>
             <li>
-              <a href="contact.php"> تماس با ما
+              <a href="/contact"> تماس با ما
                 <span class="border--bottom"></span>
               </a>
             </li>
             <li>
-              <a href="Repertory.php"> کاتالوگ
+              <a href="/catalog"> کاتالوگ
                 <span class="border--bottom"></span>
               </a>
             </li>

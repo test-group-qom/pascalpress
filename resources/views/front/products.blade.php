@@ -1,46 +1,18 @@
-<!DOCTYPE lang="fa">
-<html>
-  <head>
-    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>pascalpress</title>
+@section('title','محصولات')
+@extends('front.layouts.app')
+@section('main_content')
 
-    <!-- links -->
-    <link rel="stylesheet" href="styles/css/simplePagination.css">
-    <link rel="stylesheet" href="styles/css/flickity.css">
-    <link rel="stylesheet" href="styles/css/Humber.css">
-    <link rel="stylesheet" href="styles/css/easyzoom.css">
-    <link rel="stylesheet" href="styles/css/import.css">
-    <link rel="stylesheet" href="styles/css/rtl-app.css">
-    <!-- <link rel="stylesheet" href="styles/sass/import.scss"> -->
- 
-    <!-- core scripts -->
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.simplePagination"></script>
-    <script src="js/flickity/flickity.pkgd.min.js"></script>
-    <script src="js/easyzoom.js"></script>
-    <!-- <script src="js/slider.js"></script> -->
-    <script src="js/product/Nav_Slider.js"></script>
-    <!-- <script src="js/product/slider2.js"></script> -->
-    <!-- <script src="js/product/media.js"></script> -->
-    <!-- <script src="js/Map.js"></script> -->
-
-   </head>
-  <body>
-<?php
-include 'parts/header.php';
-include 'parts/menu_top.php';
-include "parts/logo_min.php";
-?>
+@include ('front.layouts.header')
+@include ('front.layouts.menu_top')
+@include ('front.layouts.logo_min')
 
 <div class="container single">
   <div class="flex--parnet">
     <div class="flex--cover">
-      <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+      <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
     </div>
   </div>
-  <?php include "parts/menu_down.php";?>
+  @include('front.layouts.menu_down')
   <div class="flex---about">
     <div class="wrapper">
       <div class="flex--parent">
@@ -62,58 +34,8 @@ include "parts/logo_min.php";
             <div class="flex--item">
               <div class="flex--right">
                 <span class="day">۱۳۷۶/۱۱/۲۲</span>
-                <img src="styles/img/little14.svg" class="pic" alt="">
+                <img src="{{asset('front/styles/img/little14.svg')}}" class="pic" alt="">
               </div>
-              <div class="flex--right">
-                <svg version="1.1" class="pic golden" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                width="97.092px" height="97.092px" viewBox="0 0 97.092 97.092" style="enable-background:new 0 0 97.092 97.092;"
-                xml:space="preserve">
-                <path d="M96.994,37.478c-0.236-0.725-0.862-1.253-1.617-1.361l-31.141-4.494L50.34,3.396c-0.336-0.684-1.032-1.116-1.794-1.116
-                c-0.762,0-1.458,0.433-1.794,1.116L32.855,31.623l-31.14,4.494c-0.754,0.108-1.381,0.637-1.617,1.361
-                c-0.235,0.725-0.039,1.521,0.508,2.052l22.551,21.94l-5.348,31.003c-0.13,0.751,0.179,1.51,0.795,1.958
-                c0.618,0.448,1.434,0.507,2.108,0.151l27.834-14.668L76.38,94.582c0.293,0.154,0.612,0.23,0.933,0.23
-                c0.415,0,0.827-0.129,1.176-0.382c0.616-0.448,0.926-1.207,0.795-1.958L73.936,61.47l22.551-21.94
-                C97.031,38.999,97.229,38.203,96.994,37.478z"/>
-              </svg>
-              <svg version="1.1" class="pic golden" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-              width="97.092px" height="97.092px" viewBox="0 0 97.092 97.092" style="enable-background:new 0 0 97.092 97.092;"
-              xml:space="preserve">
-              <path d="M96.994,37.478c-0.236-0.725-0.862-1.253-1.617-1.361l-31.141-4.494L50.34,3.396c-0.336-0.684-1.032-1.116-1.794-1.116
-              c-0.762,0-1.458,0.433-1.794,1.116L32.855,31.623l-31.14,4.494c-0.754,0.108-1.381,0.637-1.617,1.361
-              c-0.235,0.725-0.039,1.521,0.508,2.052l22.551,21.94l-5.348,31.003c-0.13,0.751,0.179,1.51,0.795,1.958
-              c0.618,0.448,1.434,0.507,2.108,0.151l27.834-14.668L76.38,94.582c0.293,0.154,0.612,0.23,0.933,0.23
-              c0.415,0,0.827-0.129,1.176-0.382c0.616-0.448,0.926-1.207,0.795-1.958L73.936,61.47l22.551-21.94
-              C97.031,38.999,97.229,38.203,96.994,37.478z"/>
-            </svg>
-            <svg version="1.1" class="pic " xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-            width="97.092px" height="97.092px" viewBox="0 0 97.092 97.092" style="enable-background:new 0 0 97.092 97.092;"
-            xml:space="preserve">
-            <path d="M96.994,37.478c-0.236-0.725-0.862-1.253-1.617-1.361l-31.141-4.494L50.34,3.396c-0.336-0.684-1.032-1.116-1.794-1.116
-            c-0.762,0-1.458,0.433-1.794,1.116L32.855,31.623l-31.14,4.494c-0.754,0.108-1.381,0.637-1.617,1.361
-            c-0.235,0.725-0.039,1.521,0.508,2.052l22.551,21.94l-5.348,31.003c-0.13,0.751,0.179,1.51,0.795,1.958
-            c0.618,0.448,1.434,0.507,2.108,0.151l27.834-14.668L76.38,94.582c0.293,0.154,0.612,0.23,0.933,0.23
-            c0.415,0,0.827-0.129,1.176-0.382c0.616-0.448,0.926-1.207,0.795-1.958L73.936,61.47l22.551-21.94
-            C97.031,38.999,97.229,38.203,96.994,37.478z"/>
-          </svg>
-          <svg version="1.1" class="pic golden" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-          width="97.092px" height="97.092px" viewBox="0 0 97.092 97.092" style="enable-background:new 0 0 97.092 97.092;"
-          xml:space="preserve">
-          <path d="M96.994,37.478c-0.236-0.725-0.862-1.253-1.617-1.361l-31.141-4.494L50.34,3.396c-0.336-0.684-1.032-1.116-1.794-1.116
-          c-0.762,0-1.458,0.433-1.794,1.116L32.855,31.623l-31.14,4.494c-0.754,0.108-1.381,0.637-1.617,1.361
-          c-0.235,0.725-0.039,1.521,0.508,2.052l22.551,21.94l-5.348,31.003c-0.13,0.751,0.179,1.51,0.795,1.958
-          c0.618,0.448,1.434,0.507,2.108,0.151l27.834-14.668L76.38,94.582c0.293,0.154,0.612,0.23,0.933,0.23
-          c0.415,0,0.827-0.129,1.176-0.382c0.616-0.448,0.926-1.207,0.795-1.958L73.936,61.47l22.551-21.94
-          C97.031,38.999,97.229,38.203,96.994,37.478z"/>
-        </svg>
-      </div>
-      <div class="min---icon">
-        <div class="min--icon" ng-controller="printCtrl">
-          <img src="styles/img/printing-filled-interface-button.svg" id="print" class="pic" alt="">
-        </div>
-        <div class="min--icon">
-          <img src="styles/img/photo-sharing-square-interface-button.svg" class="pic" alt="">
-        </div>
-      </div>
     </div>
   </div>
 </div>
@@ -128,23 +50,23 @@ include "parts/logo_min.php";
           <div class="slider" id="slider1">
             <div class="main-carousel">
               <div class="carousel-cell easyzoom easyzoom--overlay is-ready">
-                <a href="styles/img/cover_news.jpg">
-                  <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                <a href="{{asset('front/styles/img/cover_news.jpg')}}">
+                  <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                 </a>
               </div>
               <div class="carousel-cell easyzoom easyzoom--overlay is-ready">
-                <a href="styles/img/cover_news.jpg">
-                  <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                <a href="{{asset('front/styles/img/cover_news.jpg')}}">
+                  <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                 </a>
               </div>
               <div class="carousel-cell easyzoom easyzoom--overlay is-ready">
-                <a href="styles/img/cover_news.jpg">
-                  <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                <a href="{{asset('front/styles/img/cover_news.jpg')}}">
+                  <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                 </a>
               </div>
               <div class="carousel-cell easyzoom easyzoom--overlay is-ready">
-                <a href="styles/img/cover_news.jpg">
-                  <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                <a href="{{asset('front/styles/img/cover_news.jpg')}}">
+                  <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                 </a>
               </div>
             </div>
@@ -152,30 +74,30 @@ include "parts/logo_min.php";
           <div class="nav_slider2" id="sliderNav1">
             <div class="carousel-nav">
               <div class="carousel-cell">
-                <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
               </div>
               <div class="carousel-cell">
-                <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
               </div>
               <div class="carousel-cell">
-                <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
               </div>
               <div class="carousel-cell">
-                <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
               </div>
               <div class="carousel-cell">
-                <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
               </div>
               <div class="carousel-cell">
-                <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
               </div>
               <div class="carousel-cell">
-                <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
               </div>  <div class="carousel-cell">
-                <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
               </div>
               <div class="carousel-cell">
-                <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
               </div>
             </div>
           </div>
@@ -286,49 +208,49 @@ include "parts/logo_min.php";
                 <div class="main-carousel">
                   <div class="carousel-cell">
                     <video class="video" controls>
-                      <source src="styles/img/test.mp4" type="video/mp4">
+                      <source src="{{asset('front/styles/img/test.mp4')}}" type="video/mp4">
                       </video>
                     </div>
                     <div class="carousel-cell">
                       <video class="video" controls>
-                        <source src="styles/img/test.mp4" type="video/mp4">
+                        <source src="{{asset('front/styles/img/test.mp4')}}" type="video/mp4">
                         </video>
                       </div>
                       <div class="carousel-cell">
-                        <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                        <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                       </div>
                       <div class="carousel-cell">
-                        <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                        <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                       </div>
                     </div>
                   </div>
                   <div class="nav_slider2" id="sliderNav2">
                     <div class="carousel-nav">
                       <div class="carousel-cell">
-                        <img src="styles/img/cover_news.jpg" class=" img--user" >
+                        <img src="{{asset('front/styles/img/cover_news.jpg')}}" class=" img--user" >
                       </div>
                       <div class="carousel-cell">
-                        <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                        <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                       </div>
                       <div class="carousel-cell">
-                        <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                        <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                       </div>
                       <div class="carousel-cell">
-                        <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                        <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                       </div>
                       <div class="carousel-cell">
-                        <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                        <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                       </div>
                       <div class="carousel-cell">
-                        <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                        <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                       </div>
                       <div class="carousel-cell">
-                        <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                        <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                       </div>  <div class="carousel-cell">
-                        <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                        <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                       </div>
                       <div class="carousel-cell">
-                        <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+                        <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
                       </div>
                     </div>
                   </div>
@@ -346,7 +268,7 @@ include "parts/logo_min.php";
                       <a ui-sref="master.single">
                         <div class="flex--item">
                           <div class="flex--img">
-                            <img src="styles/img/img-content.jpg" class="img--content" alt="">
+                            <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--content" alt="">
                           </div>
                           <div class="flex--content">
                             <h3 class="title">عنوان اطلاعیه در اینقسمت</h3>
@@ -357,7 +279,7 @@ include "parts/logo_min.php";
                       <div class="flex--item">
                         <a ui-sref="master.single">
                           <div class="flex--img">
-                            <img src="styles/img/img-content.jpg" class="img--content" alt="">
+                            <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--content" alt="">
                           </div>
                           <div class="flex--content">
                             <h3 class="title">عنوان اطلاعیه در اینقسمت</h3>
@@ -368,7 +290,7 @@ include "parts/logo_min.php";
                       <div class="flex--item">
                         <a ui-sref="master.single">
                           <div class="flex--img">
-                            <img src="styles/img/img-content.jpg" class="img--content" alt="">
+                            <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--content" alt="">
                           </div>
                           <div class="flex--content">
                             <h3 class="title">عنوان اطلاعیه در اینقسمت</h3>
@@ -379,7 +301,7 @@ include "parts/logo_min.php";
                       <div class="flex--item">
                         <a ui-sref="master.single">
                           <div class="flex--img">
-                            <img src="styles/img/img-content.jpg" class="img--content" alt="">
+                            <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--content" alt="">
                           </div>
                           <div class="flex--content">
                             <h3 class="title">عنوان اطلاعیه در اینقسمت</h3>
@@ -401,7 +323,5 @@ include "parts/logo_min.php";
   </div>
 </div>
 
-<?php
-include 'parts/footer.php';
-include 'parts/layout_bottom.php';
-?>
+@include ('front.layouts.footer')
+@endsection

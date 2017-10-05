@@ -20,7 +20,7 @@
                   <input type="text" placeholder="جستجو ..." class="input" name="" value="">
                 </div>
                 <div class="flex--left">
-                  <img src="styles/img/magnifier-tool-2.svg" class="img--user" alt="">
+                  <img src="{{asset('front/styles/img/magnifier-tool-2.svg')}}" class="img--user" alt="">
                 </div>
             </div>
         </div>

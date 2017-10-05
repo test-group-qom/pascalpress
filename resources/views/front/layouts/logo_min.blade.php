@@ -5,7 +5,7 @@
                 </div>
     </div>
   <a ui-sref="master.index" class="link" href="#">
-      <img src="styles/img/logo.png" class="img--logo" alt="">
+      <img src="{{asset('front/styles/img/logo.png')}}" class="img--logo" alt="">
   </a>
 
 </div>

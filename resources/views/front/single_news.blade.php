@@ -2,7 +2,7 @@
   <?php include "logo_min";?>
   <div class="flex--parnet">
     <div class="flex--cover">
-      <img src="styles/img/cover_news.jpg" class="img--user" alt="">
+      <img src="{{asset('{{asset('styles/img/cover_news.jpg" class="img--user" alt="">
     </div>
   </div>
   <?php include "menu_down";?>

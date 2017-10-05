@@ -1,14 +1,14 @@
 <div class="container" >
   <div class="flex--wrap">
     <div class="flex---slider">
-      <?php include 'logo_min.php';?>
-      <?php include 'flickity.php';?>
+      @include ('front.layouts.logo_min')
+      @include ('front.layouts.flickity')
     </div>
     <div class="flex---content">
       <div class="logo-min2">
         <div class="min--logo">
           <a href="single.php">
-            <img src="styles/img/logo.png" class="img--logo" alt="">
+            <img src="{{asset('front/styles/img/logo.png')}}" class="img--logo" alt="">
           </a>
         </div>
         <div class="flex---items">
@@ -31,7 +31,7 @@
                 <div class="flex--item">
                   <a href="single.php">
                     <div class="flex--img">
-                      <img src="styles/img/img-content.jpg" class="img--content" alt="">
+                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--content" alt="">
                     </div>
                     <div class="flex--content">
                       <h3 class="title">عنوان اطلاعیه در اینقسمت</h3>
@@ -69,32 +69,32 @@
               <div class="flex--pic">
                 <div class="flex--right">
                     <div class="min--pic" href="product.php">
-                      <img src="styles/img/img-content.jpg" class="img--user" alt="">
+                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
                     </div>
                 </div>
                 <div class="flex--right">
                     <div class="min--pic" href="product.php">
-                      <img src="styles/img/img-content.jpg" class="img--user" alt="">
+                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
                     </div>
                 </div>
                 <div class="flex--right">
                     <div class="min--pic" href="product.php">
-                      <img src="styles/img/img-content.jpg" class="img--user" alt="">
+                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
                     </div>
                 </div>
                 <div class="flex--right">
                     <div class="min--pic" href="product.php">
-                      <img src="styles/img/img-content.jpg" class="img--user" alt="">
+                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
                     </div>
                 </div>
                 <div class="flex--right">
                     <div class="min--pic" href="product.php">
-                      <img src="styles/img/img-content.jpg" class="img--user" alt="">
+                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
                     </div>
                 </div>
                 <div class="flex--right">
                     <div class="min--pic" href="product.php">
-                      <img src="styles/img/img-content.jpg" class="img--user" alt="">
+                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
                     </div>
                 </div>
               </div>
@@ -113,7 +113,7 @@
                 <div class="flex--right">
                   <a href="news.php">
                     <div class="flex--img">
-                      <img src="styles/img/img-content.jpg" class="img--user" alt="">
+                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
                     </div>
                     <div class="flex--status">
                       <div class="flex--time">
@@ -153,7 +153,7 @@
                             <div class="flex--right">
                               <a href="news.php">
                                 <div class="flex--img">  <!-- right -->
-                                  <img src="styles/img/img-content.jpg" class="img--user" alt="">
+                                  <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
                                 </div>
                               </a>
                             </div>
@@ -172,7 +172,7 @@
                             <div class="flex--right">
                               <a href="news.php">
                                 <div class="flex--img">  <!-- right -->
-                                  <img src="styles/img/img-content.jpg" class="img--user" alt="">
+                                  <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
                                 </div>
                               </a>
                             </div>
@@ -191,7 +191,7 @@
                             <div class="flex--right">
                               <a href="news.php">
                                 <div class="flex--img">  <!-- right -->
-                                  <img src="styles/img/img-content.jpg" class="img--user" alt="">
+                                  <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
                                 </div>
                               </a>
                             </div>
