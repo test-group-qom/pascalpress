@@ -36,7 +36,7 @@
               </a>
             </li>
             <li>
-              <a href="/catalog"> کاتالوگ
+              <a href="/catalogs"> کاتالوگ
                 <span class="border--bottom"></span>
               </a>
             </li>

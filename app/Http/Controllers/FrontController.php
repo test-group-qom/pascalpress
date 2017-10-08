@@ -14,10 +14,12 @@ class FrontController extends Controller {
 
 	public function index() {
 		$config = Config::find( 1 );
-		$articles  = $this->query_posts( 7 );
-		$news   = $this->query_posts( 8 );
+		$articles  = $this->query_posts( 7,3 );
+		$news   = $this->query_posts( 8,3 );
+		$products   = Post::where( 'post_type', 2 )->where( 'status', 1 )->orderBy( 'created_at', 'desc' );
+		$products = $products->skip( 0 )->take( 6 )->get();
 
-		return view( 'front.index', compact( [ 'config', 'news', 'articles' ] ) );
+		return view( 'front.index', compact( [ 'config', 'news', 'articles', 'products' ] ) );
 	}
 
 	public function news( Request $request ) {
@@ -45,6 +47,40 @@ class FrontController extends Controller {
 
 
 		return view( 'front.articles', compact( [ 'config', 'posts', 'count' ] ) );
+	}
+
+	public function products( Request $request ) {
+		$offset = $request->offset > 0 ? (int) $request->offset : 0;
+		$mount  = $request->mount > 0 ? (int) $request->mount : 6;
+
+		$products   = Post::where( 'post_type', 2 )->where( 'status', 1 )->orderBy( 'created_at', 'desc' );
+		$count    = $products->get()->count();
+		$products = $products->skip( $offset )->take( $mount )->get();
+
+		$config   = Config::find( 1 );
+
+		return view( 'front.products', compact( [ 'config', 'products', 'count' ] ) );
+	}
+
+	public function catalogs( Request $request ) {
+
+		$products   = Post::where( 'post_type', 2 )->where( 'status', 1 )->orderBy( 'created_at', 'desc' )->get();
+		$catalogs = [];
+		$catalogs = $products->map(function($item)use($catalogs){
+			if(!empty($item->files['catalog'])){
+				$catalogs['title'] = $item->title;
+				$catalogs['file'] = $item->files['catalog'];
+				return $catalogs ;
+			}
+		});
+		 $catalogs = array_filter($catalogs->toArray(),function($val){
+		  	return $val != null;
+		  });
+		//dd($catalogs);
+
+		$config   = Config::find( 1 );
+
+		return view( 'front.catalogs', compact( [ 'config', 'catalogs' ] ) );
 	}
 
 	public function single_post( $id ) {
@@ -84,10 +120,10 @@ class FrontController extends Controller {
 	}
 
 	
-	public function query_posts( $cat_id ) {
+	public function query_posts( $cat_id,$take ) {
 		$category = Category::find( $cat_id );
 		$all_post = $category->posts()->where( 'status', 1 )->orderBy( 'created_at', 'ASC' );
-		$all_post = $all_post->skip( 0 )->take( 3 )->get();
+		$all_post = $all_post->skip( 0 )->take( $take )->get();
 		$all_post->map( function ( $item ) {
 			//publish date
 			$jdf                = new jdf();

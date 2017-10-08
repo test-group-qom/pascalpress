@@ -80,39 +80,22 @@
           <div class="flex--product">
             <div class="wrapper">
               <div class="flex--pic">
-                <div class="flex--right">
+
+                @foreach($products as $product)
+                <div class="flex--right product_items">
                     <div class="min--pic" href="product.php">
-                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
+                      @if($product->thumb != null)
+                        <a href="/single_product/{{$product->id}}"><img src="{{asset('upload/images/' . $product->thumb )}}" class="img--user"></a>
+                      @else
+                        <a href="/single_product/{{$product->id}}"><img src="{{asset('upload/images/no-image.png')}}" class="img--user"/></a>
+                      @endif
                     </div>
                 </div>
-                <div class="flex--right">
-                    <div class="min--pic" href="product.php">
-                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
-                    </div>
-                </div>
-                <div class="flex--right">
-                    <div class="min--pic" href="product.php">
-                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
-                    </div>
-                </div>
-                <div class="flex--right">
-                    <div class="min--pic" href="product.php">
-                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
-                    </div>
-                </div>
-                <div class="flex--right">
-                    <div class="min--pic" href="product.php">
-                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
-                    </div>
-                </div>
-                <div class="flex--right">
-                    <div class="min--pic" href="product.php">
-                      <img src="{{asset('front/styles/img/img-content.jpg')}}" class="img--user" alt="">
-                    </div>
-                </div>
+                @endforeach
+
               </div>
               <div class="flex--button">
-                <a href="single.php">
+                <a href="/products">
                   <button type="button" class="button" name="button">بیشتر</button>
                 </a>
               </div>

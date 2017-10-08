@@ -93,17 +93,20 @@ if ( $post_type == 0 ) {
                                     </script>
                                 </div>
 
+                                @if($post_type!=1)
                                 <div class="form-group">
                                     <?php
                                     $all = array();
+                                    $new = array();
+                                    if($tags!=null){
+                                        $all = $tags->map( function ( $item ) {
+                                            $new['id']   = $item->id;
+                                            $new['name'] = $item->name;
 
-                                    $all = $tags->map( function ( $item ) {
-                                        $new         = array();
-                                        $new['id']   = $item->id;
-                                        $new['name'] = $item->name;
-
-                                        return $new;
-                                    } );
+                                            return $new;
+                                        } );
+                                    }
+                                   
                                     ?>
 
                                     <label class="control-label col-lg-2 red">تگ</label>
@@ -112,10 +115,205 @@ if ( $post_type == 0 ) {
                                         <input type="hidden" id="result_tags" name="result_tags" value="">
                                         <div id="tag_suggestion"></div>
                                     </div>
-                                    <script type="text/javascript">
 
-                                        var tags = <?php echo json_encode( $all ); ?>;
+                                    <div class="clear"></div>
+                                </div>
+                                @endif
 
+                                @if($post_type==2)
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2 red">مشخصات کلی</label>
+                                        <div class="col-lg-10">
+                                            <div class="col-lg-12">
+                                                <div class="col-lg-4" style="padding: 3px">مشخصه</div>
+                                                <div class="col-lg-2" style="padding: 3px">مقدار</div>
+                                                <div class="col-lg-3" style="margin-right: 10px;">
+                                                    <button type="button" class="btn btn-success btn-xs"
+                                                            onclick="addRow('specTable')" style="width: 100px">
+                                                        افزودن مشخصه
+                                                    </button>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+
+                                            <table id="specTable" style="margin: 5px 15px; width: 70%">
+                                                <tr>
+                                                    <td>
+                                                        <input type="text" name="spec_name[]" class="form-control">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="spec_value[]" class="form-control">
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-danger btn-xs"
+                                                                onclick=" deleteRow('specTable',this); ">
+                                                            <i class="icon-trash "></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2 red">ویژگی ها</label>
+                                        <div class="col-lg-10">
+                                            <div class="col-lg-12">
+                                                <div class="col-lg-4" style="padding: 3px">ویژگی</div>
+                                                <div class="col-lg-2" style="padding: 3px">مقدار</div>
+                                                <div class="col-lg-3" style="margin-right: 10px;">
+                                                    <button type="button" class="btn btn-success btn-xs"
+                                                            onclick="addRow('propTable')" style="width: 100px">
+                                                        افزودن ویژگی
+                                                    </button>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+
+                                            <table id="propTable" style="margin: 5px 15px; width: 70%">
+                                                <tr>
+                                                    <td>
+                                                        <input type="text" name="prop_name[]" class="form-control">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="prop_value[]" class="form-control">
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-danger btn-xs"
+                                                                onclick=" deleteRow('propTable',this); ">
+                                                            <i class="icon-trash "></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="control-label col-lg-2 red">کاتالوگ</label>
+                                        <div class="col-lg-10">
+                                            
+                                            <div class="col-lg-12">
+                                                <div class="col-lg-4" style="padding: 3px">نوع فایل</div>
+                                                <div class="col-lg-2" style="padding: 3px">انتخاب فایل</div>
+                                                <div class="col-lg-3" style="margin-right: 10px;">
+                                                    <button type="button" class="btn btn-success btn-xs"
+                                                            onclick="addRow('catalogTable')" style="width: 100px">
+                                                        افزودن فایل
+                                                    </button>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+
+
+                                            <table id="catalogTable" style="margin: 5px 15px; width: 70%">
+                                                <tr>
+                                                    <td>
+                                                        <select name="catalog_type[]" class="form-control">
+                                                        <option value="image" selected>تصاویر</option>
+                                                        <option value="video">ویدئو</option>
+                                                        <option value="catalog">کاتالوگ</option>
+                                                    </select>
+                                                    </td>
+                                                    <td>
+                                                        <input name="catalog_file[]" type="file" class="btn btn-default btn-sm"/>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-danger btn-xs"
+                                                                onclick=" deleteRow('catalogTable',this); ">
+                                                            <i class="icon-trash "></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <div class="clear"></div>
+                                        </div>
+                                    </div>
+
+                                @endif
+
+                            </div>
+
+                        @if($post_type!=1)
+                            <div class="col-lg-4">
+
+                                <label class=" red">دسته بندی</label>
+                                <div class="form-group">
+
+                                    <div class="col-lg-10 checkbox-container">
+                                        @foreach($categories as $category)
+
+                                            @if($category->parent_id == null)
+
+                                                <div class="checkbox-box">
+
+
+                                                    <label class="checkbox-inline" style="color: #749413;">
+                                                        <input type="checkbox" name="cat_id[]"
+                                                               value="{{$category->id}}">{{$category->name}}
+                                                    </label>
+
+
+                                                    @if(count( $category->Childs) > 0 )
+
+                                                        @foreach($category->Childs as $sub1)
+
+                                                            <label class="checkbox-inline checkbox-lvl1">
+                                                                <input type="checkbox" name="cat_id[]"
+                                                                       value="{{$sub1->id}}">{{$sub1->name}}
+                                                            </label>
+
+
+                                                            @if(count( $sub1->Childs) > 0 )
+
+                                                                @foreach($sub1->Childs as $sub2)
+
+                                                                    <label class="checkbox-inline checkbox-lvl2">
+                                                                        <input type="checkbox" name="cat_id[]"
+                                                                               value="{{$sub2->id}}">{{$sub2->name}}
+                                                                    </label>
+
+                                                                @endforeach
+                                                            @endif
+
+                                                        @endforeach
+
+                                                    @endif
+
+                                                </div>
+                                            @endif
+
+                                        @endforeach
+
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                            <div class="clear" style="margin-bottom: 25px"></div>
+
+                            <button type="submit" class="btn btn-info">ذخیره</button>
+                        </form>
+
+
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+    @stop
+
+    @include('admin.layouts.content')
+</section>
+
+@if($post_type!=1)
+<script>
+    var tags = <?php echo json_encode( $all ); ?>;
                                         function getTags() {
                                             //first object from php
                                             str = JSON.stringify(tags);
@@ -190,82 +388,11 @@ if ( $post_type == 0 ) {
                                         $(document).on('mouseup', "ul#suggestion li a", function () {
                                             document.getElementById('tag_suggestion').style["display"] = "none";
                                         });
+</script>
+@endif
 
-                                    </script>
-                                    <div class="clear"></div>
-                                </div>
-
-                                @if($post_type==2)
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-2 red">مشخصات کلی</label>
-                                        <div class="col-lg-10">
-                                            <div class="col-lg-12">
-                                                <div class="col-lg-4" style="padding: 3px">مشخصه</div>
-                                                <div class="col-lg-2" style="padding: 3px">مقدار</div>
-                                                <div class="col-lg-3" style="margin-right: 10px;">
-                                                    <button type="button" class="btn btn-success btn-xs"
-                                                            onclick="addRow('specTable')" style="width: 100px">
-                                                        افزودن مشخصه
-                                                    </button>
-                                                </div>
-                                                <div class="clear"></div>
-                                            </div>
-
-                                            <table id="specTable" style="margin: 5px 15px; width: 70%">
-                                                <tr>
-                                                    <td>
-                                                        <input type="text" name="spec_name[]" class="form-control">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="spec_value[]" class="form-control">
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-danger btn-xs"
-                                                                onclick=" deleteRow('specTable',this); ">
-                                                            <i class="icon-trash "></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-2 red">ویژگی ها</label>
-                                        <div class="col-lg-10">
-                                            <div class="col-lg-12">
-                                                <div class="col-lg-4" style="padding: 3px">ویژگی</div>
-                                                <div class="col-lg-2" style="padding: 3px">مقدار</div>
-                                                <div class="col-lg-3" style="margin-right: 10px;">
-                                                    <button type="button" class="btn btn-success btn-xs"
-                                                            onclick="addRow('propTable')" style="width: 100px">
-                                                        افزودن ویژگی
-                                                    </button>
-                                                </div>
-                                                <div class="clear"></div>
-                                            </div>
-
-                                            <table id="propTable" style="margin: 5px 15px; width: 70%">
-                                                <tr>
-                                                    <td>
-                                                        <input type="text" name="prop_name[]" class="form-control">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="prop_value[]" class="form-control">
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-danger btn-xs"
-                                                                onclick=" deleteRow('propTable',this); ">
-                                                            <i class="icon-trash "></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </table>
-
-                                        </div>
-                                        <div class="clear"></div>
-                                        <script>
+<script>
+                                        /*--------------------------------*/
                                             function addRow(tableID) {
                                                 var table = document.getElementById(tableID);
                                                 var rowCount = table.rows.length;
@@ -292,110 +419,6 @@ if ( $post_type == 0 ) {
                                                 }
                                             }
                                         </script>
-                                    </div>
 
-
-
-
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-2 red">کاتالوگ</label>
-                                        <div class="col-lg-10">
-
-                                            <div class="fallback">
-                                                <input name="file" type="file" />
-                                            </div>
-
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-2 red">فیلم ها</label>
-                                        <div class="col-lg-10">
-                                            <input type="file" name="video" class="btn btn-default btn-sm">
-                                        </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                @endif
-
-                            </div>
-
-                            <div class="col-lg-4">
-
-                                <label class=" red">دسته بندی</label>
-                                <div class="form-group">
-
-                                    <div class="col-lg-10 checkbox-container">
-                                        @foreach($categories as $category)
-
-                                            @if($category->parent_id == null)
-
-                                                <div class="checkbox-box">
-
-
-                                                    <label class="checkbox-inline" style="color: #749413;">
-                                                        <input type="checkbox" name="cat_id[]"
-                                                               value="{{$category->id}}">{{$category->name}}
-                                                    </label>
-
-
-                                                    @if(count( $category->Childs) > 0 )
-
-                                                        @foreach($category->Childs as $sub1)
-
-                                                            <label class="checkbox-inline checkbox-lvl1">
-                                                                <input type="checkbox" name="cat_id[]"
-                                                                       value="{{$sub1->id}}">{{$sub1->name}}
-                                                            </label>
-
-
-                                                            @if(count( $sub1->Childs) > 0 )
-
-                                                                @foreach($sub1->Childs as $sub2)
-
-                                                                    <label class="checkbox-inline checkbox-lvl2">
-                                                                        <input type="checkbox" name="cat_id[]"
-                                                                               value="{{$sub2->id}}">{{$sub2->name}}
-                                                                    </label>
-
-                                                                @endforeach
-                                                            @endif
-
-                                                        @endforeach
-
-                                                    @endif
-
-                                                </div>
-                                            @endif
-
-                                        @endforeach
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clear" style="margin-bottom: 15px"></div>
-
-                            <button type="submit" class="btn btn-info">ذخیره</button>
-                        </form>
-
-                            <form action="/upload" class="dropzone needsclick dz-clickable" id="demo-upload">
-
-                                <div class="dz-message needsclick">
-                                    Drop files here or click to upload.<br>
-                                    <span class="note needsclick">(This is just a demo dropzone. Selected files are <strong>not</strong> actually uploaded.)</span>
-                                </div>
-
-                            </form>
-
-                    </div>
-                </section>
-
-            </div>
-        </div>
-
-    @stop
-
-    @include('admin.layouts.content')
-</section>
 </body>
 @endsection

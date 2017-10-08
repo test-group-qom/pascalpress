@@ -18,15 +18,13 @@ class Post extends Model {
 		//---------- just for products
 		'specs',
 		'property',
-		'video',
-		'catalog_file',
-		'catalog_image',
+		'files',
 		//----------
 	];
 	protected $dates = [ 'created_at', 'updated_at', 'deleted_at' ];
 	protected $hidden = [ 'updated_at', 'deleted_at' ];
 	
-	protected $casts = [ 'specs' => 'array', 'property' => 'array' ];
+	protected $casts = [ 'specs' => 'array', 'property' => 'array', 'files' => 'array' ];
 
 	public function category() {
 		return $this->belongsToMany( Category::class, 'post_categories', 'post_id', 'cat_id' )->withTimestamps();

@@ -20,7 +20,7 @@
               <div class="flex--text">
                 <div class="flex---right">
                       <h3 class="text">
-                        جستجو
+                        مقالات
                           <div class="flex--line">
                             <div class="flex--right">      <!-- right -->
                               <span class="line"></span>

@@ -100,6 +100,7 @@ if ( $post_type == 0 ) {
                                     </script>
                                 </div>
 
+                                @if($post_type!=1)
                                 <div class="form-group">
                                     <?php
                                     $all = array();
@@ -214,9 +215,11 @@ if ( $post_type == 0 ) {
                                         });
 
                                     </script>
+                                    
 
                                     <div class="clear"></div>
                                 </div>
+                                @endif
 
                                 @if($post_type==2)
                                     <div class="form-group">
@@ -239,13 +242,14 @@ if ( $post_type == 0 ) {
 
                                                 @if($post->specs != null)
                                                     @foreach($post->specs as $Skey=>$Sval)
+                                                        @foreach($Sval as $val)                                                    
                                                         <tr>
                                                             <td>
                                                                 <input value="{{$Skey}}" type="text" name="spec_name[]"
                                                                        class="form-control">
                                                             </td>
                                                             <td>
-                                                                <input value="{{$Sval}}" type="text" name="spec_value[]"
+                                                                <input value="{{$val}}" type="text" name="spec_value[]"
                                                                        class="form-control">
                                                             </td>
                                                             <td>
@@ -255,6 +259,7 @@ if ( $post_type == 0 ) {
                                                                 </button>
                                                             </td>
                                                         </tr>
+                                                        @endforeach 
                                                     @endforeach
                                                 @endif
                                                 <tr>
@@ -292,10 +297,11 @@ if ( $post_type == 0 ) {
 
                                             <table id="propTable" style="margin: 5px 15px; width: 70%">
                                                 @if($post->property != null)
-                                                    @foreach($post->property as $key=>$val)
+                                                    @foreach($post->property as $Pkey=>$Pval)
+                                                        @foreach($Pval as $val)
                                                         <tr>
                                                             <td>
-                                                                <input value="{{$key}}" type="text" name="prop_name[]"
+                                                                <input value="{{$Pkey}}" type="text" name="prop_name[]"
                                                                        class="form-control">
                                                             </td>
                                                             <td>
@@ -309,6 +315,7 @@ if ( $post_type == 0 ) {
                                                                 </button>
                                                             </td>
                                                         </tr>
+                                                         @endforeach
                                                     @endforeach
                                                 @endif
                                                 <tr>
@@ -351,30 +358,104 @@ if ( $post_type == 0 ) {
                                                 var target_row = getId(rowNum);
                                                 var table = document.getElementById(tableID);
                                                 var rowCount = table.rows.length;
-                                                if (rowCount > 1) {
+                                                if(tableID==="exist_file" ){
                                                     table.deleteRow(target_row);
+                                                }else{
+                                                    if (rowCount > 1) {
+                                                        table.deleteRow(target_row);
+                                                    }
                                                 }
+                                                
                                             }
                                         </script>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-lg-2 red">کاتالوگ</label>
                                         <div class="col-lg-10">
-                                            <input type="file" name="catalog" class="btn btn-default btn-sm">
+                                            
+                                            <div class="col-lg-12">
+                                                <div class="col-lg-4" style="padding: 3px">نوع فایل</div>
+                                                <div class="col-lg-2" style="padding: 3px">انتخاب فایل</div>
+                                                <div class="col-lg-3" style="margin-right: 10px;">
+                                                    <button type="button" class="btn btn-success btn-xs"
+                                                            onclick="addRow('catalogTable')" style="width: 100px">
+                                                        افزودن فایل
+                                                    </button>
+                                                </div>
+                                                <div class="clear"></div>
+                                            </div>
+
+                                                @if($post->files != null)
+                                                    <table id="exist_file" style="margin:5px 15px 10px; width: 70%">
+                                                    @foreach($post->files as $Fkey=>$Fval)
+                                                        @foreach($Fval as $val)
+                                                        <tr>
+                                                            <td align="center" style="margin-top=15px; border-bottom:2px solid #fff; background:#f2f2f2">
+                                                                <img src="{{asset('upload/unknown-icon.png')}}" width="36px" height="36px"/>                                         
+                                                            </td>
+                                                        
+                                                            <td style="direction:ltr;text-align:right;padding-right:5px;margin-top=15px; border-bottom:2px solid #fff; background:#f2f2f2">
+                                                                <?php
+                                                                    $mime_type =  mime_content_type('upload/products/'.$val ) ;
+                                                                    $mime_type = explode("/", $mime_type, 2);
+
+                                                                    if($mime_type[0] == 'image' ){
+                                                                        $catalog_type = 'image';
+                                                                    }elseif($mime_type[0] == 'video'){
+                                                                        $catalog_type = 'video';
+                                                                    }else{
+                                                                        $catalog_type = 'catalog';
+                                                                    }
+                                                                    
+                                                                ?>
+                                                                <input type="hidden" name="exist_catalog_type[]" value="{{$catalog_type}}">
+                                                                <input type="hidden" name="exist_catalog_file[]" value="{{$val}}">
+                                                                <a href="{{asset('upload/products/'.$val)}}" target="_blank">
+                                                                    <span>{{$val}}</span>                                            
+                                                                </a>
+                                                            </td>
+                                                        
+                                                            <td align="center" style="margin-top=15px; border-bottom:2px solid #fff; background:#f2f2f2">
+                                                                <button type="button" class="btn btn-danger btn-xs"
+                                                                    onclick="deleteRow('exist_file',this);">
+                                                                <i class="icon-trash "></i>
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        @endforeach
+                                                    @endforeach                            
+                                                    </table>
+                                                @endif
+
+                                            <table id="catalogTable" style="margin: 5px 15px; width: 70%">                 
+                                                <tr>
+                                                    <td>
+                                                        <select name="catalog_type[]" class="form-control">
+                                                        <option value="image" selected>تصاویر</option>
+                                                        <option value="video">ویدئو</option>
+                                                        <option value="catalog">کاتالوگ</option>
+                                                    </select>
+                                                    </td>
+                                                    <td>
+                                                        <input name="catalog_file[]" type="file" class="btn btn-default btn-sm"/>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-danger btn-xs"
+                                                                onclick=" deleteRow('catalogTable',this); ">
+                                                            <i class="icon-trash "></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <div class="clear"></div>
                                         </div>
-                                        <div class="clear"></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-lg-2 red">فیلم ها</label>
-                                        <div class="col-lg-10">
-                                            <input type="file" name="video" class="btn btn-default btn-sm">
-                                        </div>
-                                        <div class="clear"></div>
                                     </div>
                                 @endif
 
                             </div>
 
+                            @if($post_type!=1)
                             <div class="col-lg-4">
                                 <?php
                                 $cat_ids = array();
@@ -409,7 +490,6 @@ if ( $post_type == 0 ) {
 
 
                                                     @if(count( $category->Childs) > 0 )
-
                                                         @foreach($category->Childs as $sub1)
 
 
@@ -461,6 +541,7 @@ if ( $post_type == 0 ) {
                                     </div>
                                 </div>
                             </div>
+                            @endif
 
                             <div class="clear" style="margin-bottom: 15px"></div>
 

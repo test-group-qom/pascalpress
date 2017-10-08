@@ -1,145 +1,177 @@
 body {
-  direction: rtl;
-  font-family: 'IRANSansWeb' !important;
+    direction: rtl;
+    font-family: 'IRANSansWeb' !important;
 }
+
 header.index .flex--nav-top .flex--wrap .flex---left .flex--left {
-  width: 60px;
-  height:auto !important;
-  display: flex;
-  justify-content: center;
-  background: #f7c300;
-  text-align: center;
-  align-items: center;
+    width: 60px;
+    height: auto !important;
+    display: flex;
+    justify-content: center;
+    background: #f7c300;
+    text-align: center;
+    align-items: center;
 }
+
 .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
 }
+
 footer #contact-info {
-  color: #fff;
-  font-size: 16px;
+    color: #fff;
+    font-size: 16px;
 }
-.alert-danger ul{
-  padding: 15px;
+
+.alert-danger ul {
+    padding: 15px;
 }
+
 .alert-danger ul li {
-  list-style:circle !important ;
+    list-style: circle !important;
 }
+
 .clear {
-  clear: both;
+    clear: both;
 }
+
 .red {
-  color: #da5c52;
+    color: #da5c52;
 }
+
 .green {
-  color: #92B30B;
+    color: #92B30B;
 }
+
 div.alert ul {
-  padding-right: 10px;
+    padding-right: 10px;
 }
 
 button.close {
-  float: left;
+    float: left;
 }
 
+
 /* pagination */
+
 ul.pagination {
-  list-style: none;
-  border-top: 1px solid #ddd;
-  width: 100%;
-  padding-top: 15px;
-  margin: 10px 0 20px;
+    list-style: none;
+    border-top: 1px solid #ddd;
+    width: 100%;
+    padding-top: 15px;
+    margin: 10px 0 20px;
 }
 
 ul.pagination li {
-  float: right;
-  margin-left: 5px !important;
+    float: right;
+    margin-left: 5px !important;
 }
 
 ul.pagination li a.button {
-  color: #999;
-  padding: 3px 8px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  text-decoration: none;
+    color: #999;
+    padding: 0px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    text-decoration: none;
 }
+
 ul.pagination li a.button:hover {
-  color: #D57A00;
-  border: 1px solid #DF922B;
+    color: #D57A00;
+    border: 1px solid #DF922B;
 }
 
-.post{
-  display: block;
-  line-height: 30px;
-  padding: 10px;
-  text-align: justify;
-  color: #222;
+.post {
+    display: block;
+    line-height: 30px;
+    padding: 10px;
+    text-align: justify;
+    color: #222;
 }
+
 p.descrption {
-  text-align: justify;
+    text-align: justify;
 }
 
-.flex--nav_top{
-  top: 136px;
+.flex--nav_top {
+    top: 136px;
 }
+
 footer {
-  padding-bottom:0 !important ;
+    padding-bottom: 0 !important;
 }
+
 footer .flex--parent {
-  border-bottom: solid 1px #080b10;
+    border-bottom: solid 1px #080b10;
 }
+
 footer .flex--copy-right {
-  display: flex;
-  margin-top: 0 !important;
-  justify-content: center;
-  padding: 15px 0 !important;
-  padding-bottom: 8px;
-  background: #171f31;
-  border-top: solid 1px #29344c;
+    display: flex;
+    margin-top: 0 !important;
+    justify-content: center;
+    padding: 15px 0 !important;
+    padding-bottom: 8px;
+    background: #171f31;
+    border-top: solid 1px #29344c;
 }
+
 footer .flex--copy-right .title {
-  font: 18px "IRANSansWeb";
-  color: #a9b5ce;
-  cursor: default;
+    font: 18px "IRANSansWeb";
+    color: #a9b5ce;
+    cursor: default;
 }
+
 footer .flex--parent .flex--wrap .flex---left .flex--right {
-  padding-top: 10px !important;
+    padding-top: 10px !important;
 }
-footer .flex--parent .flex--wrap .flex---left .flex--right .flex--info{
-  display: block !important;
+
+footer .flex--parent .flex--wrap .flex---left .flex--right .flex--info {
+    display: block !important;
 }
+
 footer .flex--parent h3.title {
-  color:white;
-  display: block;
-  padding: 5px 0 7px;
-  margin-bottom: 10px;
-  font-weight: normal;
-  border-bottom: 1px solid #3c4a69;
+    color: white;
+    display: block;
+    padding: 5px 0 7px;
+    margin-bottom: 10px;
+    font-weight: normal;
+    border-bottom: 1px solid #3c4a69;
 }
 
-footer #last-products{
+footer #last-products {}
 
-}
 footer ul#last-products li {
-  margin-bottom: 5px;
+    margin-bottom: 5px;
 }
-footer ul#last-products li a{
-  color: #eee !important;
+
+footer ul#last-products li a {
+    color: #eee !important;
 }
-footer ul#last-products li a:hover{
-  color: gold !important;
+
+footer ul#last-products li a:hover {
+    color: gold !important;
 }
-footer ul#last-products li:hover > img{
-  border: 1px solid #ff464d;
+
+footer ul#last-products li:hover>img {
+    border: 1px solid #ff464d;
 }
-footer ul#last-products li img{
-  height: 70px;
-  width: 65px;
-  border: 1px solid #e8d154;
-  padding: 3px;
-  
+
+footer ul#last-products li img {
+    height: 70px;
+    width: 65px;
+    border: 1px solid #e8d154;
+    padding: 3px;
+}
+
+.flex---products .flex--product .product_items {
+    border: 3px solid #ddd;
+    padding: 7px;
+    background: #fff;
+}
+
+.flex---products .flex--product .product_items:hover {
+    border: 3px solid #f7c300;
 }

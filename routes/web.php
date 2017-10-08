@@ -111,9 +111,18 @@ Route::get( 'news', 'FrontController@news' );
 
 // articles
 Route::get( 'articles', 'FrontController@articles' );
-
 // single post
 Route::get( 'single_post/{id}', 'FrontController@single_post' );
+
+
+// catalogs
+Route::get( 'catalogs', 'FrontController@catalogs' );
+
+// products
+Route::get( 'products', 'FrontController@products' );
+// single product
+Route::get( 'single_product/{id}', 'FrontController@single_product' );
+
 
 
 

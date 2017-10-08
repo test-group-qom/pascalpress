@@ -46,6 +46,6 @@
 <script src="{{asset('admin/js/common-scripts.js')}}"></script>
 <!--script for this page-->
 <script src="{{asset('admin/js/form-component.js')}}"></script>
-<script src="{{asset('admin/js/dropzone.js')}}"></script>
+<!--<script src="{{asset('admin/js/dropzone.js')}}"></script>-->
 
 </html>

@@ -22,9 +22,7 @@ class CreatePostsTable extends Migration {
 			$table->integer( 'status' )->default( 1 );
 			$table->text('specs')->nullable();
 			$table->text('property')->nullable();
-			$table->text('video')->nullable();
-			$table->text('catalog_file')->nullable();
-			$table->text('catalog_image')->nullable();
+			$table->text('files')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		} );

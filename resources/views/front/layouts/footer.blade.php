@@ -1,19 +1,21 @@
 <footer>
   <div class="flex--parent">
       <div class="wrapper">
-          <div class="flex--wrap">
-              <div class="flex---right">
-                <div class="min--logo">
+                <div class="min--logo" style="background: none;">
                   <a ui-sref="master.index" href="#">
                       <img src="{{asset('front/styles/img/logo.png')}}" class="img--logo" alt="">
                   </a>
                 </div>
+          <div class="flex--wrap">
+              <div class="flex---right">
+                
                 <div class="flex--right">   <!-- socail -->
                   <div id="contact-info">
                    <?php echo $config->info ?>
                    </div>
                 </div>
               </div>
+              <!--
               <div class="flex---left">
                 <div class="flex--right">
 
@@ -42,6 +44,7 @@
 
                 </div>
               </div>
+              -->
           </div>
       </div>
   </div>

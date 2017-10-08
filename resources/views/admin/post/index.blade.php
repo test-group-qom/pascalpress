@@ -46,7 +46,9 @@ if ( $post_type == 0 ) {
                                     <th class="text-center" style="width: 50px;">#</th>
                                     <th class="text-center" style="width: 110px;">تصویر شاخص</th>
                                     <th>عنوان</th>
+									@if($post_type <> 1)
                                     <th style="width: 230px;">دسته بندی</th>
+									@endif
                                     <th class="text-center" style="width: 80px;">تاریخ</th>
                                     <th class="text-center" style="width: 60px;">بازدید</th>
                                     <th class="text-center" style="width: 60px;">وضعیت</th>
@@ -70,6 +72,7 @@ if ( $post_type == 0 ) {
                                             @endif
                                         </td>
                                         <td>{{$post->title}}</td>
+                                        @if($post_type <> 1)
                                         <td>
                                             @foreach($post->category as $cat)
                                                 {{$cat}}
@@ -78,6 +81,7 @@ if ( $post_type == 0 ) {
                                                 @endif
                                             @endforeach
                                         </td>
+                                        @endif
                                         <td class="text-center">{{$post->publish_date}}</td>
                                         <td class="text-center">{{$post->visit}}</td>
                                         <td class="text-center">
