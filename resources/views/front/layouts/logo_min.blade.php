@@ -4,8 +4,11 @@
                   <div href="#" class="nav-opener"><span></span></div>
                 </div>
     </div>
-  <a ui-sref="master.index" class="link" href="#">
+  <a href="/" class="link">
       <img src="{{asset('front/styles/img/logo.png')}}" class="img--logo" alt="">
+      
+      <h3 class="slogan">تولید و طراحی ابزارهای دقیق هیدرولیکی</h3>
+      
   </a>
-
+  
 </div>

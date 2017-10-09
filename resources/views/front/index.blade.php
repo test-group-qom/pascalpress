@@ -11,97 +11,18 @@
       @include ('front.layouts.logo_min')
       @include ('front.layouts.flickity')
     </div>
+   
     <div class="flex---content">
-      <div class="logo-min2">
+
+      <!--<div class="logo-min2">
         <div class="min--logo">
           <a href="/">
             <img src="{{asset('front/styles/img/logo.png')}}" class="img--logo" alt="">
           </a>
         </div>
-        <div class="flex---items">
-          <div class="wrapper">
-            <div class="flex--parent">
-              <div class="flex--text">
-                <h3 class="text">
-                  مقالات
-                  <div class="flex--line">
-                    <div class="flex--right">      <!-- right -->
-                      <span class="line"></span>
-                    </div>
-                    <div class="flex--left">          <!-- left -->
-                      <span class="line"></span>
-                    </div>
-                  </div>
-                </h3>
-              </div>
-              <div class="flex---wrap">
-              @foreach($articles as $article)
-                <div class="flex--item">
-                  <a href="/single_post/{{$article->id}}" >
-                    <div class="flex--img">
-                      @if($article->thumb != null)
-                      <img src="{{asset('upload/images/' . $article->thumb )}}" class="img--content" alt="">
-                      @else
-                        <img src="{{asset('upload/images/no-image.png')}}" class="img--content"/>
-                      @endif
-                    </div>
-                    <div class="flex--content">
-                      <h3 class="title">{{$article->title}}</h3>
-                      <p class="descrption">
-                        {{$article->excerpt}}
-                      </p>
-                    </div>
-                  </a>
-                </div>
-                @endforeach
-              </div>
-              <div class="flex--button">
-                <a href="articles" >
-                  <button type="button" class="button" name="button">بیشتر</button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="flex---products">
-          <div class="flex--text">
-            <h3 class="text">
-            محصولات
-              <div class="flex--line">
-                <div class="flex--right">      <!-- right -->
-                  <span class="line"></span>
-                </div>
-                <div class="flex--left">          <!-- left -->
-                  <span class="line"></span>
-                </div>
-              </div>
-            </h3>
-          </div>
-          <div class="flex--product">
-            <div class="wrapper">
-              <div class="flex--pic">
+      </div>-->
 
-                @foreach($products as $product)
-                <div class="flex--right product_items">
-                    <div class="min--pic" href="product.php">
-                      @if($product->thumb != null)
-                        <a href="/single_product/{{$product->id}}"><img src="{{asset('upload/images/' . $product->thumb )}}" class="img--user"></a>
-                      @else
-                        <a href="/single_product/{{$product->id}}"><img src="{{asset('upload/images/no-image.png')}}" class="img--user"/></a>
-                      @endif
-                    </div>
-                </div>
-                @endforeach
-
-              </div>
-              <div class="flex--button">
-                <a href="/products">
-                  <button type="button" class="button" name="button">بیشتر</button>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- News -->
         <div class="flex---news">
           <div class="wrapper">
             <div class="flex--parent">
@@ -227,6 +148,95 @@
             </div>
           </div>
         </div>
+        
+        <!-- Products -->
+        <div class="flex---products">
+          <div class="flex--text">
+            <h3 class="text">
+            محصولات
+              <div class="flex--line">
+                <div class="flex--right">      <!-- right -->
+                  <span class="line"></span>
+                </div>
+                <div class="flex--left">          <!-- left -->
+                  <span class="line"></span>
+                </div>
+              </div>
+            </h3>
+          </div>
+          <div class="flex--product">
+            <div class="wrapper">
+              <div class="flex--pic">
+
+                @foreach($products as $product)
+                <div class="flex--right product_items">
+                    <div class="min--pic" href="product.php">
+                      @if($product->thumb != null)
+                        <a href="/single_product/{{$product->id}}"><img src="{{asset('upload/images/' . $product->thumb )}}" class="img--user"></a>
+                      @else
+                        <a href="/single_product/{{$product->id}}"><img src="{{asset('upload/images/no-image.png')}}" class="img--user"/></a>
+                      @endif
+                    </div>
+                </div>
+                @endforeach
+
+              </div>
+              <div class="flex--button">
+                <a href="/products">
+                  <button type="button" class="button" name="button">بیشتر</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Articles -->
+        <div class="flex---items">
+          <div class="wrapper">
+            <div class="flex--parent">
+              <div class="flex--text">
+                <h3 class="text">
+                  مقالات
+                  <div class="flex--line">
+                    <div class="flex--right">      <!-- right -->
+                      <span class="line"></span>
+                    </div>
+                    <div class="flex--left">          <!-- left -->
+                      <span class="line"></span>
+                    </div>
+                  </div>
+                </h3>
+              </div>
+              <div class="flex---wrap">
+              @foreach($articles as $article)
+                <div class="flex--item">
+                  <a href="/single_post/{{$article->id}}" >
+                    <div class="flex--img">
+                      @if($article->thumb != null)
+                      <img src="{{asset('upload/images/' . $article->thumb )}}" class="img--content" alt="">
+                      @else
+                        <img src="{{asset('upload/images/no-image.png')}}" class="img--content"/>
+                      @endif
+                    </div>
+                    <div class="flex--content">
+                      <h3 class="title">{{$article->title}}</h3>
+                      <p class="descrption">
+                        {{$article->excerpt}}
+                      </p>
+                    </div>
+                  </a>
+                </div>
+                @endforeach
+              </div>
+              <div class="flex--button">
+                <a href="articles" >
+                  <button type="button" class="button" name="button">بیشتر</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>

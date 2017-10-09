@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{asset('front/styles/css/easyzoom.css')}}">
     <link rel="stylesheet" href="{{asset('front/styles/css/import.css')}}">
     <link rel="stylesheet" href="{{asset('front/styles/css/rtl-app.css')}}">
-    <link rel="stylesheet" href="{{asset('front/styles/sass/import.scss')}}">
+    <!--<link rel="stylesheet" href="{{asset('front/styles/sass/import.scss')}}">-->
  
     <!-- core scripts -->
     <script src="{{asset('front/js/jquery.min.js')}}"></script>

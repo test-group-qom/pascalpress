@@ -3,6 +3,18 @@ body {
     font-family: 'IRANSansWeb' !important;
 }
 
+.min--logo .img--logo {
+    width: 400px;
+    height: auto;
+}
+
+.min--logo h3.slogan {
+    color: white;
+    text-align: center;
+    padding-top: 15px;
+    font-weight: normal;
+}
+
 header.index .flex--nav-top .flex--wrap .flex---left .flex--left {
     width: 60px;
     height: auto !important;
@@ -18,6 +30,10 @@ header.index .flex--nav-top .flex--wrap .flex---left .flex--left {
     height: 100%;
     display: flex;
     position: relative;
+}
+
+.flickity-enabled.is-draggable .flickity-viewport {
+    height: 540px !important;
 }
 
 footer #contact-info {
@@ -97,10 +113,11 @@ p.descrption {
 }
 
 .flex--nav_top {
-    top: 136px;
+    /* top: 136px; */
 }
 
 footer {
+    color: #a9b5ce;
     padding-bottom: 0 !important;
 }
 
@@ -135,6 +152,8 @@ footer .flex--parent .flex--wrap .flex---left .flex--right .flex--info {
 footer .flex--parent h3.title {
     color: white;
     display: block;
+    width: 100%;
+    text-align: center;
     padding: 5px 0 7px;
     margin-bottom: 10px;
     font-weight: normal;
@@ -174,4 +193,69 @@ footer ul#last-products li img {
 
 .flex---products .flex--product .product_items:hover {
     border: 3px solid #f7c300;
+}
+
+table.table {
+    width: 100%;
+}
+
+table.table td {
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.prop_name {
+    background: #f0f1f2;
+    width: 25%;
+}
+
+.prop_value {
+    background: #f7f9fa;
+}
+
+.product_file {
+    width: 25%;
+    text-align: center;
+    direction: ltr;
+    overflow: hidden;
+}
+
+
+/* TAB */
+
+
+/* Change background color of buttons on hover */
+
+
+/* Create an active/current tablink class */
+
+div.tabs li.active,
+div.tabs li:hover {
+    color: #26324a !important;
+    background: #f7c300;
+    transition: all 120ms ease-in;
+}
+
+.tabcontent {
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+    /* Fading effect takes 1 second */
+}
+
+@-webkit-keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
