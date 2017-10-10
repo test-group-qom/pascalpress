@@ -1,14 +1,7 @@
-<script>
-$(document).ready(function(){
-  $("body").on("click",".nav-opener",toggle_Humber);
-  $("body").on("click",".flex--nav_top ul a",remove_event);
-});
-</script>  
 @section('title','صفحه اصلی')
 @extends('front.layouts.app')
 @section('main_content')
 
-@include ('front.layouts.header')
 @include ('front.layouts.menu_top')
 
 <div class="container" >

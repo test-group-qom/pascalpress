@@ -156,7 +156,7 @@ http://flickity.metafizzy.co
     
     @media screen and (max-width: 500px) {
         .flex--flickity {
-            height: 100% !important;
+            /* height: 100% !important; */
         }
         .flex--flickity .main-carousel .carousel-cell .overlay .flex--parent .flex--center .flex--menu {
             margin-bottom: 10px !important;

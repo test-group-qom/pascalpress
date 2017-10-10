@@ -1,4 +1,4 @@
-<div class="flex--flickity" style="height: 501px;">
+<div class="flex--flickity" style="height: 100% !important;max-height: 501px;">
           <div class="main-carousel">
           @foreach($news as $item)
               <div class="carousel-cell">
