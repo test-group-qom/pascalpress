@@ -98,30 +98,32 @@ Route::resource( 'tag', 'TagController', [ 'only' => [ 'index', 'show' ] ] );
 
 ## Front 
 // index
-Route::get( '/', 'FrontController@index' );
+Route::get( '/', 'FrontController@index' )->name('homepage');
 
 // contact
-Route::get( 'contact', 'FrontController@contact' );
+Route::get( 'contact', 'FrontController@contact' )->name('contact');
 
 // about
-Route::get( 'about', 'FrontController@about' );
+Route::get( 'about', 'FrontController@about' )->name('about');
 
 // news
-Route::get( 'news', 'FrontController@news' );
+Route::get( 'news', 'FrontController@news' )->name('news');
+// single post
+Route::get( 'news/{id}', 'FrontController@single_post' );
 
 // articles
-Route::get( 'articles', 'FrontController@articles' );
+Route::get( 'articles', 'FrontController@articles' )->name('articles');
 // single post
-Route::get( 'single_post/{id}', 'FrontController@single_post' );
+Route::get( 'articles/{id}', 'FrontController@single_post' );
 
 
 // catalogs
 Route::get( 'catalogs', 'FrontController@catalogs' );
 
 // products
-Route::get( 'products', 'FrontController@products' );
+Route::get( 'products', 'FrontController@products' )->name('products');
 // single product
-Route::get( 'single_product/{id}', 'FrontController@single_product' );
+Route::get( 'products/{id}', 'FrontController@single_product' );
 
 
 

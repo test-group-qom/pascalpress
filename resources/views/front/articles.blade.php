@@ -10,7 +10,13 @@
  
   <div class="flex--parnet">
     <div class="flex--cover">
-      <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
+      
+      @if($posts[0]->thumb!=null)
+        <img src="{{asset('upload/images/' .$posts[0]->thumb)}}" class="img--user"/>
+      @else
+        <img src="{{asset('upload/images/no-image.png')}}" class="img--user"/>
+      @endif
+
     </div>
     @include ("front.layouts.menu_down")
     <div class="flex--items">
@@ -46,7 +52,7 @@
               
                 @foreach($posts as $post)
                 <div class="flex--item" >
-                  <a href="/single_post/{{$post->id}}" >
+                  <a href="/articles/{{$post->id}}" >
                     <div class="flex--img">
                       @if($post->thumb!=null)
                         <img src="{{asset('upload/images/' .$post->thumb)}}" class="img--content"/>

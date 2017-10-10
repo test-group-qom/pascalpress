@@ -1,4 +1,5 @@
-@section('title','محصولات')
+@php($page_title = $product->title)
+@section('title',$product->title)
 @extends('front.layouts.app')
 @section('main_content')
 

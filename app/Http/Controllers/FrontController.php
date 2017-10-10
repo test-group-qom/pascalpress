@@ -17,7 +17,7 @@ class FrontController extends Controller
     {
         $config = Config::find( 1 );
         $articles  = $this->query_posts( 7, 3 );
-        $news   = $this->query_posts( 8, 3 );
+        $news   = $this->query_posts( 8, 4 );
         $products   = Post::where( 'post_type', 2 )->where( 'status', 1 )->orderBy( 'created_at', 'desc' );
         $products = $products->skip( 0 )->take( 6 )->get();
 
@@ -166,7 +166,7 @@ class FrontController extends Controller
     public function query_posts($cat_id, $take)
     {
         $category = Category::find( $cat_id );
-        $all_post = $category->posts()->where( 'status', 1 )->orderBy( 'created_at', 'ASC' );
+        $all_post = $category->posts()->where( 'status', 1 )->orderBy( 'created_at', 'desc' );
         $all_post = $all_post->skip( 0 )->take( $take )->get();
         $all_post->map( function ($item) {
             //publish date

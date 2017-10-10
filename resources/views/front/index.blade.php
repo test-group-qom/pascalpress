@@ -1,3 +1,9 @@
+<script>
+$(document).ready(function(){
+  $("body").on("click",".nav-opener",toggle_Humber);
+  $("body").on("click",".flex--nav_top ul a",remove_event);
+});
+</script>  
 @section('title','صفحه اصلی')
 @extends('front.layouts.app')
 @section('main_content')
@@ -7,7 +13,7 @@
 
 <div class="container" >
   <div class="flex--wrap">
-    <div class="flex---slider">
+    <div id="slideshow" class="flex---slider">
       @include ('front.layouts.logo_min')
       @include ('front.layouts.flickity')
     </div>
@@ -28,7 +34,7 @@
             <div class="flex--parent">
               <div class="flex---right">
                 <div class="flex--right">
-                  <a href="/single_post/{{$news[0]->id}}" >
+                  <a href="/news/{{$news[0]->id}}" >
                     <div class="flex--img">
                       @if($news[0]->thumb != null)
                       <img src="{{asset('upload/images/' . $news[0]->thumb )}}" class="img--user" alt="">
@@ -45,42 +51,18 @@
                       $day = $date[2];
 
                       switch($month){
-                        case 1:
-                        $month = "فروردین";
-                        break;
-                        case 2:
-                        $month = "اردیبهشت";
-                        break;
-                        case 3:
-                        $month = "خرداد";
-                        break;
-                        case 4:
-                        $month = "تیر";
-                        break;
-                        case 5:
-                        $month = "مرداد";
-                        break;
-                        case 6:
-                        $month = "شهریور";
-                        break;
-                        case 7:
-                        $month = "مهر";
-                        break;
-                        case 8:
-                        $month = "آبان";
-                        break;
-                        case 9:
-                        $month = "آذر";
-                        break;
-                        case 10:
-                        $month = "دی";
-                        break;
-                        case 11:
-                        $month = "بهمن";
-                        break;
-                        case 12:
-                        $month = "اسفند";
-                        break;
+                        case 1: $month = "فروردین"; break;
+                        case 2: $month = "اردیبهشت"; break;
+                        case 3: $month = "خرداد"; break;
+                        case 4: $month = "تیر"; break;
+                        case 5: $month = "مرداد"; break;
+                        case 6: $month = "شهریور"; break;
+                        case 7: $month = "مهر"; break;
+                        case 8: $month = "آبان"; break;
+                        case 9: $month = "آذر"; break;
+                        case 10: $month = "دی"; break;
+                        case 11: $month = "بهمن"; break;
+                        case 12: $month = "اسفند"; break;
                       }
                       ?>
                       <div class="flex--time">
@@ -118,10 +100,13 @@
                   <div class="flex--news">
                     <div class="flex--group">
 
-                    @foreach($news as $news_item)
+                    @foreach($news as $key => $news_item)
+                      @if ($key == 0)
+                        @continue
+                      @else    
                         <div class="flex--item">
                             <div class="flex--right">
-                              <a href="/single_post/{{$news_item->id}}" >
+                              <a href="/news/{{$news_item->id}}" >
                                 <div class="flex--img">  <!-- right -->
                                   <img src="{{asset('upload/images/' . $news_item->thumb )}}" class="img--user" alt="">
                                 </div>
@@ -129,7 +114,7 @@
                             </div>
                             <div class="flex--left">
                               <div class="flex--padding">
-                                <a href="/single_post/{{$news_item->id}}" >
+                                <a href="/news/{{$news_item->id}}" >
                                   <h3 class="title">{{$news_item->title}}</h3>
                                   <p class="descrption">
                                   {{$news_item->excerpt}}
@@ -138,6 +123,7 @@
                               </div>
                             </div>
                         </div>
+                      @endif
                     @endforeach
 
                     </div>
@@ -172,9 +158,9 @@
                 <div class="flex--right product_items">
                     <div class="min--pic" href="product.php">
                       @if($product->thumb != null)
-                        <a href="/single_product/{{$product->id}}"><img src="{{asset('upload/images/' . $product->thumb )}}" class="img--user"></a>
+                        <a href="/products/{{$product->id}}"><img src="{{asset('upload/images/' . $product->thumb )}}" class="img--user"></a>
                       @else
-                        <a href="/single_product/{{$product->id}}"><img src="{{asset('upload/images/no-image.png')}}" class="img--user"/></a>
+                        <a href="/products/{{$product->id}}"><img src="{{asset('upload/images/no-image.png')}}" class="img--user"/></a>
                       @endif
                     </div>
                 </div>
@@ -210,7 +196,7 @@
               <div class="flex---wrap">
               @foreach($articles as $article)
                 <div class="flex--item">
-                  <a href="/single_post/{{$article->id}}" >
+                  <a href="/articles/{{$article->id}}" >
                     <div class="flex--img">
                       @if($article->thumb != null)
                       <img src="{{asset('upload/images/' . $article->thumb )}}" class="img--content" alt="">

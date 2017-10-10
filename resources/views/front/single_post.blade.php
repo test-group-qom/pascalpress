@@ -1,3 +1,4 @@
+@php($page_title = $post->title)
 @section('title',$post->title)
 @extends('front.layouts.app')
 @section('main_content')

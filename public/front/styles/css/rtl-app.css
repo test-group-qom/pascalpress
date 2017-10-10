@@ -32,8 +32,10 @@ header.index .flex--nav-top .flex--wrap .flex---left .flex--left {
     position: relative;
 }
 
-.flickity-enabled.is-draggable .flickity-viewport {
-    height: 540px !important;
+#slideshow .flickity-enabled.is-draggable .flickity-viewport {}
+
+.flex--select {
+    display: none !important;
 }
 
 footer #contact-info {
@@ -223,12 +225,6 @@ table.table td {
 
 /* TAB */
 
-
-/* Change background color of buttons on hover */
-
-
-/* Create an active/current tablink class */
-
 div.tabs li.active,
 div.tabs li:hover {
     color: #26324a !important;
@@ -257,5 +253,14 @@ div.tabs li:hover {
     }
     to {
         opacity: 1;
+    }
+}
+
+
+/* Top Menu */
+
+@media screen and (max-width: 900px) {
+    .flex--nav_top ul li {
+        width: 100%;
     }
 }

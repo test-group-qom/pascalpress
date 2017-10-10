@@ -3,7 +3,7 @@
           @foreach($news as $item)
               <div class="carousel-cell">
                 @if($item->thumb != null)
-                  <img src="{{asset('upload/images/' . $item->thumb )}}" class="img--user" width="1135" height="501" alt="">
+                  <img src="{{asset('upload/images/' . $item->thumb )}}" class="img--user" style="height: 100% !important;max-height: 540px !important;" alt="">
                 @else
                   <img src="{{asset('upload/images/no-image.png')}}" class="img--content"/>
                 @endif

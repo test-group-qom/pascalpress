@@ -10,7 +10,13 @@
 
   <div class="flex--parnet">
     <div class="flex--cover">
-      <img src="{{asset('front/styles/img/cover_news.jpg')}}" class="img--user" alt="">
+      
+      @if($products[0]->thumb!=null)
+        <img src="{{asset('upload/images/' .$products[0]->thumb)}}" class="img--user"/>
+      @else
+        <img src="{{asset('upload/images/no-image.png')}}" class="img--user"/>
+      @endif
+
     </div>
     @include ("front.layouts.menu_down")
     <div class="flex--items">
@@ -39,9 +45,9 @@
                 <div class="flex--right product_items">
                     <div class="min--pic" href="product.php">
                       @if($product->thumb != null)
-                        <a href="/single_product/{{$product->id}}"><img src="{{asset('upload/images/' . $product->thumb )}}" class="img--user"></a>
+                        <a href="/products/{{$product->id}}"><img src="{{asset('upload/images/' . $product->thumb )}}" class="img--user"></a>
                       @else
-                        <a href="/single_product/{{$product->id}}"><img src="{{asset('upload/images/no-image.png')}}" class="img--user"/></a>
+                        <a href="/products/{{$product->id}}"><img src="{{asset('upload/images/no-image.png')}}" class="img--user"/></a>
                       @endif
                     </div>
                 </div>
