@@ -1,5 +1,12 @@
+<script>
+$(document).ready(function(){
+    $(".nav-opener").click(function(){
+        $(".flex--nav_top").slideToggle( "slow" );
+    });
+});
+</script>
 <div class="min--logo">
-  <div class="min-humber" >
+    <div class="min-humber" >
                 <div class="opener-holder">
                   <div href="#" class="nav-opener"><span></span></div>
                 </div>
