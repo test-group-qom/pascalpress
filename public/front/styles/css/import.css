@@ -857,7 +857,7 @@ header.index .flex--nav-top .flex--wrap .flex---left .flex--left .img--user {
     margin-right: auto;
     margin-left: auto;
     height: 894px;
-    background: url("../img/cover.jpg") no-repeat;
+    background: #26324a;
     display: flex;
     flex-direction: column;
     margin-top: 48px;

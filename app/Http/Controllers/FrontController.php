@@ -18,10 +18,11 @@ class FrontController extends Controller
         $config = Config::find( 1 );
         $articles  = $this->query_posts( 7, 3 );
         $news   = $this->query_posts( 8, 4 );
+        $slides   = Post::where( 'post_type', 3 )->where( 'status', 1 )->get();
         $products   = Post::where( 'post_type', 2 )->where( 'status', 1 )->orderBy( 'created_at', 'desc' );
         $products = $products->skip( 0 )->take( 6 )->get();
 
-        return view( 'front.index', compact( [ 'config', 'news', 'articles', 'products' ] ) );
+        return view( 'front.index', compact( [ 'config', 'news', 'articles', 'slides', 'products' ] ) );
     }
 
     public function news(Request $request)

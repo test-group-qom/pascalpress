@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index(Request $request)
     {
 
-        if (empty( $request->post_type ) || (int) $request->post_type > 2 || (int) $request->post_type < 0) {
+        if (empty( $request->post_type ) || (int) $request->post_type > 3 || (int) $request->post_type < 0) {
             $post_type = 0;
         } else {
             $post_type = $request->post_type;
@@ -104,39 +104,52 @@ class PostController extends Controller
             'tag_id.*'  => 'nullable|numeric|exists:tags,id,deleted_at,NULL',
             'title'     => 'required|max:255',
             'content'   => 'required|min:5',
-            'post_type' => 'nullable|numeric|between:0,2',
+            'post_type' => 'nullable|numeric|between:0,3',
         ] );
         if ($validator->fails()) {
             return back()->with( [ 'errors' => $validator->errors() ] );
         }
  
-        #####################
-        // Specs
-        $spec =   $this->get_prop( $request->spec_name, $request->spec_value );
-        // Properties
-        $prop = $this->get_prop( $request->prop_name, $request->prop_value );
-        
-        $catalog_type=[];
-        $catalog_file =[];
-
-        //get each file
-        if (!empty($request->catalog_file)) {
-            $catalog_type=$request->catalog_type;
-            foreach ($request->file('catalog_file') as $item) {
-                if ($request->hasFile('catalog_file') && $item->isValid()) {
-                    $randNum = mt_rand(00000, 99999);
-                    $filename = $randNum.'_'.$item->getClientOriginalName();
-                    $item->move(public_path('/upload/products/'), $filename);
-                    $item = $filename;
-                }
-                array_push($catalog_file, $item);
-            }
+        if ($request->post_type != 2) {
+            $spec=null;
+            $prop=null;
+            $catalog=null;
         }
-        
-        // Catalog Files
-        $catalog = $this->get_prop( $catalog_type, $catalog_file );
 
-        #####################
+        ########## if it was slideshow #########
+        if ($request->post_type == 3) {
+            $prop =$request->link;
+        }
+        ########################################
+
+        ########### if it was product ##########
+        if ($request->post_type == 2) {
+            // Specs
+            $spec =   $this->get_prop( $request->spec_name, $request->spec_value );
+            // Properties
+            $prop = $this->get_prop( $request->prop_name, $request->prop_value );
+        
+            $catalog_type=[];
+            $catalog_file =[];
+
+            //get each file
+            if (!empty($request->catalog_file)) {
+                $catalog_type=$request->catalog_type;
+                foreach ($request->file('catalog_file') as $item) {
+                    if ($request->hasFile('catalog_file') && $item->isValid()) {
+                        $randNum = mt_rand(00000, 99999);
+                        $filename = $randNum.'_'.$item->getClientOriginalName();
+                        $item->move(public_path('/upload/products/'), $filename);
+                        $item = $filename;
+                    }
+                    array_push($catalog_file, $item);
+                }
+            }
+        
+            // Catalog Files
+            $catalog = $this->get_prop( $catalog_type, $catalog_file );
+        }
+        ########################################
         // TAG
         if (! empty( $request->tags )) {
             $new_tags = explode( ',', $request->tags );
@@ -264,39 +277,52 @@ class PostController extends Controller
             return back()->with( [ 'errors' => $validator->errors() ] );
         }
 
-                #####################
-        // Specs
-        $spec =   $this->get_prop( $request->spec_name, $request->spec_value );
-        // Properties
-        $prop = $this->get_prop( $request->prop_name, $request->prop_value );
+        if ($request->post_type != 2) {
+            $spec=null;
+            $prop=null;
+            $catalog=null;
+        }
         
-        $catalog_type=[];
-        $catalog_file =[];
+        ########## if it was slideshow #########
+        if ($request->post_type == 3) {
+            $prop =$request->link;
+        }
+        ########################################
 
-        //get each file
-        if (!empty($request->catalog_file)) {
-            $catalog_type=$request->catalog_type;
+        ########### if it was product ##########
+        if ($request->post_type == 2) {
+            // Specs
+            $spec =   $this->get_prop( $request->spec_name, $request->spec_value );
+            // Properties
+            $prop = $this->get_prop( $request->prop_name, $request->prop_value );
+        
+            $catalog_type=[];
+            $catalog_file =[];
 
-            foreach ($request->file('catalog_file') as $item) {
-                if ($request->hasFile('catalog_file') && $item->isValid()) {
-                    $randNum = mt_rand(00000, 99999);
-                    $filename = $randNum.'_'.$item->getClientOriginalName();
-                    $item->move(public_path('/upload/products/'), $filename);
-                    $item = $filename;
+            //get each file
+            if (!empty($request->catalog_file)) {
+                $catalog_type=$request->catalog_type;
+
+                foreach ($request->file('catalog_file') as $item) {
+                    if ($request->hasFile('catalog_file') && $item->isValid()) {
+                        $randNum = mt_rand(00000, 99999);
+                        $filename = $randNum.'_'.$item->getClientOriginalName();
+                        $item->move(public_path('/upload/products/'), $filename);
+                        $item = $filename;
+                    }
+                    array_push($catalog_file, $item);
                 }
-                array_push($catalog_file, $item);
             }
-        }
         
-        if (!empty($request->exist_catalog_type) && !empty($request->exist_catalog_file)) {
-            $catalog_type = array_merge($catalog_type, $request->exist_catalog_type);
-            $catalog_file = array_merge($catalog_file, $request->exist_catalog_file);
-            //dd($catalog_type, $catalog_file ,$request->exist_catalog_type, $request->exist_catalog_file);
+            if (!empty($request->exist_catalog_type) && !empty($request->exist_catalog_file)) {
+                $catalog_type = array_merge($catalog_type, $request->exist_catalog_type);
+                $catalog_file = array_merge($catalog_file, $request->exist_catalog_file);
+                //dd($catalog_type, $catalog_file ,$request->exist_catalog_type, $request->exist_catalog_file);
+            }
+
+            // Catalog Files
+            $catalog = $this->get_prop( $catalog_type, $catalog_file );
         }
-
-        // Catalog Files
-        $catalog = $this->get_prop( $catalog_type, $catalog_file );
-
         #####################
         //********* TAGs
         if (! empty( $request->tags )) {

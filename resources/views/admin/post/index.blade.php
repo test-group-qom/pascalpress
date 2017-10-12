@@ -3,8 +3,10 @@ if ( $post_type == 0 ) {
     $title = 'مطالب';
 } elseif ( $post_type == 1 ) {
     $title = 'صفحات';
-} else {
+} elseif ( $post_type == 2 ) {
     $title = 'محصولات';
+} else {
+    $title = 'اسلایدشو';
 }
 ?>
 @section('title', $title)
@@ -24,8 +26,10 @@ if ( $post_type == 0 ) {
                                 @php($t = 'مطلب')
                             @elseif($post_type==1)
                                 @php($t = 'صفحه')
-                            @else
+                            @elseif($post_type==2)
                                 @php($t = 'محصول')
+                            @else
+                                @php($t = 'اسلاید')
                             @endif
                                 <form action="/admin/post/add/" method="post" style="display: inline;">
                                     {{csrf_field()}}
@@ -46,11 +50,12 @@ if ( $post_type == 0 ) {
                                     <th class="text-center" style="width: 50px;">#</th>
                                     <th class="text-center" style="width: 110px;">تصویر شاخص</th>
                                     <th>عنوان</th>
-									@if($post_type <> 1)
-                                    <th style="width: 230px;">دسته بندی</th>
-									@endif
-                                    <th class="text-center" style="width: 80px;">تاریخ</th>
-                                    <th class="text-center" style="width: 60px;">بازدید</th>
+
+									@if($post_type == 0 || $post_type == 2)
+                                        <th style="width: 230px;">دسته بندی</th>
+                                        <th class="text-center" style="width: 80px;">تاریخ</th>
+                                        <th class="text-center" style="width: 60px;">بازدید</th>
+                                    @endif
                                     <th class="text-center" style="width: 60px;">وضعیت</th>
                                     <th class="text-center" style="width: 110px;">عملیات</th>
                                 </tr>
@@ -72,7 +77,8 @@ if ( $post_type == 0 ) {
                                             @endif
                                         </td>
                                         <td>{{$post->title}}</td>
-                                        @if($post_type <> 1)
+                                    
+                                    @if($post_type == 0 || $post_type == 2)
                                         <td>
                                             @foreach($post->category as $cat)
                                                 {{$cat}}
@@ -81,9 +87,11 @@ if ( $post_type == 0 ) {
                                                 @endif
                                             @endforeach
                                         </td>
-                                        @endif
+                                                                            
                                         <td class="text-center">{{$post->publish_date}}</td>
                                         <td class="text-center">{{$post->visit}}</td>
+                                    @endif
+
                                         <td class="text-center">
                                             @if($post->status==1)
                                                 <a href="/admin/post_status/{{$post->id}}" class="btn btn-success">

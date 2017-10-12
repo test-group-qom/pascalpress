@@ -25,9 +25,9 @@
 
   <div class="flex---about">
     <div class="wrapper">
-      <div class="flex--parent" style="margin-top: 10px;">
+      <div class="flex--parent" style="margin-top: 10px;margin-bottom: 20px;">
         <div class="flex--text">
-          <div class="flex---left">
+          <div class="flex---left" style="display:none">
             <div class="flex--item">
               <div class="flex--right">
                 <span class="day">{{$post->publish_date}}</span>

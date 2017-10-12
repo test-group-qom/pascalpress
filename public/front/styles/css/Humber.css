@@ -12,7 +12,7 @@
 .nav-opener:before,
 .nav-opener:after,
 .nav-opener span {
-    background: #3ebfa0;
+    background: #ffffff;
     border-radius: 0;
     position: absolute;
     top: 17px;
@@ -28,7 +28,7 @@
 .nav-opener:before {
     content: '';
     top: 8px;
-    left: 30%;
+    /* left: 30%; */
 }
 
 .nav-opener:after {

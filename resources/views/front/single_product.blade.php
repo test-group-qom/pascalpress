@@ -40,7 +40,7 @@ function openTab(evt, cityName) {
   <div class="flex---about">
     <div class="wrapper">
       <div class="flex--parent">
-        <div class="flex--text">
+        <div class="flex--text" >
           <div class="flex---right" style="width: auto;">
             <h3 class="text">
               {{$product->title}}
@@ -54,7 +54,7 @@ function openTab(evt, cityName) {
               </div>
             </h3>
           </div>
-          <div class="flex---left">
+          <div class="flex---left"  style="display:none">
             <div class="flex--item">
               <div class="flex--right">
                 <span class="day">{{$product->publish_date}}</span>

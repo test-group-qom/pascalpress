@@ -3,8 +3,10 @@ if ( $post_type == 0 ) {
     $title = 'مطلب';
 } elseif ( $post_type == 1 ) {
     $title = 'صفحه';
-} else {
+} elseif ( $post_type == 2 ) {
     $title = 'محصول';
+} else {
+    $title = 'اسلاید';
 }
 ?>
 @section('title', 'ویرایش '.$title)
@@ -50,7 +52,12 @@ if ( $post_type == 0 ) {
                             {{csrf_field()}}
                             {{method_field('PUT')}}
                             <input type="hidden" name="post_type" value="{{$post_type}}">
+
+                        @if($post_type==0 || $post_type==2)
                             <div class="col-lg-8">
+                        @else
+                            <div class="col-lg-12">
+                        @endif
 
                                 <div class="form-group">
                                     <label class="control-label col-lg-2 red">تصویر شاخص</label>
@@ -100,7 +107,18 @@ if ( $post_type == 0 ) {
                                     </script>
                                 </div>
 
-                                @if($post_type!=1)
+                                @if($post_type==3)
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2 red">لینک اسلاید</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" name="link" value="{{$post->property}}" style="direction:ltr" required>
+                                    </div>
+
+                                    <div class="clear"></div>
+                                </div>
+                                @endif
+
+                                @if($post_type==0 || $post_type==2)
                                 <div class="form-group">
                                     <?php
                                     $all = array();
@@ -455,7 +473,7 @@ if ( $post_type == 0 ) {
 
                             </div>
 
-                            @if($post_type!=1)
+                            @if($post_type==0 || $post_type==2)
                             <div class="col-lg-4">
                                 <?php
                                 $cat_ids = array();

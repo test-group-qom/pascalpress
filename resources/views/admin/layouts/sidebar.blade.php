@@ -67,6 +67,21 @@
             </li>
 
             <li>
+                <form action="/admin/post" method="post">
+                    {{csrf_field()}}
+                    {{ method_field('GET') }}
+                    <input type="hidden" name="post_type" value="3"/>
+                    <button type="submit"
+                            style="background:none;border:none;color:#fff;margin:0;padding:0;width: 100%; text-align: right;">
+                        <a>
+                            <i class="icon-picture"></i>
+                            <span>اسلایدشو</span>
+                        </a>
+                    </button>
+                </form>
+            </li>
+
+            <li>
                 <a class="" href="/admin/contact">
                     <i class="icon-envelope"></i>
                     <span>تماس ها</span>

@@ -14,7 +14,7 @@ $(document).ready(function(){
   <a href="/" class="link">
       <img src="{{asset('front/styles/img/logo.png')}}" class="img--logo" alt="" style='width:100%;' border="0">
       
-      <h3 class="slogan">تولید و طراحی ابزارهای دقیق هیدرولیکی</h3>
+      <h3 class="slogan">{{$config->description}}</h3>
       
   </a>
   

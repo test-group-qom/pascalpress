@@ -13,28 +13,29 @@
         <div class="flex--parent">
           <div class="flex---wrap">
 
-          @foreach($catalogs as $item)
-            
-            
-                  <h3 class="title" style=" display: block;width: 100%;margin-bottom: 10px;border-bottom: 2px solid #eee;">{{$item['title']}}</h3>
-                @foreach($item['file'] as $file)
-            <div class="flex--item product_file">
-                              
-              <a href="{{asset('upload/products/'.$file)}}" target="_blank">
-
-                <div>
-                  <img src="{{asset('/upload/catalog-icon.png')}}">
-                </div>                
-
-                <p align="center"><span>{{$file}}</span> </p>
-              </a>
-              
-            </div>
-            <div class="cls"></div>
-
+        @if($catalogs != null)
+            <table class="table catalog_table">
+              <thead>
+                <tr>
+                  <th style="width: 50px;">#</th>
+                  <th style="text-align:right">عنوان محصول</th>
+                  <th>کاتالوگ</th>
+                </tr>
+              </thead>
+            @foreach($catalogs as $item)
+              <tr>
+                <td style="text-align:center">{{$loop->iteration}}</td>
+                <td>{{$item['title']}}</td>
+                <td class="product_file">
+                  <a href="{{asset('upload/products/'.$item['file'][0])}}" target="_blank">    
+                    <span>دریافت کاتالوگ</span>
+                  </a>
+                </td>
+              </td>  
             @endforeach
-          @endforeach
-            
+          </table>
+        @endif 
+
           </div>
 
         </div>
