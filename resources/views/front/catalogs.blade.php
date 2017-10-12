@@ -17,8 +17,8 @@
             <table class="table catalog_table">
               <thead>
                 <tr>
-                  <th style="width: 50px;">#</th>
-                  <th style="text-align:right">عنوان محصول</th>
+                  <th style="width: 50px;">ردیف</th>
+                  <th>عنوان محصول</th>
                   <th>کاتالوگ</th>
                 </tr>
               </thead>
