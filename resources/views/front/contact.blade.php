@@ -11,18 +11,17 @@
 
 <div class="contact">
   <div class="wrapper">
-      <br><br><br>
     <div class="flex--contact">
       <div class="flex---right">
           <div class="">
-              <h2>اطلاعات تماس</h2><br>
+            <h4>اطلاعات تماس</h4><br>
           <?php echo $config->info ?>
         </div>
       </div>
       <div class="flex---left">
       <form class="form-horizontal form-register form-box" method="POST" action="{{ url('contact') }}">
           {{ csrf_field() }}
-          <h2>فرم تماس</h2><br>
+          <h4>فرم تماس</h4><br>
         @if ($errors->any())
           <div class="alert alert-block alert-danger fade in">
             <button data-dismiss="alert" class="close close-sm" type="button">
