@@ -16,7 +16,7 @@
               </a>
             </li>
             <li>
-              <a href="/products">محصولات
+              <a href="/products-cat">محصولات
                 <span class="border--bottom"></span>
               </a>
             </li>

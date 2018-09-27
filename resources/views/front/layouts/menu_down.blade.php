@@ -10,7 +10,9 @@
             <?php
             
                 switch(Request::segment($i)){
-                    case 'products': $link_url = route("products"); $link_title ="محصولات"; break;
+                    case 'product':
+                    case 'products':
+                    case 'products-cat': $link_url = route("products-cat"); $link_title ="محصولات"; break;
                     case 'articles': $link_url = route("articles"); $link_title ="مقالات"; break;
                     case 'news': $link_url = route("news"); $link_title ="اخبار"; break;
                     case 'about': $link_url = route("about"); $link_title ="درباره ما"; break;

@@ -6,6 +6,8 @@
 @include ('front.layouts.menu_top')
 @include ('front.layouts.logo_min')
 
+<?php $page_title=$category->name?>
+
 <div class="container news">
 
   <div class="flex--parnet">
@@ -45,9 +47,9 @@
                 <div class="flex--right product_items">
                     <div class="min--pic" href="product.php">
                       @if($product->thumb != null)
-                        <a href="/products/{{$product->id}}"><img src="{{asset('upload/images/' . $product->thumb )}}" class="img--user"></a>
+                        <a href="/product/{{$product->id}}"><img src="{{asset('upload/images/' . $product->thumb )}}" class="img--user"></a>
                       @else
-                        <a href="/products/{{$product->id}}"><img src="{{asset('upload/images/no-image.png')}}" class="img--user"/></a>
+                        <a href="/product/{{$product->id}}"><img src="{{asset('upload/images/no-image.png')}}" class="img--user"/></a>
                       @endif
                     </div>
                 </div>

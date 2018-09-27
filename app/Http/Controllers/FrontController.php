@@ -54,18 +54,35 @@ class FrontController extends Controller
         return view( 'front.articles', compact( [ 'config', 'posts', 'count' ] ) );
     }
 
-    public function products(Request $request)
+    public function products(Request $request, $id)
     {
         $offset = $request->offset > 0 ? (int) $request->offset : 0;
         $mount  = $request->mount > 0 ? (int) $request->mount : 6;
 
-        $products   = Post::where( 'post_type', 2 )->where( 'status', 1 )->orderBy( 'created_at', 'desc' );
+        $category = Category::find($id);
+        $products   = $category->posts()->where( 'status', 1 )->orderBy( 'created_at', 'desc' );
         $count    = $products->get()->count();
         $products = $products->skip( $offset )->take( $mount )->get();
 
         $config   = Config::find( 1 );
 
-        return view( 'front.products', compact( [ 'config', 'products', 'count' ] ) );
+        return view( 'front.products', compact( [ 'config', 'products', 'count' ,'category'] ) );
+    }
+
+    public function productsCat(Request $request) {
+        $offset = $request->offset > 0 ? (int) $request->offset : 0;
+        $mount = $request->mount > 0 ? (int) $request->mount : 6;
+
+        $mainCat = Category::wherename('محصولات')->first();
+        if(empty($mainCat)){
+            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+        }
+        $categories = Category::where('parent_id',$mainCat->id )->orderBy('created_at', 'desc');
+        $count = $categories->get()->count();
+        $categories = $categories->skip($offset)->take($mount)->get();
+
+        $config = Config::find(1);
+        return view('front.products-cat', compact(['config', 'categories', 'count']));
     }
 
     public function catalogs(Request $request)

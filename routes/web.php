@@ -121,9 +121,13 @@ Route::get( 'articles/{id}', 'FrontController@single_post' );
 Route::get( 'catalogs', 'FrontController@catalogs' );
 
 // products
-Route::get( 'products', 'FrontController@products' )->name('products');
+Route::get( 'products/{id}', 'FrontController@products');
+
+// products-cat
+Route::get( 'products-cat', 'FrontController@productsCat' )->name('products-cat');
+
 // single product
-Route::get( 'products/{id}', 'FrontController@single_product' );
+Route::get( 'product/{id}', 'FrontController@single_product' );
 
 
 
