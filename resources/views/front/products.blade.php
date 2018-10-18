@@ -48,10 +48,12 @@
                     <div class="min--pic" href="product.php">
                         <a href="/product/{{$product->id}}">
                       @if($product->thumb != null)
-                            <img src="{{asset('upload/images/' . $product->thumb )}}" class="img--user"></a>
+                            <img src="{{asset('upload/images/' . $product->thumb )}}" class="img--user">
                       @else
-                        <a href="/product/{{$product->id}}"><img src="{{asset('upload/images/no-image.png')}}" class="img--user"/></a>
+                            <img src="{{asset('upload/images/no-image.png')}}" class="img--user"/>
                       @endif
+                      <div class="title">{{$product->id}}</div>
+                        </a>
                     </div>
                 </div>
                 @endforeach

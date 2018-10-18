@@ -198,7 +198,7 @@
         padding: 3px;
     }
     
-    .flex---products .flex--product .product_items {
+    .flex---products .flex--product .product_items,.flex---products-cat .flex--product .product_items {
         border: 3px solid #ddd;
         padding: 7px;
         background: #fff;

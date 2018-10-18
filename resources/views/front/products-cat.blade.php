@@ -46,8 +46,8 @@
                                                         <img src="{{asset('upload/images/' . $category->thumb )}}" class="img--user">
                                                     @else
                                                         <img src="{{asset('upload/images/no-image.png')}}" class="img--user"/>
-                                                        @endif
-                                                        {{$category->name}}
+                                                    @endif
+                                                        <div class="title">{{$category->name}}</div>
                                                     </a>
                                                 </div>
                                             </div>
