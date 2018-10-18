@@ -52,7 +52,7 @@
                       @else
                             <img src="{{asset('upload/images/no-image.png')}}" class="img--user"/>
                       @endif
-                      <div class="title">{{$product->id}}</div>
+                      <h3 class="title">{{$product->id}}</h3>
                         </a>
                     </div>
                 </div>

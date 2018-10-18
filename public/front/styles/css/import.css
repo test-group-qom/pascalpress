@@ -955,6 +955,7 @@ header.index .flex--nav-top .flex--wrap .flex---left .flex--left .img--user {
 
 .flex---products .flex--product .flex--pic .flex--right .min--pic .img--user {
     width: 100%;
+    height: 90%;
 }
 
 .flex---products-cat .flex--product {
