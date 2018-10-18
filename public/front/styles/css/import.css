@@ -958,6 +958,85 @@ header.index .flex--nav-top .flex--wrap .flex---left .flex--left .img--user {
     height: 100%;
 }
 
+.flex---products-cat .flex--product {
+    display: flex;
+    width: 100%;
+}
+
+@media (max-width: 1338px) {
+    .flex---products-cat .flex--product {
+        padding-bottom: 30px;
+    }
+}
+
+.flex---products-cat .flex--product .flex--pic {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.flex---products-cat .flex--product .flex--pic .flex--right {
+    display: flex;
+    width: 249px;
+    height: 233px;
+    margin-left: 27px;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 1338px) {
+    .flex---products-cat .flex--product .flex--pic .flex--right {
+        width: 23%;
+        margin-left: 2%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .flex---products-cat .flex--product .flex--pic .flex--right {
+        width: 48%;
+        margin-left: 4%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .flex---products-cat .flex--product .flex--pic .flex--right {
+        width: 100%;
+        margin-left: 0px;
+        height: auto;
+    }
+}
+
+.flex---products-cat .flex--product .flex--pic .flex--right:nth-child(4n) {
+    margin-left: 0px;
+}
+
+@media screen and (max-width: 700px) {
+    .flex---products-cat .flex--product .flex--pic .flex--right:nth-child(4n) {
+        margin-left: 4%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .flex---products-cat .flex--product .flex--pic .flex--right:nth-child(4n) {
+        margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .flex---products-cat .flex--product .flex--pic .flex--right:nth-child(2n) {
+        margin-left: 0px;
+    }
+}
+
+.flex---products-cat .flex--product .flex--pic .flex--right .min--pic {
+    width: 100%;
+    cursor: pointer;
+}
+
+.flex---products-cat .flex--product .flex--pic .flex--right .min--pic .img--user {
+    width: 100%;
+    height: 100%;
+}
+
 .flex---products .flex--button {
     margin-top: 28px;
 }

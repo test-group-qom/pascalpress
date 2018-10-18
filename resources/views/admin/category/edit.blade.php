@@ -31,7 +31,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form role="form" method="POST" action="{{ url('admin/category/'.$oneCat->id) }}">
+                        <form role="form" method="POST" action="{{ url('admin/category/'.$oneCat->id) }}" enctype="multipart/form-data">
                             {{csrf_field()}}
                             {{ method_field('PUT') }}
                             <div class="form-group">
@@ -101,6 +101,13 @@
 
 
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-2 red">تصویر شاخص</label>
+                                <div class="col-lg-10">
+                                    <input type="file" name="thumb" class="btn btn-default btn-sm">
+                                </div>
+                                <div class="clear"></div>
                             </div>
                             <button type="submit" class="btn btn-info">ذخیره</button>
                             <a href="{{url('/admin/category')}}" class="btn btn-info">انصراف</a>

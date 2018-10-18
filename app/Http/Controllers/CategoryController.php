@@ -70,8 +70,9 @@ class CategoryController extends Controller {
 		$validator = Validator::make( $request->all(), [
 			'id'        => 'required|numeric|exists:categories,id,deleted_at,NULL',
 			'name'      => 'required|max:255',
-			'parent_id' => 'nullable|numeric|max:255|exists:categories,id,deleted_at,NULL'
-		] );
+			'parent_id' => 'nullable|numeric|max:255|exists:categories,id,deleted_at,NULL',
+                        'thumb' => 'nullable|max:2048',
+                ] );
 		if ( $validator->fails() ) {
 			return back()->with( [ 'errors' => $validator->errors() ] );
 		}
@@ -79,7 +80,15 @@ class CategoryController extends Controller {
 		$category              = Category::find( $id );
 		$category->name        = $request->name;
 		$category->parent_id = $request->parent_id;
-		$category->update();
+                if ($request->thumb !== null) {
+                    $file = $request->file('thumb');
+                    if ($request->hasFile('thumb') && $file->isValid()) {
+                        $fileName = $file->getClientOriginalName();
+                        $file->move(public_path("/upload/images/"), $fileName);
+                        $category->thumb = $fileName;
+                    }
+                }
+                $category->update();
 
 		return redirect( '/admin/category' );
 	}

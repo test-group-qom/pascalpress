@@ -20,7 +20,7 @@
             <div class="flex---items">
                 <div class="wrapper">
                     <div class="flex--parent">
-                        <div class="flex---products" style="color: #333; height: auto; background: none;">
+                        <div class="flex---products-cat" style="color: #333; height: auto; background: none;">
                             <div class="flex--text">
                                 <h3 class="text" style="color: #333; margin-top: 25px;">
                                     دسته های محصولات
@@ -37,14 +37,22 @@
                             <div class="flex--product">
                                 <div class="wrapper">
                                     <div>
-                                        <ul>
+                                        <div class="flex--pic">
                                             @foreach($categories as $category)
-                                            <li class="category_items">
-
-                                                <a href="/products/{{$category->id}}">{{$category->name}}</a>
-                                            </li>
+                                            <div class="flex--right product_items">
+                                                <div class="min--pic" href="product.php">
+                                                    <a href="/products/{{$category->id}}">
+                                                    @if($category->thumb != null)
+                                                        <img src="{{asset('upload/images/' . $category->thumb )}}" class="img--user">
+                                                    @else
+                                                        <img src="{{asset('upload/images/no-image.png')}}" class="img--user"/>
+                                                        @endif
+                                                        {{$category->name}}
+                                                    </a>
+                                                </div>
+                                            </div>
                                             @endforeach
-                                        </ul>
+                                        </div>
 
                                         <div class="cls"></div>
 
