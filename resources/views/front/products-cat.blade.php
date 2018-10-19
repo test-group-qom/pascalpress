@@ -47,7 +47,7 @@
                                                     @else
                                                         <img src="{{asset('upload/images/no-image.png')}}" class="img--user"/>
                                                     @endif
-                                                        <h3 class="title">{{$category->name}}</h3>
+                                                        <h3 class="text">{{$category->name}}</h3>
                                                     </a>
                                                 </div>
                                             </div>

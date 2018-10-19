@@ -1036,7 +1036,7 @@ header.index .flex--nav-top .flex--wrap .flex---left .flex--left .img--user {
     width: 100%;
 }
 
-.min--pic .title,.min--pic .title :visited{
+.min--pic .text,.min--pic .title :visited{
     text-align: center;
     color: black;
 }
@@ -3189,5 +3189,6 @@ footer .flex--copy-right .title {
     height: 100%;
 }
 
+h3.title{font-size : 25px !important;}
 
 /*# sourceMappingURL=import.css.map */
