@@ -14,14 +14,14 @@
     <div class="flex--contact">
       <div class="flex---right">
           <div class="">
-            <h2>اطلاعات تماس</h2><br>
+              <h4 style="font-weight: bold;">اطلاعات تماس</h4><br>
           <?php echo $config->info ?>
         </div>
       </div>
       <div class="flex---left">
       <form class="form-horizontal form-register form-box" method="POST" action="{{ url('contact') }}">
           {{ csrf_field() }}
-          <h2>فرم تماس</h2><br>
+          <h4 style="font-weight: bold;">فرم تماس</h4><br>
         @if ($errors->any())
           <div class="alert alert-block alert-danger fade in">
             <button data-dismiss="alert" class="close close-sm" type="button">

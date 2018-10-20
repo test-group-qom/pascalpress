@@ -7,6 +7,6 @@
   </div>
 
   <div class="flex--copy-right">
-    <h6>{{$config->copyright}}</h6>
+      <h5 style="font-weight: normal; margin: ">{{$config->copyright}}</h5>
   </div>
 </footer>
