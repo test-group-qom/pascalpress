@@ -3170,6 +3170,7 @@ footer .flex--copy-right .title {
 @media (max-width: 860px) {
     .contact .flex--contact .flex---left {
         width: 100%;
+        margin-top: 50px;
     }
 }
 
