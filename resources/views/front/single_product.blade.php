@@ -40,28 +40,18 @@ function openTab(evt, cityName) {
   <div class="flex---about">
     <div class="wrapper">
       <div class="flex--parent">
-        <div class="flex--text" >
-          <div class="flex---right" style="width: auto;">
-            <h3 class="text">
-              {{$product->title}}
-              <div class="flex--line">
-                <div class="flex--right">      <!-- right -->
-                  <span class="line"></span>
-                </div>
-                <div class="flex--left">          <!-- left -->
-                  <span class="line"></span>
-                </div>
-              </div>
-            </h3>
-          </div>
-          <div class="flex---left"  style="display:none">
-            <div class="flex--item">
-              <div class="flex--right">
-                <span class="day">{{$product->publish_date}}</span>
-                <img src="{{asset('front/styles/img/little14.svg')}}" class="pic" alt="">
-              </div>
-            </div>
-          </div>
+          <div class="flex--text" >
+              <h3 class="text">
+                  {{$product->title}}
+                  <div class="flex--line">
+                      <div class="flex--right">      <!-- right -->
+                          <span class="line"></span>
+                      </div>
+                      <div class="flex--left">          <!-- left -->
+                          <span class="line"></span>
+                      </div>
+                  </div>
+              </h3>
         </div>
       </div>
     </div>

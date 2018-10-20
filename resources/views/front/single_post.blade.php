@@ -45,23 +45,6 @@
       <h3 class="text">{{$post->title}}</h3>
     </div>
     <div class="flex---single">
-      <div class="flex---desrcption">
-        <div class="flex--desrcption">
-          <div class="flex--right">
-            <img src="{{asset('front/styles/img/quotations.svg')}}" class="icon--quotations" alt="">
-          </div>
-
-          <div class="flex--left">
-            <p class="desrcption">
-               {{$post->excerpt}}
-            </p>
-            <div class="flex--icon"> <!-- left -->
-              <img src="{{asset('front/styles/img/quotations.svg')}}" class="icon--quotations" alt="">
-            </div>
-          </div>
-        </div>
-
-      </div>
       <div class="flex--info--item">
         <div class="flex--right">
         @if($post->thumb != null)

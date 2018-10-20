@@ -25,7 +25,7 @@
     }
     
     .flex--contact {
-        padding-top: 100px !important;
+        padding-top: 150px !important;
     }
     
     header.index .flex--nav-top .flex--wrap .flex---left .flex--left {
@@ -198,10 +198,9 @@
         padding: 3px;
     }
     
-    .flex---products .flex--product .product_items,.flex---products-cat .flex--product .product_items {
+    .min--pic .img--user {
         border: 3px solid #ddd;
         padding: 7px;
-        background: #fff;
     }
     
     .flex---products .flex--product .product_items:hover {
