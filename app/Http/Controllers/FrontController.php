@@ -6,7 +6,6 @@ use App\Model\Category;
 use App\Model\Config;
 use App\Model\Post;
 use App\helper\jdf;
-use App\Model\User;
 use Validator;
 use Illuminate\Http\Request;
 
@@ -19,10 +18,14 @@ class FrontController extends Controller
         $articles  = $this->query_posts( 7, 3 );
         $news   = $this->query_posts( 8, 4 );
         $slides   = Post::where( 'post_type', 3 )->where( 'status', 1 )->get();
-        $products   = Post::where( 'post_type', 2 )->where( 'status', 1 )->orderBy( 'created_at', 'desc' );
-        $products = $products->skip( 0 )->take( 6 )->get();
+        $mainCat = Category::wherename('محصولات')->first();
+        if (empty($mainCat)) {
+            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+        }
+        $categories = Category::where('parent_id', $mainCat->id)->orderBy('created_at', 'desc');
+        $categories = $categories->skip( 0 )->take( 6 )->get();
 
-        return view( 'front.index', compact( [ 'config', 'news', 'articles', 'slides', 'products' ] ) );
+        return view( 'front.index', compact( [ 'config', 'news', 'articles', 'slides', 'categories' ] ) );
     }
 
     public function news(Request $request)
@@ -35,8 +38,9 @@ class FrontController extends Controller
         $posts = $news[0];
         $count    = $news[1];
         $config   = Config::find( 1 );
+        $thumb= Category::where('name', 'اخبار')->first()->thumb;
 
-        return view( 'front.news', compact( [ 'config', 'posts', 'count' ] ) );
+        return view( 'front.news', compact( [ 'config', 'posts', 'count', 'thumb'] ) );
     }
 
     public function articles(Request $request)
@@ -49,9 +53,10 @@ class FrontController extends Controller
         $posts = $articles[0];
         $count    = $articles[1];
         $config   = Config::find( 1 );
+        $thumb = Category::where('name', 'مقالات')->first()->thumb;
 
 
-        return view( 'front.articles', compact( [ 'config', 'posts', 'count' ] ) );
+        return view( 'front.articles', compact( [ 'config', 'posts', 'count', 'thumb'] ) );
     }
 
     public function products(Request $request, $id)

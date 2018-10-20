@@ -203,7 +203,7 @@
         padding: 7px;
     }
     
-    .flex---products .flex--product .product_items:hover {
+    .flex---products .flex--product .product_items:hover img,.flex---products-cat .flex--product .product_items:hover img {
         border: 3px solid #f7c300;
     }
     

@@ -11,8 +11,8 @@
   <div class="flex--parnet">
     <div class="flex--cover">
       
-      @if($posts[0]->thumb!=null)
-        <img src="{{asset('upload/images/' .$posts[0]->thumb)}}" class="img--user"/>
+      @if($thumb != null)
+        <img src="{{asset('upload/images/'.$thumb)}}" class="img--user"/>
       @else
         <img src="{{asset('upload/images/no-image.png')}}" class="img--user"/>
       @endif

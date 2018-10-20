@@ -23,7 +23,21 @@
 
         <!-- News -->
         <div class="flex---news">
-          <div class="wrapper">
+            <div class="wrapper">
+                <br><br>
+                <div class="flex--text">
+                    <h3 class="text">
+                        اخبار
+                        <div class="flex--line">
+                            <div class="flex--right">      <!-- right -->
+                                <span class="line"></span>
+                            </div>
+                            <div class="flex--left">          <!-- left -->
+                                <span class="line"></span>
+                            </div>
+                        </div>
+                    </h3>
+                </div>
             <div class="flex--parent">
               <div class="flex---right">
                 <div class="flex--right">
@@ -77,19 +91,6 @@
               </div>
               <div class="flex---left">
                 <div class="flex--about">
-                  <div class="flex--text">
-                    <h3 class="text">
-                      اخبار
-                      <div class="flex--line">
-                        <div class="flex--right">      <!-- right -->
-                          <span class="line"></span>
-                        </div>
-                        <div class="flex--left">          <!-- left -->
-                          <span class="line"></span>
-                        </div>
-                      </div>
-                    </h3>
-                  </div>
                   <div class="flex--news">
                     <div class="flex--group">
 
@@ -147,13 +148,13 @@
             <div class="wrapper">
               <div class="flex--pic">
 
-                @foreach($products as $product)
+                @foreach($categories as $category)
                 <div class="flex--right product_items">
                     <div class="min--pic" href="product.php">
-                      @if($product->thumb != null)
-                        <a href="/products/{{$product->id}}"><img src="{{asset('upload/images/' . $product->thumb )}}" class="img--user"></a>
+                      @if($category->thumb != null)
+                      <a href="/products/{{$category->id}}"><img src="{{asset('upload/images/' . $category->thumb )}}" class="img--user"></a>
                       @else
-                        <a href="/products/{{$product->id}}"><img src="{{asset('upload/images/no-image.png')}}" class="img--user"/></a>
+                        <a href="/products/{{$category->id}}"><img src="{{asset('upload/images/no-image.png')}}" class="img--user"/></a>
                       @endif
                     </div>
                 </div>
