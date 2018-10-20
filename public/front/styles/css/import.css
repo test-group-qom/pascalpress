@@ -793,8 +793,7 @@ header.index .flex--nav-top .flex--wrap .flex---left .flex--left .img--user {
     color: #000000;
     display: block;
     cursor: default;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin: 50px auto;
 }
 
 .flex--text .flex--line {
@@ -1098,9 +1097,6 @@ header.index .flex--nav-top .flex--wrap .flex---left .flex--left .img--user {
     justify-content: flex-start;
     position: relative;
     flex-flow: column;
-    border-right: solid 1px #e8e8e8;
-    border-left: solid 1px #e8e8e8;
-    border-bottom: solid 1px #e8e8e8;
     padding-bottom: 20px;
     transition: all 98ms ease-in-out;
 }

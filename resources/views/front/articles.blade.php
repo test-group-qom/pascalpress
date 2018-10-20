@@ -23,30 +23,18 @@
       <div class="flex---items">
           <div class="wrapper">
             <div class="flex--parent">
-              <div class="flex--text">
-                <div class="flex---right">
-                      <h3 class="text">
+                <div class="flex--text">
+                    <h3 class="text">
                         مقالات
-                          <div class="flex--line">
+                        <div class="flex--line">
                             <div class="flex--right">      <!-- right -->
-                              <span class="line"></span>
+                                <span class="line"></span>
                             </div>
                             <div class="flex--left">          <!-- left -->
-                              <span class="line"></span>
+                                <span class="line"></span>
                             </div>
-                          </div>
-                      </h3>
-                </div>
-                <div class="flex---left">
-                    <div class="flex--select">
-                          <select class="select" name="">
-                              <option value="">جدید ترین ها</option>
-                              <option value="">جدید ترین ها</option>
-                              <option value="">جدید ترین ها</option>
-                          </select>
-                          <img src="{{asset('front/styles/img/angle-arrow-down.svg')}}" class="arrow_down" alt="">
-                      </div>
-                </div>
+                        </div>
+                    </h3>
               </div>
               <div class="flex---wrap">
               

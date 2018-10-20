@@ -7,6 +7,6 @@
   </div>
 
   <div class="flex--copy-right">
-    <h3 class="title">{{$config->copyright}}</h3>
+    <h4 class="title">{{$config->copyright}}</h4>
   </div>
 </footer>
