@@ -2844,7 +2844,7 @@ footer .flex--copy-right .title {
     border: none;
 }
 
-.container.single .flex--tabs .menu_tab .tabs ul li .title {
+.container.single .flex--tabs .menu_tab .tabs ul li .title,span.tab {
     font: 18px "IRANSansWeb_Bold";
     color: #fff;
     padding-right: 18px;

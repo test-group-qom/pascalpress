@@ -42,15 +42,7 @@ function openTab(evt, cityName) {
       <div class="flex--parent">
           <div class="flex--text" >
               <h3 class="text">
-                  {{$product->title}}
-                  <div class="flex--line">
-                      <div class="flex--right">      <!-- right -->
-                          <span class="line"></span>
-                      </div>
-                      <div class="flex--left">          <!-- left -->
-                          <span class="line"></span>
-                      </div>
-                  </div>
+                  
               </h3>
         </div>
       </div>
@@ -91,9 +83,6 @@ function openTab(evt, cityName) {
           </div>
         </div>
         <div class="flex---left">
-          <div class="flex---text">
-            <h3 class="text">مشخصات کلی</h3>
-          </div>
           <div class="flex--cols">
 
             @if(!empty($product->specs))
@@ -101,10 +90,10 @@ function openTab(evt, cityName) {
                 @foreach($Svalue as $val)
                   <div class="flex--col">
                     <div class="flex--right">
-                      <h3 class="title">{{$Skey}}</h3>
+                        <span class="key">{{$Skey}}</span>
                     </div>
                     <div class="flex--left">
-                      <h3 class="title">{{$val}}</h3>
+                        <span class="value">{{$val}}</span>
                     </div>
                   </div>
                 @endforeach
@@ -117,6 +106,8 @@ function openTab(evt, cityName) {
       </div>
     </div>
   </div>
+  
+  <br><br><br><br>
 
   <div class="flex--tabs">
     <div class="wrapper">
@@ -124,10 +115,10 @@ function openTab(evt, cityName) {
 
         <div class="tabs">
           <ul>
-            <li class="tablinks selected" onclick="openTab(event, 'Tab1')"><h3 class="title">نقد و بررسی تخصصی</h3></li>
-            <li class="tablinks" onclick="openTab(event, 'Tab2')"><h3 class="title">مشخصات فنی</h3></li>
-            <li class="tablinks" onclick="openTab(event, 'Tab3')"><h3 class="title">گالری فیلم</h3></li>
-            <li class="tablinks" onclick="openTab(event, 'Tab4')"><h3 class="title"> کاتالوگ</h3></li>
+            <li class="tablinks selected" onclick="openTab(event, 'Tab1')"><span class="tab">نقد و بررسی تخصصی</span></li>
+            <li class="tablinks" onclick="openTab(event, 'Tab2')"><span class="tab">مشخصات فنی</span></li>
+            <li class="tablinks" onclick="openTab(event, 'Tab3')"><span class="tab">گالری فیلم</span></li>
+            <li class="tablinks" onclick="openTab(event, 'Tab4')"><span class="tab"> کاتالوگ</span></li>
           </ul>
         </div>
 

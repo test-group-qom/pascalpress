@@ -360,3 +360,12 @@
         .descrption ul li{
             list-style: disc;
         }
+
+        span.key,span.value{
+            font-size: 18px;
+        }
+
+        span.tab{
+            font-size: 20px;
+            padding: 0px 18px 8px;
+        }
