@@ -13,11 +13,11 @@
   <div class="flex--parnet">
     <div class="flex--cover">
       
-      @if($category->thumb!=null)
-        <img src="{{asset('upload/images/' .$category->thumb)}}" class="img--user"/>
-      @else
+        @if($mainCat->thumb!=null)
+        <img src="{{asset('upload/images/' .$mainCat->thumb)}}" class="img--user"/>
+        @else
         <img src="{{asset('upload/images/no-image.png')}}" class="img--user"/>
-      @endif
+        @endif
 
     </div>
     @include ("front.layouts.menu_down")

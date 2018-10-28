@@ -63,6 +63,11 @@ class FrontController extends Controller
     {
         $offset = $request->offset > 0 ? (int) $request->offset : 0;
         $mount  = $request->mount > 0 ? (int) $request->mount : 6;
+        
+        $mainCat = Category::wherename('محصولات')->first();
+        if (empty($mainCat)) {
+            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+        }
 
         $category = Category::find($id);
         $products   = $category->posts()->where( 'status', 1 )->orderBy( 'created_at', 'desc' );
@@ -71,7 +76,7 @@ class FrontController extends Controller
 
         $config   = Config::find( 1 );
 
-        return view( 'front.products', compact( [ 'config', 'products', 'count' ,'category'] ) );
+        return view( 'front.products', compact( [ 'config', 'products', 'count' ,'category','mainCat'] ) );
     }
 
     public function productsCat(Request $request) {
@@ -157,6 +162,11 @@ class FrontController extends Controller
         if ($validator->fails()) {
             return back( 302 )->with( [ 'errors' => $validator->errors() ] );
         }
+        
+        $mainCat = Category::wherename('محصولات')->first();
+        if (empty($mainCat)) {
+            throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+        }
 
         $product = Post::where('post_type', 2)->where( 'id', $id )->where( 'status', 1 )->first();
         if ($product == null) {
@@ -182,7 +192,7 @@ class FrontController extends Controller
 
         $config = Config::find( 1 );
 
-        return view( 'front.single_product', compact( [ 'product', 'config' ] ) );
+        return view( 'front.single_product', compact( [ 'product', 'config', 'mainCat'] ) );
     }
 
     

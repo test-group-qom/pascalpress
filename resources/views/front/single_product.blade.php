@@ -27,11 +27,11 @@ function openTab(evt, cityName) {
 
   <div class="flex--parnet">
     <div class="flex--cover">
-      @if($product->thumb!=null)
-        <img src="{{asset('upload/images/' .$product->thumb)}}" class="img--user"/>
-      @else
+        @if($mainCat->thumb!=null)
+        <img src="{{asset('upload/images/' .$mainCat->thumb)}}" class="img--user"/>
+        @else
         <img src="{{asset('upload/images/no-image.png')}}" class="img--user"/>
-      @endif
+        @endif
     </div>
   </div>
 
