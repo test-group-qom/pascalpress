@@ -13,18 +13,9 @@
    
     <div class="flex---content">
 
-      <!--<div class="logo-min2">
-        <div class="min--logo">
-          <a href="/">
-            <img src="{{asset('front/styles/img/logo.png')}}" class="img--logo" alt="">
-          </a>
-        </div>
-      </div>-->
-
         <!-- News -->
         <div class="flex---news">
             <div class="wrapper">
-                <br><br>
                 <div class="flex--text">
                     <h3 class="text">
                         اخبار
