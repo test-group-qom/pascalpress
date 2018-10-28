@@ -8,13 +8,13 @@
 
 <?php $page_title=$category->name?>
 
-<div class="container news">
+<div class="container">
 
   <div class="flex--parnet">
     <div class="flex--cover">
       
-      @if($products[0]->thumb!=null)
-        <img src="{{asset('upload/images/' .$products[0]->thumb)}}" class="img--user"/>
+      @if($category->thumb!=null)
+        <img src="{{asset('upload/images/' .$category->thumb)}}" class="img--user"/>
       @else
         <img src="{{asset('upload/images/no-image.png')}}" class="img--user"/>
       @endif

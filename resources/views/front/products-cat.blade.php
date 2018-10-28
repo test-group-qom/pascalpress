@@ -6,13 +6,16 @@
 @include ('front.layouts.menu_top')
 @include ('front.layouts.logo_min')
 
-    <div class="container news">
+    <div class="container">
 
     <div class="flex--parnet">
         <div class="flex--cover">
 
-
-            <img src="{{asset('upload/images/no-image.png')}}" class="img--user"/>
+            @if($mainCat->thumb!=null)
+                <img src="{{asset('upload/images/' .$mainCat->thumb)}}" class="img--user"/>
+            @else
+                <img src="{{asset('upload/images/no-image.png')}}" class="img--user"/>
+            @endif
 
         </div>
         @include ("front.layouts.menu_down")

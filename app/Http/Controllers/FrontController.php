@@ -87,7 +87,7 @@ class FrontController extends Controller
         $categories = $categories->skip($offset)->take($mount)->get();
 
         $config = Config::find(1);
-        return view('front.products-cat', compact(['config', 'categories', 'count']));
+        return view('front.products-cat', compact(['config', 'categories', 'count','mainCat']));
     }
 
     public function catalogs(Request $request)

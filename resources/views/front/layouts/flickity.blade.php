@@ -11,20 +11,6 @@
                     <div class="flex--parent">
                       <div class="flex--center">
                         <div class="flex--menu">
-                              
-                                <div class="flex--text">
-                                    <h3 class="text">
-                                      {{$item->title}}
-                                          <div class="flex--line">
-                                              <div class="flex--right">      <!-- right -->
-                                                <span class="line"></span>
-                                              </div>
-                                              <div class="flex--left">          <!-- left -->
-                                                <span class="line"></span>
-                                              </div>
-                                          </div>
-                                        </h3>
-                                    </div>
                                   <div class="descrption">
                                     <?php echo $item->content?>
                                   </div>
