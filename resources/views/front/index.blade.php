@@ -153,7 +153,7 @@
 
               </div>
               <div class="flex--button">
-                <a href="/products">
+                <a href="/products-cat">
                   <button type="button" class="button" name="button">بیشتر</button>
                 </a>
               </div>

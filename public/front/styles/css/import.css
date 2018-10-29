@@ -855,7 +855,7 @@ header.index .flex--nav-top .flex--wrap .flex---left .flex--left .img--user {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
-    height: 894px;
+    padding-bottom: 68px;
     background: #26324a;
     display: flex;
     flex-direction: column;
@@ -898,7 +898,6 @@ header.index .flex--nav-top .flex--wrap .flex---left .flex--left .img--user {
 .flex---products .flex--product .flex--pic .flex--right {
     display: flex;
     width: 372px;
-    height: 233px;
     margin-left: 27px;
     margin-bottom: 25px;
 }
@@ -954,7 +953,6 @@ header.index .flex--nav-top .flex--wrap .flex---left .flex--left .img--user {
 
 .flex---products .flex--product .flex--pic .flex--right .min--pic .img--user {
     width: 100%;
-    height: 90%;
 }
 
 .flex---products-cat .flex--product {
@@ -2711,8 +2709,15 @@ footer .flex--copy-right .title {
 }
 
 .container.single .flex--slider .slider .main-carousel {
-    width: 100%;
-    height: 300px;
+    width: 400px;
+    height: 400px;
+}
+
+@media(max-width:430px){
+    .container.single .flex--slider .slider .main-carousel {
+        width: 350px;
+        height: 350px;
+    }
 }
 
 .container.single .flex--slider .slider .main-carousel .carousel-cell {
@@ -2777,11 +2782,16 @@ footer .flex--copy-right .title {
 
 @media (max-width: 430px) {
     .container.single .flex--slider .nav_slider2 .carousel-nav .carousel-cell {
-        width: 100%;
     }
 }
 
-.container.single .flex--slider .nav_slider2 .carousel-nav .carousel-cell .img--user {
+.img-box{
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+}
+
+.img-box .img--user {
     width: 100%;
     height: 100%;
 }

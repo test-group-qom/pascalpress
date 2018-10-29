@@ -74,7 +74,9 @@ function openTab(evt, cityName) {
                 @if(!empty($product->files['image']))
                 @foreach($product->files['image'] as $img)
                 <div class="carousel-cell">
+                    <div class="img-box">
                   <img src="{{asset('upload/products/'.$img)}}" class="img--user" alt="">
+                    </div>
                 </div>
                 @endforeach
                 @endif
