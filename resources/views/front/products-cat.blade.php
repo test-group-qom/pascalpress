@@ -24,7 +24,7 @@
                 <div class="wrapper">
                     <div class="flex--parent">
                         <div class="flex---products-cat" style="color: #333; height: auto; background: none;">
-                            <div class="flex--text">
+                            <div class="flex--text" style="width: 300px;">
                                 <h3 class="text" style="color: #333; margin-top: 25px;">
                                     دسته های محصولات
                                     <div class="flex--line">
