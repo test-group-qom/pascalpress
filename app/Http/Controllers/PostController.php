@@ -30,7 +30,7 @@ class PostController extends Controller
         }
 
         $offset = $request->offset > 0 ? (int) $request->offset : 0;
-        $mount  = $request->mount > 0 ? (int) $request->mount : 10;
+        $mount  = $request->mount > 0 ? (int) $request->mount : 30;
 
         $all_post = Post::where( 'post_type', $post_type )->orderBy( $order_type, 'desc' );
         $count    = $all_post->get()->count();
@@ -467,7 +467,7 @@ class PostController extends Controller
         }
 
         $offset = $request->offset > 0 ? (int) $request->offset : 0;
-        $mount  = $request->mount > 0 ? (int) $request->mount : 10;
+        $mount  = $request->mount > 0 ? (int) $request->mount : 30;
 
         $category = Category::find( $cat_id );
         $all_post = $category->posts();
@@ -492,7 +492,7 @@ class PostController extends Controller
         }
 
         $offset = $request->offset > 0 ? (int) $request->offset : 0;
-        $mount  = $request->mount > 0 ? (int) $request->mount : 10;
+        $mount  = $request->mount > 0 ? (int) $request->mount : 30;
 
         $tag      = Tag::find( $tag_id );
         $all_post = $tag->posts();
