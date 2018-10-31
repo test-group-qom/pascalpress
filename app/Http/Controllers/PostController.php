@@ -30,7 +30,7 @@ class PostController extends Controller
         }
 
         $offset = $request->offset > 0 ? (int) $request->offset : 0;
-        $mount  = $request->mount > 0 ? (int) $request->mount : 30;
+        $mount  = $request->mount > 0 ? (int) $request->mount : 10;
 
         $all_post = Post::where( 'post_type', $post_type )->orderBy( $order_type, 'desc' );
         $count    = $all_post->get()->count();
@@ -386,7 +386,7 @@ class PostController extends Controller
             $post->tags()->sync( $tags );
         }
 
-        if ($request->post_type != 0) {
+        if (!empty($request->post_type )) {
             return redirect( '/admin/post?post_type=' . $request->post_type, 302 );
         }
 
@@ -467,7 +467,7 @@ class PostController extends Controller
         }
 
         $offset = $request->offset > 0 ? (int) $request->offset : 0;
-        $mount  = $request->mount > 0 ? (int) $request->mount : 30;
+        $mount  = $request->mount > 0 ? (int) $request->mount : 10;
 
         $category = Category::find( $cat_id );
         $all_post = $category->posts();
@@ -492,7 +492,7 @@ class PostController extends Controller
         }
 
         $offset = $request->offset > 0 ? (int) $request->offset : 0;
-        $mount  = $request->mount > 0 ? (int) $request->mount : 30;
+        $mount  = $request->mount > 0 ? (int) $request->mount : 10;
 
         $tag      = Tag::find( $tag_id );
         $all_post = $tag->posts();

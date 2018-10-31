@@ -141,7 +141,7 @@ if ( $post_type == 0 ) {
                                         <?php
                                         for($i = 1; $i <= (int) $total_page; $i ++){
                                         ?>
-                                        <li class=""><a href="?offset={{$offset}}">{{$i}}</a></li>
+                                        <li class=""><a href="?offset={{$offset}}&post_type={{$post_type}}">{{$i}}</a></li>
                                         <?php
                                         $offset += 10;
                                         }
