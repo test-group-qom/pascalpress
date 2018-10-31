@@ -148,7 +148,7 @@ if ( $post_type == 0 ) {
 
                                         if($remaining > 0){
                                         ?>
-                                        <li class=""><a href="?offset={{$offset}}">{{$i}}</a></li>
+                                        <li class=""><a href="?offset={{$offset}}&post_type={{$post_type}}">{{$i}}</a></li>
                                         <?php } ?>
                                     </ul>
                                 </div>

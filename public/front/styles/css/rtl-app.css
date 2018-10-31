@@ -87,14 +87,15 @@
     
     ul.pagination {
         list-style: none;
-        border-top: 1px solid #ddd;
+        border-top: 1px solid #f7c300;
         width: 100%;
         padding-top: 15px;
         margin: 10px 0 20px;
+        text-align: center;
     }
     
     ul.pagination li {
-        float: right;
+        display: inline;
         margin-left: 5px !important;
     }
     
