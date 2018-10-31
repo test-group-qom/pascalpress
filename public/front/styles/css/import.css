@@ -2717,6 +2717,7 @@ footer .flex--copy-right .title {
     .container.single .flex--slider .slider .main-carousel {
         width: 350px;
         height: 350px;
+        margin: auto;
     }
 }
 
